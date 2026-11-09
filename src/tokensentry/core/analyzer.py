@@ -1,10 +1,10 @@
-"""Prompt analyzer with structure, redundancy, and quality analysis."""
+"""Prompt analyzer with modular analysis engines."""
 
 from __future__ import annotations
 
 import re
-from collections import Counter
 
+from tokensentry.analysis import registry as analysis_registry
 from tokensentry.config import get_config, validate_prompt_content
 from tokensentry.models import (
     AnalysisReport,
@@ -55,11 +55,20 @@ def analyze_prompt(
     # Find technical literals
     technical_literals = _find_technical_literals(prompt)
 
-    # Detect findings
-    findings = _detect_findings(prompt, sections, requirements, technical_literals)
+    # Run all modular analyzers
+    findings = analysis_registry.run_all(prompt, sections, requirements, technical_literals)
 
-    # Compute quality scores
-    quality_scores = _compute_quality_scores(prompt, sections, findings)
+    # Add basic findings (empty prompt, etc.)
+    if not prompt.strip():
+        findings.append(Finding(
+            code="EMPTY_PROMPT",
+            severity=Severity.WARNING,
+            message="The prompt is empty or whitespace only.",
+            suggestion="Provide a prompt with instructions or context.",
+        ))
+
+    # Compute quality scores from QualityAnalyzer findings
+    quality_scores = _extract_quality_scores(findings)
 
     # Token count
     token_count = tokenizer.count(prompt)
@@ -85,6 +94,7 @@ def analyze_prompt(
 
 
 def _compute_stats(prompt: str) -> PromptStats:
+    """Compute basic prompt statistics."""
     lines = prompt.splitlines()
     non_empty = [line for line in lines if line.strip()]
     words = len(prompt.split())
@@ -110,6 +120,7 @@ def _parse_sections(prompt: str) -> list[PromptSection]:
     heading_pattern = re.compile(r"^(#{1,6})\s+(.+)$")
     code_fence_pattern = re.compile(r"^```(\w*)\s*$")
     list_pattern = re.compile(r"^(\s*)([-*+]|\d+\.)\s+(.+)$")
+    table_pattern = re.compile(r"^\|.*\|$")
 
     for i, line in enumerate(lines):
         line_num = i + 1
@@ -141,9 +152,26 @@ def _parse_sections(prompt: str) -> list[PromptSection]:
                 code_fence_lang = None
             continue
 
-        if in_code_fence and current_section is not None:
+        if in_code_fence and current_section:
             current_section.content += line + "\n"
             current_section.end_line = line_num
+            continue
+
+        # Handle tables
+        if table_pattern.match(line):
+            if current_section and current_section.type != "table":
+                current_section.end_line = line_num - 1
+                sections.append(current_section)
+            if not current_section or current_section.type != "table":
+                current_section = PromptSection(
+                    type="table",
+                    content=line + "\n",
+                    start_line=line_num,
+                    end_line=line_num,
+                )
+            else:
+                current_section.content += line + "\n"
+                current_section.end_line = line_num
             continue
 
         # Handle headings
@@ -194,7 +222,6 @@ def _parse_sections(prompt: str) -> list[PromptSection]:
                 current_section.content += line + "\n"
                 current_section.end_line = line_num
             else:
-                # Different section type, start new paragraph
                 current_section.end_line = line_num - 1
                 sections.append(current_section)
                 current_section = PromptSection(
@@ -239,9 +266,6 @@ def _extract_requirements(prompt: str, sections: list[PromptSection]) -> list[Re
         # Schema references
         (r"\b(schema|specification|contract|interface)\b", "schema"),
     ]
-
-    value_constraint = patterns[2]
-    patterns[2] = (value_constraint[0], value_constraint[1])  # type: ignore[assignment]
 
     for i, line in enumerate(lines):
         line_lower = line.lower().strip()
@@ -291,6 +315,8 @@ def _find_technical_literals(prompt: str) -> list[TechnicalLiteral]:
     """Find technical literals that must be preserved."""
     literals: list[TechnicalLiteral] = []
     lines = prompt.splitlines()
+
+    import re
 
     patterns = [
         # Code blocks (already handled by sections, but catch inline)
@@ -359,197 +385,18 @@ def _find_technical_literals(prompt: str) -> list[TechnicalLiteral]:
     return unique
 
 
-def _detect_findings(
-    prompt: str,
-    sections: list[PromptSection],
-    requirements: list[Requirement],
-    technical_literals: list[TechnicalLiteral],
-) -> list[Finding]:
-    """Detect issues and patterns in the prompt."""
-    findings: list[Finding] = []
-    lines = prompt.splitlines()
-
-    # 1. Repeated lines
-    non_empty = [line.strip() for line in lines if line.strip()]
-    repeated = [line for line, count in Counter(non_empty).items() if count > 1]
-    for line in repeated:
-        findings.append(
-            Finding(
-                code="REPEATED_LINE",
-                severity=Severity.INFO,
-                message="An identical non-empty line appears more than once.",
-                evidence=line[:160],
-                suggestion="Consider consolidating duplicate instructions.",
-            )
-        )
-
-    # 2. Empty prompt
-    if not prompt.strip():
-        findings.append(
-            Finding(
-                code="EMPTY_PROMPT",
-                severity=Severity.WARNING,
-                message="The prompt is empty or whitespace only.",
-                suggestion="Provide a prompt with instructions or context.",
-            )
-        )
-
-    # 3. Very long lines
-    for i, line in enumerate(lines):
-        if len(line) > 500:
-            findings.append(
-                Finding(
-                    code="LONG_LINE",
-                    severity=Severity.INFO,
-                    message=f"Line {i + 1} exceeds 500 characters.",
-                    evidence=line[:100] + "..." if len(line) > 100 else line,
-                    suggestion="Consider breaking long lines for readability.",
-                )
-            )
-
-    # 4. Repeated phrases (3+ words)
-    words = prompt.lower().split()
-    if len(words) >= 6:
-        trigrams = [" ".join(words[i : i + 3]) for i in range(len(words) - 2)]
-        repeated_trigrams = [t for t, c in Counter(trigrams).items() if c > 2]
-        for trigram in repeated_trigrams[:5]:  # Limit to top 5
-            findings.append(
-                Finding(
-                    code="REPEATED_PHRASE",
-                    severity=Severity.INFO,
-                    message=f"Three-word phrase repeated multiple times: '{trigram}'",
-                    evidence=trigram,
-                    suggestion="Consider consolidating repetitive language.",
-                )
-            )
-
-    # 5. Ambiguous language
-    ambiguous_patterns = [
-        (r"\b(some|several|many|a few|a lot|various)\b", "vague quantifier"),
-        (r"\b(etc|and so on|and more)\b", "open-ended list"),
-        (r"\b(probably|maybe|might|could be|likely)\b", "uncertainty"),
-        (r"\b(as appropriate|as needed|where applicable)\b", "conditional without criteria"),
-    ]
-    for pattern, desc in ambiguous_patterns:
-        for match in re.finditer(pattern, prompt, re.IGNORECASE):
-            line_num = prompt[: match.start()].count("\n") + 1
-            findings.append(
-                Finding(
-                    code="AMBIGUOUS_LANGUAGE",
-                    severity=Severity.INFO,
-                    message=f"Ambiguous language detected: {desc}",
-                    evidence=match.group(0),
-                    location=(line_num, line_num),
-                    suggestion="Replace with specific criteria or explicit values.",
-                )
-            )
-
-    # 6. Potential contradictions (simple heuristic)
-    positive_reqs = [r for r in requirements if r.type == "positive"]
-    negative_reqs = [r for r in requirements if r.type == "negative"]
-    for pos in positive_reqs:
-        for neg in negative_reqs:
-            pos_words = set(pos.text.lower().split())
-            neg_words = set(neg.text.lower().split())
-            # Check for direct opposition
-            if len(pos_words & neg_words) > 2:
-                findings.append(
-                    Finding(
-                        code="POTENTIAL_CONTRADICTION",
-                        severity=Severity.WARNING,
-                        message=(
-                            "Potential contradiction between "
-                            "positive and negative requirements."
-                        ),
-                        evidence=f"Positive: {pos.text[:80]} | Negative: {neg.text[:80]}",
-                        suggestion="Review conflicting requirements for consistency.",
-                    )
-                )
-
-    # 7. Missing output format specification
-    has_output_format = any(r.type in ("format", "output", "schema") for r in requirements)
-    if not has_output_format and len(prompt) > 200:
-        findings.append(
-            Finding(
-                code="MISSING_OUTPUT_FORMAT",
-                severity=Severity.INFO,
-                message="No explicit output format specified for a substantial prompt.",
-                suggestion="Consider adding output format requirements (JSON, YAML, etc.).",
-            )
-        )
-
-    # 8. Security-related patterns
-    if get_config().enable_security_checks:
-        security_patterns = [
-            (r"(?i)(api[_-]?key|secret|password|token|credential)\s*[:=]\s*\S+", "exposed secret"),
-            (r"(?i)ignore\s+(?:previous|above|all)\s+instructions", "prompt injection"),
-            (r"(?i)(?:system|admin|root)\s*[:=]\s*true", "privilege escalation"),
-            (r"(?i)execute\s+(?:command|code|script)", "command execution"),
-        ]
-        for pattern, desc in security_patterns:
-            for match in re.finditer(pattern, prompt):
-                line_num = prompt[: match.start()].count("\n") + 1
-                findings.append(
-                    Finding(
-                        code="SECURITY_RISK",
-                        severity=Severity.WARNING,
-                        message=f"Potential security risk: {desc}",
-                        evidence=match.group(0)[:100],
-                        location=(line_num, line_num),
-                        suggestion="Review and remove sensitive data or unsafe instructions.",
-                    )
-                )
-
-    return findings
-
-
-def _compute_quality_scores(
-    prompt: str,
-    sections: list[PromptSection],
-    findings: list[Finding],
-) -> dict[str, float]:
-    """Compute quality scores for the prompt."""
-    scores: dict[str, float] = {}
-
-    # Clarity: inverse of ambiguity findings
-    ambiguity_count = sum(1 for f in findings if f.code == "AMBIGUOUS_LANGUAGE")
-    scores["clarity"] = max(0.0, 1.0 - (ambiguity_count * 0.1))
-
-    # Completeness: has role, context, constraints, output format
-    completeness = 0.0
-    prompt_lower = prompt.lower()
-    if any(w in prompt_lower for w in ["act as", "role", "you are", "as a"]):
-        completeness += 0.25
-    if any(w in prompt_lower for w in ["context", "background", "given", "provided"]):
-        completeness += 0.25
-    if any(f.code in ("MISSING_OUTPUT_FORMAT",) for f in findings):
-        completeness += 0.0
-    else:
-        completeness += 0.25
-    if any(r.type in ("positive", "negative", "value") for r in []):  # requirements would be passed
-        completeness += 0.25
-    scores["completeness"] = min(1.0, completeness)
-
-    # Structure: has headings, sections
-    heading_count = sum(1 for s in sections if s.type == "heading")
-    scores["structure"] = min(1.0, heading_count * 0.2 + 0.2)
-
-    # Conciseness: inverse of token density
-    words = len(prompt.split())
-    if words > 0:
-        scores["conciseness"] = min(1.0, 500 / words)
-    else:
-        scores["conciseness"] = 0.0
-
-    # Actionability: has explicit instructions
-    action_verbs = [
-        "create", "write", "generate", "analyze", "explain",
-        "list", "describe", "compare", "implement",
-    ]
-    action_count = sum(1 for v in action_verbs if v in prompt_lower)
-    scores["actionability"] = min(1.0, action_count * 0.15 + 0.1)
-
-    # Overall
-    scores["overall"] = sum(scores.values()) / len(scores) if scores else 0.0
-
+def _extract_quality_scores(findings: list[Finding]) -> dict[str, float]:
+    """Extract quality scores from QualityAnalyzer findings."""
+    scores = {}
+    for finding in findings:
+        if finding.code == "QUALITY_SCORES":
+            # Parse evidence string for scores
+            evidence = finding.evidence or ""
+            for part in evidence.split(", "):
+                if ": " in part:
+                    key, val = part.split(": ", 1)
+                    try:
+                        scores[key.lower()] = float(val)
+                    except ValueError:
+                        pass
     return scores

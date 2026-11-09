@@ -15,12 +15,14 @@ def test_analyzer_reports_stats_and_estimate() -> None:
 
 def test_analyzer_detects_repeated_line() -> None:
     result = analyze_prompt("repeat\nkeep\nrepeat")
-    assert any(x.code == "REPEATED_LINE" for x in result.findings)
+    # New modular analyzer uses DUPLICATE_LINE
+    assert any(x.code == "DUPLICATE_LINE" for x in result.findings)
 
 
 def test_analyzer_detects_ambiguous_language() -> None:
     result = analyze_prompt("Do something appropriate and handle various things.")
-    assert any(x.code == "AMBIGUOUS_LANGUAGE" for x in result.findings)
+    # New modular analyzer uses AMBIGUOUS_VAGUE_QUANTIFIER, AMBIGUOUS_CONDITIONAL_WITHOUT_CRITERIA
+    assert any("AMBIGUOUS" in x.code for x in result.findings)
 
 
 def test_analyzer_extracts_requirements() -> None:
