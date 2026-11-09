@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get started with TokenSentry in minutes. Installation, quick start guide, and first steps.">
+    <title>Getting Started - TokenSentry Docs</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+    
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+                <div class="brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                        <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                        <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                    </svg>
+                </div>
+                <span class="brand-text">TokenSentry</span>
+                <span class="brand-tagline">Analyze. Optimize. Validate.</span>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            
+            <div class="nav-menu" id="navMenu" role="menubar">
+                <div class="nav-section">
+                    <span class="nav-section-title">Get Started</span>
+                    <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+                    <a href="getting-started.html" class="nav-link active" role="menuitem"><i data-lucide="rocket"></i> Quick Start</a>
+                    <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+                    <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+                </div>
+                <!-- ... (same nav as index.html, abbreviated for brevity) -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <main id="main-content" class="main-content" role="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-background">
+                <div class="paper-layer" style="--layer: 1;"></div>
+                <div class="paper-layer" style="--layer: 2;"></div>
+                <div class="paper-layer" style="--layer: 3;"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Getting Started Guide</span>
+                </div>
+                
+                <h1 id="hero-title" class="hero-title">
+                    <span class="title-line">Getting Started</span>
+                    <span class="title-line">with TokenSentry</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Get up and running with TokenSentry in minutes. Learn installation, basic usage, 
+                    and best practices for prompt analysis, optimization, and validation.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#installation" class="btn btn-primary btn-lg">
+                        <i data-lucide="download"></i>
+                        Install Now
+                    </a>
+                    <a href="#quick-start" class="btn btn-secondary btn-lg">
+                        <i data-lucide="zap"></i>
+                        Quick Start
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="installation" aria-labelledby="installation-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Installation</span>
+                    <h2 id="installation-title" class="section-title">Install TokenSentry</h2>
+                    <p class="section-description">Get TokenSentry installed and configured in your environment.</                </header>
+
+                <div class="install-methods">
+                    <article class="install-card">
+                        <header class="install-header">
+                            <div class="install-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>PyPI (Recommended)</h3>
+                                <p class="install-desc">Install from PyPI with all optional dependencies</p>
+                            </div>
+                        </header>
+                        <div class="install-body">
+                            <pre><code class="language-bash"># Install with all optional dependencies
+pip install -e ".[dev]"
+
+# Or install with specific extras
+pip install "tokensentry[openai-tokenizer]"
+pip install "tokensentry[huggingface-tokenizer]"
+pip install "tokensentry[sentencepiece]"
+
+# Minimal install (core only)
+pip install tokensentry</code></pre>
+                            <p class="install-note"><strong>Requirements:</strong> Python 3.11+</p>
+                        </div>
+                    </article>
+
+                    <article class="install-card">
+                        <header class="install-header">
+                            <div class="install-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Docker</h3>
+                                <p class="install-desc">Run TokenSentry in a container</p>
+                            </div>
+                        </header>
+                        <div class="install-body">
+                            <pre><code class="language-bash"># Pull the image
+docker pull ghcr.io/jani-shiv/tokensentry:latest
+
+# Run with volume mount
+docker run -v $(pwd):/workspace -it tokensentry analyze /workspace/prompt.md
+
+# With tokenizer
+docker run -v $(pwd):/workspace -it tokensentry optimize /workspace/prompt.md --tokenizer tiktoken:gpt-4</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="install-card">
+                        <header class="install-header">
+                            <div class="install-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="23 7 16 12 9 7 2 12l11 5 11-5"></polygon>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>From Source</h3>
+                                <p class="install-desc">Clone and install from GitHub</p>
+                            </div>
+                        </header>
+                        <div class="install-body">
+                            <pre><code class="language-bash">git clone https://github.com/Jani-shiv/TokenSentry.git
+cd TokenSentry
+pip install -e ".[dev]"
+
+# Verify installation
+tokensentry version
+tokensentry --help</code></pre>
+                            <p class="install-note">Requires Git and Python 3.11+</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="requirements-box">
+                    <h3>System Requirements</h3>
+                    <ul class="requirements-list">
+                        <li><strong>Python:</strong> 3.11 or higher</li>
+                        <li><strong>OS:</strong> Linux, macOS, Windows (WSL recommended)</li>
+                        <li><strong>Memory:</strong> 512MB minimum, 2GB recommended</li>
+                        <li><strong>Disk:</strong> ~200MB for installation</li>
+                        <li><strong>Optional:</strong> Docker for containerized usage</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="quick-start" aria-labelledby="quick-start-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Quick Start</span>
+                    <h2 id="quick-start-title" class="section-title">Your First Analysis in 30 Seconds</h2>
+                    <p class="section-description">Run your first prompt analysis and see TokenSentry in action.</                </header>
+
+                <div class="quickstart-steps">
+                    <article class="quickstart-step">
+                        <div class="step-marker">1</div>
+                        <div class="step-content">
+                            <h3>Create a Prompt File</h3>
+                            <p>Create a file called <code>my-prompt.md</code> with your prompt:</p>
+                            <pre><code class="language-markdown"># My Prompt
+
+Act as a senior software engineer.
+
+Review this Python code for performance issues:
+
+```python
+def process_items(items):
+    results = []
+    for item in items:
+        if item.is_valid():
+            results.append(item.process())
+    return results
+```
+
+Identify performance bottlenecks and suggest optimizations.
+Provide specific code examples for improvements.</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="quickstart-step">
+                        <div class="step-marker">2</div>
+                        <div class="step-content">
+                            <h3>Run Analysis</h3>
+                            <p>Run TokenSentry to analyze your prompt:</p>
+                            <pre><code class="language-bash">tokensentry analyze my-prompt.md</code></pre>
+                            <p class="step-output">You'll see output like:</p>
+                            <pre><code class="language-bash">╭───────────── TokenSentry Analysis ─────────────╮
+│ Prompt ID: my-prompt                           │
+│ Characters: 456   Words: 78   Lines: 12        │
+│ Tokenizer: character-estimate                  │
+│ Token count: 115 (estimate)                    │
+├────────────────────────────────────────────────┤
+│ Findings:                                      │
+│   ⚠️  LOW_ACTIONABILITY: Few explicit verbs   │
+│   ℹ️  MISSING_OUTPUT_FORMAT: No format spec   │
+│                                                │
+│ Quality Scores:                                │
+│   clarity: 0.85  completeness: 0.60           │
+│   structure: 0.70  conciseness: 0.80          │
+│   actionability: 0.45  overall: 0.69          │
+╰────────────────────────────────────────────────╯</code></pre>
+                        </div>
+                    </article>
+
+                    <article class="quickstart-step">
+                        <div class="step-marker">3</div>
+                        <div class="step-content">
+                            <h3>Optimize & Validate</h3>
+                            <p>Optimize your prompt and validate the result:</p>
+                            <pre><code class="language-bash"># Optimize with balanced profile
+tokensentry optimize my-prompt.md --profile balanced --output optimized.md
+
+# Validate the optimized version
+tokensentry validate my-prompt.md optimized.md
+
+# Check token savings
+tokensentry analyze optimized.md --tokenizer tiktoken:gpt-4</code></pre>
+                            <p class="step-output">Expected output:</p>
+                            <pre><code class="language-bash">+-- TokenSentry Optimization ---+
+| Profile: balanced           |
+| Original tokens: 115        |
+| Optimized tokens: 98        |
+| Token delta: -17 (-14.8%)   |
+| Transformations: 3          |
++-------------------------------+
+
++-------- TokenSentry Validation --------+
+| REVIEW REQUIRED                       |
+| Preserved: 5 | Missing: 0 | Weak: 0  |
++---------------------------------------+</code></pre>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="next-steps">
+                    <h3>What's Next?</h3>
+                    <ul class="next-steps-list">
+                        <li><a href="cli-reference.html"><i data-lucide="terminal"></i> Explore CLI Commands</a></li>
+                        <li><a href="analyzer.html"><i data-lucide="search"></i> Deep Dive: Analyzer Engine</a></li>
+                        <li><a href="optimizer.html"><i data-lucide="zap"></i> Optimization Profiles</a></li>
+                        <li><a href="skills/overview.html"><i data-lucide="puzzle"></i> Explore 15 AI Agent Skills</a></li>
+                        <li><a href="benchmarks.html"><i data-lucide="bar-chart"></i> Run Benchmarks</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="configuration" aria-labelledby="config-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Configuration</span>
+                    <h2 id="config-title" class="section-title">Configuration</h2>
+                    <p class="section-description">Customize TokenSentry behavior with configuration files and environment variables.</                </header>
+
+                <div class="config-grid">
+                    <article class="config-card">
+                        <h3>Environment Variables</h3>
+                        <pre><code class="language-bash"># Core settings
+TOKENSENTRY_MAX_PROMPT_SIZE=10485760      # 10MB max prompt size
+TOKENSENTRY_DEFAULT_TOKENIZER=character-estimate
+TOKENSENTRY_DEFAULT_PROFILE=conservative
+TOKENSENTRY_ENABLE_SECURITY_CHECKS=true
+TOKENSENTRY_TIMEOUT_SECONDS=30
+
+# Tokenizer settings
+TOKENSENTRY_TIKTOKEN_CACHE_DIR=/path/to/cache
+TOKENSENTRY_HF_CACHE_DIR=/path/to/hf/cache
+TOKENSENTRY_HF_OFFLINE_MODE=false
+
+# Skill settings
+TOKENSENTRY_SKILL_DIRS=/custom/skills/path
+TOKENSENTRY_AUTO_LOAD_SKILLS=true
+
+# Benchmark settings
+TOKENSENTRY_BENCHMARK_CORPUS=/path/to/corpus
+TOKENSENTRY_BENCHMARK_RESULTS=/path/to/results
+
+# API (future)
+TOKENSENTRY_API_HOST=127.0.0.1
+TOKENSENTRY_API_PORT=8000
+TOKENSENTRY_API_ENABLED=false</code></pre>
+                    </article>
+
+                    <article class="config-card">
+                        <h3>Configuration File</h3>
+                        <p>Create <code>.tokensentry.yaml</code> in your project root:</p>
+                        <pre><code class="language-yaml"># .tokensentry.yaml
+default_tokenizer: "tiktoken:gpt-4"
+default_optimization_profile: "balanced"
+enable_security_checks: true
+enable_quality_scoring: true
+timeout_seconds: 60
+
+max_prompt_size: 10485760
+max_line_length: 10000
+
+denied_patterns:
+  - ".."
+  - "~"
+  - "secret"
+  - "password"
+  - "api_key"
+
+allowed_read_paths:
+  - "./prompts"
+  - "./examples"
+
+skills:
+  auto_load: true
+  directories:
+    - "./custom-skills"
+  default_skills:
+    - "tokensentry-analyzer"
+    - "tokensentry-optimizer"
+    - "tokensentry-validator"
+
+benchmarks:
+  corpus_path: "./benchmarks/corpus"
+  results_path: "./benchmarks/results"
+  default_profiles: ["conservative", "balanced", "aggressive"]
+  categories: ["software_engineering", "devops", "security"]</code></pre>
+                    </article>
+
+                    <article class="config-card">
+                        <h3>Project-Level Config</h3>
+                        <p>Override settings per project with <code>tokensentry.config.yaml</code>:</p>
+                        <pre><code class="language-yaml"># tokensentry.config.yaml
+project_name: "my-project"
+version: "1.0.0"
+
+analyzer:
+  enable_security: true
+  enable_quality: true
+  max_findings: 50
+
+optimizer:
+  default_profile: "balanced"
+  preserve_literals: true
+  max_iterations: 3
+
+validator:
+  strict_mode: true
+  check_negative_constraints: true
+  check_schema_preservation: true
+
+tokenizer:
+  default: "tiktoken:gpt-4"
+  fallback: "character-estimate"
+
+skills:
+  enabled:
+    - "tokensentry-analyzer"
+    - "tokensentry-optimizer"
+    - "tokensentry-validator"
+    - "tokensentry-security-auditor"
+    - "tokensentry-cost-analyst"
+  custom_skills:
+    - "./skills/my-custom-skill"</code></pre>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Troubleshooting</span>
+                    <h2 id="troubleshooting-title" class="section-title">Common Issues & Solutions</h2>
+                </header>
+
+                <div class="troubleshooting-grid">
+                    <article class="trouble-card">
+                        <h3><i data-lucide="alert-circle"></i> Import Error: No module named 'tokensentry'</h3>
+                        <p><strong>Cause:</strong> Package not installed or not in PATH</p>
+                        <p><strong>Solution:</strong></p>
+                        <pre><code class="language-bash"># Reinstall with pip
+pip install --force-reinstall -e ".[dev]"
+
+# Or verify installation
+python -c "import tokensentry; print(tokensentry.__version__)"
+</code></pre>
+                    </article>
+
+                    <article class="trouble-card">
+                        <h3><i data-lucide="alert-circle"></i> Tokenizer Not Found</h3>
+                        <p><strong>Cause:</strong> Optional tokenizer dependencies not installed</p>
+                        <p><strong>Solution:</strong></p>
+                        <pre><code class="language-bash"># Install specific tokenizer
+pip install tokensentry[openai-tokenizer]    # For tiktoken
+pip install tokensentry[huggingface-tokenizer]  # For HF models
+pip install tokensentry[sentencepiece]        # For SentencePiece
+
+# Or install all
+pip install "tokensentry[all]"
+</code></pre>
+                    </article>
+
+                    <article class="trouble-card">
+                        <h3><i data-lucide="alert-circle"></i> Memory Error on Large Prompts</h3>
+                        <p><strong>Cause:</strong> Prompt exceeds memory limit</p>
+                        <p><strong>Solution:</strong></p>
+                        <pre><code class="language-bash"># Increase limit via env var
+export TOKENSENTRY_MAX_PROMPT_SIZE=52428800  # 50MB
+
+# Or in config
+# max_prompt_size: 52428800
+</code></pre>
+                    </article>
+
+                    <article class="trouble-card">
+                        <h3><i data-lucide="alert-circle"></i> Tokenizer Model Not Found</h3>
+                        <p><strong>Cause:</strong> HuggingFace model not cached or unavailable</p>
+                        <p><strong>Solution:</strong></p>
+                        <pre><code class="language-bash"># Pre-download model
+python -c "from transformers import AutoTokenizer; AutoTokenizer.from_pretrained('meta-llama/Llama-2-7b-hf')"
+
+# Or use offline mode
+export TOKENSENTRY_HF_OFFLINE_MODE=true
+</code></pre>
+                    </article>
+
+                    <article class="trouble-card">
+                        <h3><i data-lucide="alert-circle"></i> Validation Fails Unexpectedly</h3>
+                        <p><strong>Cause:</strong> Optimizer removed required elements</p>
+                        <p><strong>Solution:</strong></p>
+                        <pre><code class="language-bash"># Use conservative profile
+tokensentry optimize prompt.md --profile conservative
+
+# Check what was removed
+tokensentry validate original.md optimized.md --format json
+
+# Add explicit preservation
+# tokensentry optimize prompt.md --preserve "requirement1,requirement2"
+</code></pre>
+                    </article>
+
+                    <article class="trouble-card">
+                        <h3><i data-lucide="alert-circle"></i> Slow Performance</h3>
+                        <p><strong>Cause:</strong> Large prompts or complex analysis</p>
+                        <p><strong>Solution:</strong></p>
+                        <pre><code class="language-bash"># Use character estimate for speed
+tokensentry analyze huge-prompt.md --tokenizer character-estimate
+
+# Disable heavy analysis
+export TOKENSENTRY_ENABLE_SECURITY_CHECKS=false
+export TOKENSENTRY_ENABLE_QUALITY_SCORING=false
+
+# Profile specific sections
+tokensentry benchmark run --max-prompts 1 --profiles conservative
+</code></pre>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="faq" aria-labelledby="faq-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">FAQ</span>
+                    <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
+                </header>
+
+                <div class="faq-accordion">
+                    <details class="faq-item open">
+                        <summary>What is TokenSentry and why should I use it?</summary>
+                        <p>TokenSentry is a local-first prompt intelligence toolkit that helps you analyze, optimize, and validate AI prompts. It runs entirely locally with no API keys required, providing deep insights into prompt structure, token usage, quality metrics, and security risks. It's designed for developers, prompt engineers, and AI practitioners who want to improve their prompts systematically.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is TokenSentry free and open source?</summary>
+                        <p>Yes! TokenSentry is open source under the Apache 2.0 license. It's free to use, modify, and distribute. There are no paid tiers, no API keys required, and no usage limits. All processing happens locally on your machine.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Which Python versions are supported?</summary>
+                        <p>TokenSentry requires Python 3.11 or higher. We test against Python 3.11, 3.12, and 3.13. Older versions are not supported due to typing features and standard library dependencies.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Does TokenSentry send my prompts to external servers?</summary>
+                        <p>No. TokenSentry is completely local-first. Your prompts never leave your machine. All analysis, optimization, and validation happens locally. Optional tokenizer adapters (like HuggingFace) may download model weights on first use, but prompt content never leaves your machine.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Which tokenizers are supported?</summary>
+                        <p>TokenSentry supports: <strong>tiktoken</strong> (OpenAI models: GPT-4, GPT-3.5, GPT-4o, etc.), <strong>HuggingFace tokenizers</strong> (Llama, Mistral, Gemma, etc.), <strong>SentencePiece</strong> (custom models), and a built-in <strong>character-estimate</strong> fallback. Run <code>tokensentry tokenizers</code> to see all available options.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What's the difference between optimization profiles?</summary>
+                        <p><strong>Conservative:</strong> Only removes redundant whitespace and exact duplicate lines. Safest option. <br><strong>Balanced:</strong> Consolidates repeated phrases, removes redundant transitions, normalizes bullets. Good balance of safety and token reduction. <br><strong>Aggressive:</strong> Removes filler sentences, compresses explanations, reorganizes sections. Maximum token reduction but with warnings. Always review aggressive output before use.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How accurate are the token counts?</summary>
+                        <p>Token counts are <strong>exact</strong> when using tiktoken or HuggingFace tokenizers. The character-estimate tokenizer provides <strong>estimates</strong> (~4 chars per token) and is clearly labeled as such. Never compare token counts from different tokenizers directly—they use different vocabularies and encoding schemes.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I use TokenSentry in CI/CD pipelines?</summary>
+                        <p>Yes! TokenSentry is designed for automation. All commands support <code>--format json</code> for machine-readable output. Exit codes indicate success/failure. Example CI usage: <code>tokensentry validate original.md optimized.md --format json || exit 1</code>. See <a href="cli-reference.html#ci-cd">CI/CD Integration</a> for complete examples.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How do I create a custom skill?</summary>
+                        <p>Create a Python class inheriting from <code>BaseSkill</code>, define metadata with <code>SkillMetadata</code>, implement the <code>execute()</code> method, and register with the skill registry. See <a href="skills/creating-skills.html">Creating Custom Skills</a> for a complete tutorial with examples.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I extend TokenSentry with custom tokenizers?</summary>
+                        <p>Yes! Implement the <code>BaseTokenizer</code> interface and register with <code>register_tokenizer()</code>. Your tokenizer must provide <code>count()</code>, <code>name</code>, <code>count_kind</code>, and metadata. See <a href="tokenizers/custom.html">Custom Tokenizers</a> for a complete guide.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How do I report a bug or request a feature?</summary>
+                        <p>Open an issue on <a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank">GitHub Issues</a>. For security vulnerabilities, use GitHub's private vulnerability reporting. Please include: Python version, TokenSentry version, OS, steps to reproduce, and expected vs actual behavior.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I contribute to TokenSentry?</summary>
+                        <p>Absolutely! We welcome contributions. See <a href="contributing.html">Contributing Guide</a> for guidelines on code contributions, documentation, testing, and skill development. All contributions are licensed under Apache 2.0.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-brand-link">
+                        <div class="brand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                            </svg>
+                        </div>
+                        <span class="brand-text">TokenSentry</span>
+                    </a>
+                    <p class="brand-tagline">Analyze. Optimize. Validate. Make every token count.</p>
+                    <p class="footer-version">v0.1.1 · Apache-2.0 License</p>
+                </div>
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <div class="footer-col">
+                        <h4>Documentation</h4>
+                        <ul>
+                            <li><a href="getting-started.html">Getting Started</a></li>
+                            <li><a href="cli-reference.html">CLI Reference</a></li>
+                            <li><a href="analyzer.html">Analyzer</a></li>
+                            <li><a href="optimizer.html">Optimizer</a></li>
+                            <li><a href="validator.html">Validator</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Skills</h4>
+                        <ul>
+                            <li><a href="skills/overview.html">All Skills</a></li>
+                            <li><a href="skills/analyzer.html">Analyzer</a></li>
+                            <li><a href="skills/optimizer.html">Optimizer</a></li>
+                            <li><a href="skills/validator.html">Validator</a></li>
+                            <li><a href="skills/composer.html">Composer</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Advanced</h4>
+                        <ul>
+                            <li><a href="benchmarks.html">Benchmarks</a></li>
+                            <li><a href="reports.html">Reports</a></li>
+                            <li><a href="api-reference.html">API Reference</a></li>
+                            <li><a href="configuration.html">Configuration</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+                            <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+                            <li><a href="contributing.html">Contributing</a></li>
+                            <li><a href="changelog.html">Changelog</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p>Built with care by the TokenSentry community. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">View contributors</a></p>
+                <div class="footer-links">
+                    <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="15" x2="12" y2="9"></line>
+                <line x1="6" y1="15" x2="12" y2="9"></line>
+            </svg>
+        </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/animations.js"></script>
+    <script src="scripts/tabs.js"></script>
+    <script src="scripts/code-highlight.js"></script>
+    <script src="scripts/scroll-spy.js"></script>
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TokenSentry - Local-first prompt analysis, optimization, and validation toolkit. Analyze. Optimize. Validate. Make every token count.">
+    <meta name="theme-color" content="#fef3c7">
+    <title>TokenSentry Docs - Analyze. Optimize. Validate.</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+    
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <!-- Theme Toggle (Persistent) -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+                <div class="brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                        <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                        <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                    </svg>
+                </div>
+                <span class="brand-text">TokenSentry</span>
+                <span class="brand-tagline">Analyze. Optimize. Validate.</span>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            
+            <div class="nav-menu" id="navMenu" role="menubar">
+                <div class="nav-section">
+                    <span class="nav-section-title">Get Started</span>
+                    <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+                    <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="rocket"></i> Quick Start</a>
+                    <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+                    <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Core Engines</span>
+                    <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+                    <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+                    <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="check-circle"></i> Validator</a>
+                    <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">AI Agent Skills</span>
+                    <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+                    <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+                    <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+                    <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+                    <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+                    <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+                    <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+                    <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+                    <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+                    <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+                    <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+                    <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+                    <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+                    <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+                    <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+                    <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Advanced</span>
+                    <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart"></i> Benchmarks</a>
+                    <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+                    <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+                    <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Community</span>
+                    <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+                    <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+                </div>
+                
+                <div class="nav-footer">
+                    <div class="version-badge">v0.1.1</div>
+                    <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="star"></i> Star us on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-background">
+                <div class="paper-layer" style="--layer: 1;"></div>
+                <div class="paper-layer" style="--layer: 2;"></div>
+                <div class="paper-layer" style="--layer: 3;"></div>
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                    <div class="shape shape-4"></div>
+                    <div class="shape shape-5"></div>
+                </div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>v0.1.1 Released</span>
+                </div>
+                
+                <h1 id="hero-title" class="hero-title">
+                    <span class="title-line">TokenSentry</span>
+                    <span class="title-line">Documentation</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Local-first prompt intelligence toolkit. Analyze, optimize, and validate prompts 
+                    with 15 AI agent skills, 3 optimization profiles, and comprehensive validation.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="getting-started.html" class="btn btn-primary btn-lg">
+                        <i data-lucide="rocket"></i>
+                        Get Started
+                    </a>
+                    <a href="cli-reference.html" class="btn btn-secondary btn-lg">
+                        <i data-lucide="terminal"></i>
+                        CLI Reference
+                    </a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry" class="btn btn-ghost btn-lg" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">15</span>
+                        <span class="stat-label">AI Agent Skills</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Optimization Profiles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Tokenizer Adapters</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">7</span>
+                        <span class="stat-label">Analysis Modules</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">31</span>
+                        <span class="stat-label">Tests Passing</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">v0.1.1</span>
+                        <span class="stat-label">Latest Release</span>
+                    </div>
+                </div>
+                
+                <div class="hero-code-preview">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <span class="code-title">tokensentry analyze prompt.md</span>
+                        </div>
+                        <pre><code class="language-bash"><span class="token-comment">$ tokensentry analyze examples/sample-prompt.md</span>
+<span class="token-output">╭───────────── TokenSentry Analysis ─────────────╮
+│ Prompt ID: sample-prompt                       │
+│ Characters: 368   Words: 55   Lines: 5         │
+│ Tokenizer: character-estimate                  │
+│ Token count: 92 (estimate)                     │
+├────────────────────────────────────────────────┤
+│ Findings:                                      │
+│   ℹ️  AMBIGUOUS_RELATIVE_WITHOUT_SCALE         │
+│       Evidence: "short"                        │
+│       Suggestion: Add specific measurements    │
+│   ⚠️  LOW_STRUCTURE                            │
+│       Lacks headings or sections               │
+│   ⚠️  LOW_ACTIONABILITY                        │
+│       Few explicit action verbs                │
+│                                                │
+│ Quality Scores:                                │
+│   clarity: 1.00  completeness: 0.50           │
+│   structure: 0.20  conciseness: 0.55          │
+│   actionability: 0.17  overall: 0.48          │
+╰────────────────────────────────────────────────╯</span></code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-scroll-indicator">
+                <span>Scroll to explore</span>
+                <svg class="scroll-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Features Overview -->
+        <section class="section features" aria-labelledby="features-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Core Features</span>
+                    <h2 id="features-title" class="section-title">Everything you need for prompt intelligence</h2>
+                    <p class="section-description">
+                        TokenSentry provides a complete toolkit for understanding, measuring, optimizing, 
+                        and validating AI prompts — all locally, with no API keys required.
+                    </p>
+                </header>
+                
+                <div class="features-grid">
+                    <article class="feature-card" data-delay="0">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <h3>Deep Analysis</h3>
+                        <p>7 modular analyzers detect structure, redundancy, ambiguity, contradictions, complexity, quality issues, and security risks.</                        <ul class="feature-list">
+                            <li>Structure parsing (headings, code fences, lists)</li>
+                            <li>Redundancy detection (lines, phrases, requirements)</li>
+                            <li>Ambiguity & contradiction detection</li>
+                            <li>Complexity metrics & quality scoring</li>
+                            <li>Security audit (injection, secrets, unsafe)</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="feature-card" data-delay="100">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                        </div>
+                        <h3>Smart Optimization</h3>
+                        <p>Three profiles — Conservative, Balanced, Aggressive — with full transformation tracking and technical literal preservation.
+                        <ul class="feature-list">
+                            <li>Conservative: whitespace, duplicates only</li>
+                            <li>Balanced: phrase consolidation, transitions</li>
+                            <li>Aggressive: filler removal, compression</li>
+                            <li>Technical literal preservation</li>
+                            <li>Transformation delta tracking</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="feature-card" data-delay="200">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Semantic Validation</h3>
+                        <p>7-status classification (exact/structural/probable/uncertain/modified/missing/weakened) with byte-for-byte literal preservation.
+                        <ul class="feature-list">
+                            <li>Requirement preservation checking</li>
+                            <li>Negative constraint weakening detection</li>
+                            <li>Technical literal byte-for-byte verification</li>
+                            <li>Output schema preservation</li>
+                            <li>Detailed diff with confidence scores</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="feature-card" data-delay="300">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                                <path d="M8 21h13a2 2 0 0 0 2-2V5"></path>
+                            </svg>
+                        </div>
+                        <h3>Tokenizer Support</h3>
+                        <p>Exact token counting with tiktoken (OpenAI), HuggingFace tokenizers, SentencePiece — no silent fallbacks, explicit exactness metadata.
+                        <ul class="feature-list">
+                            <li>tiktoken: GPT-4, GPT-3.5, GPT-4o, etc.</li>
+                            <li>HuggingFace: Llama, Mistral, Gemma, etc.</li>
+                            <li>SentencePiece: custom models</li>
+                            <li>Exact vs estimate classification</li>
+                            <li>Model-aware context window warnings</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="feature-card" data-delay="400">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>15 AI Agent Skills</h3>
+                        <p>Composable, reusable skills for analyzer, optimizer, validator, security auditor, cost analyst, and more.
+                        <ul class="feature-list">
+                            <li>Analyzer, Optimizer, Validator, Token Auditor</li>
+                            <li>Security Auditor, Context Engineer</li>
+                            <li>Cost Analyst, Model Adapter</li>
+                            <li>Skill Composer for orchestration</li>
+                            <li>Structured Output, Few-Shot, Agent Workflow</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="feature-card" data-delay="500">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                        </div>
+                        <h3>Rich Reporting</h3>
+                        <p>Export results as JSON, Markdown, or beautiful terminal output with syntax highlighting and interactive tables.
+                        <ul class="feature-list">
+                            <li>JSON export with schema versioning</li>
+                            <li>Markdown reports for documentation</li>
+                            <li>Rich terminal UI with tables</li>
+                            <li>Benchmark comparison reports</li>
+                            <li>Schema versioning for compatibility</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Start -->
+        <section class="section quickstart" aria-labelledby="quickstart-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Quick Start</span>
+                    <h2 id="quickstart-title" class="section-title">Get running in 30 seconds</h2>
+                </header>
+                
+                <div class="quickstart-grid">
+                    <div class="quickstart-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Install TokenSentry</h3>
+                            <pre><code class="language-bash">pip install -e ".[dev]"</code></pre>
+                            <p>Requires Python 3.11+. Installs with all dependencies including optional tokenizer adapters.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quickstart-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Analyze a Prompt</h3>
+                            <pre><code class="language-bash">tokensentry analyze examples/sample-prompt.md</code></pre>
+                            <p>Get structure analysis, quality scores, token counts, and findings instantly.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quickstart-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Optimize & Validate</h3>
+                            <pre><code class="language-bash">tokensentry optimize prompt.md --profile aggressive --output optimized.md
+tokensentry validate prompt.md optimized.md</code></pre>
+                            <p>Choose conservative, balanced, or aggressive profiles. Validate preserves requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quickstart-tip">
+                    <div class="tip-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <div class="tip-content">
+                        <strong>Pro Tip:</strong> Use <code>--tokenizer tiktoken:gpt-4</code> for exact GPT-4 token counts, or <code>--tokenizer hf:meta-llama/Llama-2-7b-hf</code> for Llama models. Run <code>tokensentry tokenizers</code> to see all available options.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation Sections -->
+        <section class="section docs-sections" aria-labelledby="docs-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Documentation</span>
+                    <h2 id="docs-title" class="section-title">Explore the Documentation</h2>
+                </header>
+                
+                <div class="docs-grid">
+                    <a href="getting-started.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                            </svg>
+                        </div>
+                        <h3>Getting Started</h3>
+                        <p>Installation, quick start guide, and first steps with TokenSentry.</p>
+                        <span class="doc-link">Read more <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="cli-reference.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="9" y1="19" x2="20" y2="19"></line>
+                            </svg>
+                        </div>
+                        <h3>CLI Reference</h3>
+                        <p>Complete command reference for analyze, optimize, validate, and more.</                        <span class="doc-link">View commands <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="analyzer.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <h3>Analyzer Engine</h3>
+                        <p>Deep dive into the 7 analysis modules: structure, redundancy, ambiguity, contradictions, complexity, quality, security.</                        <span class="doc-link">Learn more <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="optimizer.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                        </div>
+                        <h3>Optimizer Profiles</h3>
+                        <p>Conservative, Balanced, Aggressive — transformation tracking with literal preservation.</p>
+                        <span class="doc-link">Explore profiles <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="validator.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Validator Engine</h3>
+                        <p>7-status classification, literal preservation, negative constraint checking, schema validation.</                        <span class="doc-link">Validate prompts <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="tokenizers.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                                <path d="M8 21h13a2 2 0 0 0 2-2V5"></path>
+                            </svg>
+                        </div>
+                        <h3>Tokenizer Adapters</h3>
+                        <p>tiktoken (OpenAI), HuggingFace tokenizers, SentencePiece with exact/estimate metadata.</                        <span class="doc-link">Configure tokenizers <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="skills/overview.html" class="doc-card featured">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>15 AI Agent Skills</h3>
+                        <p>Composable skills for analysis, optimization, validation, security, cost analysis, and workflow orchestration.</                        <span class="doc-link">Browse skills <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="benchmarks.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </div>
+                        <h3>Benchmarks</h3>
+                        <p>13 curated prompts across 7 categories with token reduction, preservation, and quality metrics.</                        <span class="doc-link">Run benchmarks <i data-lucide="arrow-right"></i></span>
+                    </a>
+                    
+                    <a href="reports.html" class="doc-card">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Report Exporters</h3>
+                        <p>JSON, Markdown, and Rich terminal output with schema versioning and combined reports.
+                        <span class="doc-link">Generate reports <i data-lucide="arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Examples -->
+        <section class="section examples" aria-labelledby="examples-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Examples</span>
+                    <h2 id="examples-title" class="section-title">Common Workflows</h2>
+                    <p class="section-description">Real-world examples showing TokenSentry in action.</p>
+                </header>
+                
+                <div class="examples-tabs">
+                    <div class="tabs-nav" role="tablist">
+                        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="analyze">Analyze</button>
+                        <button class="tab-btn" role="tab" aria-selected="false" data-tab="optimize">Optimize</button>
+                        <button class="tab-btn" role="tab" aria-selected="false" data-tab="validate">Validate</button>
+                        <button class="tab-btn" role="tab" aria-selected="false" data-tab="skills">Skills</button>
+                        <button class="tab-btn" role="tab" aria-selected="false" data-tab="benchmarks">Benchmarks</button>
+                    </div>
+                    
+                    <div class="tab-panels">
+                        <div class="tab-panel active" role="tabpanel" id="tab-analyze">
+                            <pre><code class="language-bash"># Basic analysis
+tokensentry analyze prompt.md
+
+# With specific tokenizer
+tokensentry analyze prompt.md --tokenizer tiktoken:gpt-4
+
+# JSON output for scripting
+tokensentry analyze prompt.md --format json
+
+# Markdown report
+tokensentry analyze prompt.md --format markdown</code></pre>
+                        </div>
+                        
+                        <div class="tab-panel" role="tabpanel" id="tab-optimize" hidden>
+                            <pre><code class="language-bash"># Conservative (default) - whitespace only
+tokensentry optimize prompt.md --output optimized.md
+
+# Balanced - phrase consolidation, transitions
+tokensentry optimize prompt.md --profile balanced --output opt.md
+
+# Aggressive - filler removal, compression
+tokensentry optimize prompt.md --profile aggressive --output opt.md
+
+# With specific tokenizer for exact counts
+tokensentry optimize prompt.md --profile balanced \
+  --tokenizer tiktoken:gpt-4 --output opt.md</code></pre>
+                        </div>
+                        
+                        <div class="tab-panel" role="tabpanel" id="tab-validate" hidden>
+                            <pre><code class="language-bash"># Validate optimized against original
+tokensentry validate original.md optimized.md
+
+# With specific tokenizer
+tokensentry validate original.md optimized.md \
+  --tokenizer tiktoken:gpt-4
+
+# JSON output for CI/CD
+tokensentry validate original.md optimized.md --format json</code></pre>
+                        </div>
+                        
+                        <div class="tab-panel" role="tabpanel" id="tab-skills" hidden>
+                            <pre><code class="language-bash"># List all skills
+tokensentry skill list
+
+# Run a single skill
+tokensentry skill run tokensentry-analyzer \
+  --prompt "Your prompt here"
+
+# Run a composition plan
+tokensentry workflow run standard \
+  --prompt "Your prompt here"
+
+# Custom composition
+tokensentry workflow run custom \
+  --steps '["tokensentry-analyzer", "tokensentry-optimizer", "tokensentry-validator"]' \
+  --prompt "Your prompt here"</code></pre>
+                        </div>
+                        
+                        <div class="tab-panel" role="tabpanel" id="tab-benchmarks" hidden>
+                            <pre><code class="language-bash"># Run all benchmarks
+tokensentry benchmark run
+
+# Specific profiles only
+tokensentry benchmark run --profiles conservative balanced
+
+# Limit prompts
+tokensentry benchmark run --max-prompts 5
+
+# Save results
+tokensentry benchmark run --output results.json
+
+# Generate reports
+tokensentry benchmark report results.json --format markdown</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Overview -->
+        <section class="section architecture" aria-labelledby="arch-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Architecture</span>
+                    <h2 id="arch-title" class="section-title">System Architecture</h2>
+                    <p class="section-description">TokenSentry's modular design with clear separation of concerns.</p>
+                </header>
+                
+                <div class="architecture-diagram">
+                    <div class="arch-layer">
+                        <h3>CLI Layer</h3>
+                        <div class="arch-components">
+                            <span class="arch-comp">analyze</span>
+                            <span class="arch-comp">optimize</span>
+                            <span class="arch-comp">validate</span>
+                            <span class="arch-comp">tokenizers</span>
+                            <span class="arch-comp">skill</span>
+                            <span class="arch-comp">workflow</span>
+                            <span class="arch-comp">benchmark</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer">
+                        <h3>Core Engines</h3>
+                        <div class="arch-components">
+                            <span class="arch-comp core">Analyzer</span>
+                            <span class="arch-comp core">Optimizer</span>
+                            <span class="arch-comp core">Validator</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer">
+                        <h3>Analysis Modules</h3>
+                        <div class="arch-components">
+                            <span class="arch-comp mod">Structure</span>
+                            <span class="arch-comp mod">Redundancy</span>
+                            <span class="arch-comp mod">Ambiguity</span>
+                            <span class="arch-comp mod">Contradictions</span>
+                            <span class="arch-comp mod">Complexity</span>
+                            <span class="arch-comp mod">Quality</span>
+                            <span class="arch-comp mod">Security</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer">
+                        <h3>Optimization Pipeline</h3>
+                        <div class="arch-components">
+                            <span class="arch-comp opt">Conservative</span>
+                            <span class="arch-comp opt">Balanced</span>
+                            <span class="arch-comp opt">Aggressive</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer">
+                        <h3>Tokenizer Registry</h3>
+                        <div class="arch-components">
+                            <span class="arch-comp tok">tiktoken</span>
+                            <span class="arch-comp tok">HuggingFace</span>
+                            <span class="arch-comp tok">SentencePiece</span>
+                            <span class="arch-comp tok">Character Estimate</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-layer">
+                        <h3>Skill Ecosystem</h3>
+                        <div class="arch-components">
+                            <span class="arch-comp skill">Analyzer</span>
+                            <span class="arch-comp skill">Optimizer</span>
+                            <span class="arch-comp skill">Validator</span>
+                            <span class="arch-comp skill">Token Auditor</span>
+                            <span class="arch-comp skill">Context Engineer</span>
+                            <span class="arch-comp skill">Security Auditor</span>
+                            <span class="arch-comp skill">Cost Analyst</span>
+                            <span class="arch-comp skill">Model Adapter</span>
+                            <span class="arch-comp skill">Skill Composer</span>
+                            <span class="arch-comp skill">+ 6 more</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contributing -->
+        <section class="section contribute" aria-labelledby="contribute-title">
+            <div class="container">
+                <header class="section-header">
+                    <span class="section-tag">Community</span>
+                    <h2 id="contribute-title" class="section-title">Contribute to TokenSentry</h2>
+                    <p class="section-description">Open source, community-driven. Your contributions make TokenSentry better.</p>
+                </header>
+                
+                <div class="contribute-grid">
+                    <article class="contribute-card">
+                        <div class="contribute-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Code Contributions</h3>
+                        <p>New analyzers, optimizers, validators, skills, tokenizers, benchmarks.</p>
+                        <a href="contributing.html" class="contribute-link">View Guidelines <i data-lucide="arrow-right"></i></a>
+                    </article>
+                    
+                    <article class="contribute-card">
+                        <div class="contribute-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Documentation</h3>
+                        <p>Fix typos, add examples, improve guides, translate docs.</p>
+                        <a href="contributing.html#docs" class="contribute-link">Help Document <i data-lucide="arrow-right"></i></a>
+                    </article>
+                    
+                    <article class="contribute-card">
+                        <div class="contribute-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <h3>Report Issues</h3>
+                        <p>Bug reports, feature requests, security vulnerabilities.</p>
+                        <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="contribute-link" target="_blank" rel="noopener noreferrer">Open Issue <i data-lucide="external-link"></i></a>
+                    </article>
+                    
+                    <article class="contribute-card">
+                        <div class="contribute-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3>Discussions</h3>
+                        <p>Ask questions, share ideas, show off your prompts.</p>
+                        <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="contribute-link" target="_blank" rel="noopener noreferrer">Join Discussion <i data-lucide="external-link"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-brand-link">
+                            <div class="brand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                                    <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                                    <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                                </svg>
+                            </div>
+                            <span class="brand-text">TokenSentry</span>
+                        </div>
+                        <p class="brand-tagline">Analyze. Optimize. Validate. Make every token count.</p>
+                        <p class="footer-version">v0.1.1 · Apache-2.0 License</p>
+                    </div>
+                    
+                    <nav class="footer-nav" aria-label="Footer navigation">
+                        <div class="footer-col">
+                            <h4>Documentation</h4>
+                            <ul>
+                                <li><a href="getting-started.html">Getting Started</a></li>
+                                <li><a href="cli-reference.html">CLI Reference</a></li>
+                                <li><a href="analyzer.html">Analyzer</a></li>
+                                <li><a href="optimizer.html">Optimizer</a></li>
+                                <li><a href="validator.html">Validator</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Skills</h4>
+                            <ul>
+                                <li><a href="skills/overview.html">All Skills</a></li>
+                                <li><a href="skills/analyzer.html">Analyzer</a></li>
+                                <li><a href="skills/optimizer.html">Optimizer</a></li>
+                                <li><a href="skills/validator.html">Validator</a></li>
+                                <li><a href="skills/composer.html">Composer</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Advanced</h4>
+                            <ul>
+                                <li><a href="benchmarks.html">Benchmarks</a></li>
+                                <li><a href="reports.html">Reports</a></li>
+                                <li><a href="api-reference.html">API Reference</a></li>
+                                <li><a href="configuration.html">Configuration</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Community</h4>
+                            <ul>
+                                <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                                <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+                                <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+                                <li><a href="contributing.html">Contributing</a></li>
+                                <li><a href="changelog.html">Changelog</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>Built with care by the TokenSentry community. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">View contributors</a></p>
+                    <div class="footer-links">
+                        <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to Top -->
+        <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="15" x2="12" y2="9"></line>
+                <line x1="6" y1="15" x2="12" y2="9"></line>
+            </svg>
+        </button>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/animations.js"></script>
+    <script src="scripts/tabs.js"></script>
+    <script src="scripts/code-highlight.js"></script>
+    <script src="scripts/scroll-spy.js"></script>
+</body>
+</html>

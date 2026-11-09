@@ -1,0 +1,364 @@
+/* ==========================================================================
+   TokenSentry Documentation - Theme System
+   Light/Dark mode with smooth transitions
+   ========================================================================== */
+
+/* Theme CSS Variables are defined in main.css :root and [data-theme="dark"] */
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  z-index: calc(var(--z-fixed) + 1);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-1);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+  background: var(--paper-2);
+  color: var(--color-accent-primary);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  transition: transform var(--transition-bounce), opacity var(--transition-base);
+}
+
+.icon-sun {
+  display: block;
+  color: var(--color-accent-primary);
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+.icon-moon {
+  position: absolute;
+  transform: rotate(-90deg) scale(0);
+  opacity: 0;
+  color: var(--color-accent-tertiary);
+}
+
+[data-theme="dark"] .icon-sun {
+  transform: rotate(90deg) scale(0);
+  opacity: 0;
+}
+
+[data-theme="dark"] .icon-moon {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* Theme Transition for all elements */
+* {
+  transition: 
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+/* Exclude certain elements from theme transition for performance */
+.theme-toggle,
+.theme-toggle *,
+.progress-bar,
+.shape,
+.badge-dot,
+.back-to-top,
+.nav-toggle .hamburger,
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after,
+.tab-btn,
+.btn,
+.code-dots span,
+.progress-bar {
+  transition: 
+    transform var(--transition-bounce),
+    opacity var(--transition-base),
+    background-color var(--transition-fast),
+    box-shadow var(--transition-base);
+}
+
+/* Theme-specific component adjustments */
+[data-theme="dark"] .code-window {
+  border-color: var(--color-border-medium);
+}
+
+[data-theme="dark"] .doc-card,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .contribute-card,
+[data-theme="dark"] .doc-card,
+[data-theme="dark"] .arch-layer,
+[data-theme="dark"] .quickstart-step {
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .doc-card:hover,
+[data-theme="dark"] .feature-card:hover,
+[data-theme="dark"] .contribute-card:hover,
+[data-theme="dark"] .arch-layer:hover,
+[data-theme="dark"] .quickstart-step:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Print adjustments for theme */
+@media print {
+  [data-theme="dark"] {
+    --color-bg-primary: white !important;
+    --color-bg-secondary: #f5f5f5 !important;
+    --color-bg-tertiary: #eeeeee !important;
+    --color-bg-card: white !important;
+    --color-bg-code: #f5f5f5 !important;
+    --color-text-primary: black !important;
+    --color-text-secondary: #333 !important;
+    --color-text-muted: #666 !important;
+    --color-border-light: #ddd !important;
+    --color-border-medium: #ccc !important;
+    --color-accent-primary: #b8860b !important;
+    --color-accent-secondary: #556b2f !important;
+    --color-accent-tertiary: #daa520 !important;
+    --color-accent-quaternary: #4682b4 !important;
+  }
+}
+
+/* Smooth theme toggle animation */
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+  opacity: 0;
+  z-index: -1;
+  transform: scale(0.8);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.theme-toggle:hover::after {
+  opacity: 0.3;
+  transform: scale(1);
+}
+
+/* Theme transition class for body */
+body.theme-transitioning {
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+body.theme-transitioning * {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Theme indicator in footer */
+.theme-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1.5);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+.theme-indicator i {
+  width: 12px;
+  height: 12px;
+}
+
+/* OS preference detection fallback */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg-primary: #1a1a18;
+    --color-bg-secondary: #1f1f1c;
+    --color-bg-tertiary: #262622;
+    --color-bg-card: #22221f;
+    --color-bg-code: #1e1e1c;
+    --color-bg-input: #2a2a26;
+    
+    --color-text-primary: #f5f5f0;
+    --color-text-secondary: #b8b8b0;
+    --color-text-muted: #8a8a85;
+    --color-text-inverse: #1a1a18;
+    
+    --color-accent-primary: #e8c5a0;
+    --color-accent-secondary: #a8d8a8;
+    --color-accent-tertiary: #f0d8b8;
+    --color-accent-quaternary: #b8c8e8;
+    
+    --color-border-light: #3a3a34;
+    --color-border-medium: #4a4a42;
+    --color-border-dark: #5a5a50;
+    
+    --color-focus: #e8c5a0;
+    --color-focus-ring: rgba(232, 197, 160, 0.4);
+    
+    --color-success: #9ad89a;
+    --color-warning: #f0d888;
+    --color-error: #e8a8a8;
+    --color-info: #b8d8f8;
+    
+    --paper-1: rgba(26, 26, 24, 0.95);
+    --paper-2: rgba(31, 31, 28, 0.9);
+    --paper-3: rgba(36, 36, 32, 0.85);
+    --paper-4: rgba(41, 41, 37, 0.8);
+    
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.45);
+    --shadow-paper: 0 2px 8px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2);
+    --shadow-paper-lg: 0 4px 16px rgba(0, 0, 0, 0.35), 0 16px 48px rgba(0, 0, 0, 0.25);
+    
+    --color-bg-code: #181816;
+    --color-success: #9ad89a;
+    --color-warning: #f0d888;
+    --color-error: #e8a8a8;
+    --color-info: #b8d8f8;
+  }
+}
+
+/* Theme persistence notification */
+.theme-toast {
+  position: fixed;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--paper-1);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: var(--z-toast);
+  opacity: 0;
+  transform: translateX(-50%) translateY(100px);
+  transition: all var(--transition-slower);
+  pointer-events: none;
+}
+
+.theme-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.theme-toast i {
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent-primary);
+}
+
+/* Theme transition overlay */
+.theme-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-primary);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.theme-transition-overlay.active {
+  opacity: 1;
+}
+
+/* Smooth theme change for code blocks */
+pre,
+code,
+.code-window {
+  transition: background-color var(--transition-base), border-color var(--transition-base) !important;
+}
+
+/* Hero gradient text theme transition */
+.hero-title {
+  transition: background var(--transition-base) !important;
+}
+
+/* Smooth theme change for cards */
+.doc-card,
+.feature-card,
+.contribute-card,
+.arch-layer,
+.quickstart-step,
+.code-window,
+.doc-card,
+.nav-link,
+.btn,
+.tab-btn {
+  transition: 
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base) !important;
+}
+
+/* Theme change notification */
+@keyframes themeToastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes themeToastOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100px);
+  }
+}
+
+/* Theme loading state */
+.theme-loading {
+  pointer-events: none;
+}
+
+.theme-loading .theme-toggle {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.theme-loading .theme-toggle svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

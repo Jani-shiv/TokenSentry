@@ -12,7 +12,7 @@ import yaml
 class SchemaValidationError(Exception):
     """Raised when schema validation fails."""
 
-    def __init__(self, message: str, path: str = "", details: dict | None = None):
+    def __init__(self, message: str, path: str = "", details: dict[str, Any] | None = None):
         super().__init__(message)
         self.path = path
         self.details = details or {}
@@ -59,7 +59,7 @@ def extract_schema_from_prompt(prompt: str) -> dict[str, Any] | None:
     return None
 
 
-def validate_json_structure(data: str, schema: dict | None = None) -> list[SchemaValidationError]:
+def validate_json_structure(data: str, schema: dict[str, Any] | None = None) -> list[SchemaValidationError]:
     """Validate JSON structure against optional schema."""
     errors: list[SchemaValidationError] = []
 
@@ -79,7 +79,7 @@ def validate_json_structure(data: str, schema: dict | None = None) -> list[Schem
     return errors
 
 
-def validate_yaml_structure(data: str, schema: dict | None = None) -> list[SchemaValidationError]:
+def validate_yaml_structure(data: str, schema: dict[str, Any] | None = None) -> list[SchemaValidationError]:
     """Validate YAML structure against optional schema."""
     errors: list[SchemaValidationError] = []
 
@@ -100,7 +100,7 @@ def validate_yaml_structure(data: str, schema: dict | None = None) -> list[Schem
 
 def _validate_against_schema(
     data: Any,
-    schema: dict,
+    schema: dict[str, Any],
     path: str,
 ) -> list[SchemaValidationError]:
     """Validate data against a JSON schema-like definition."""

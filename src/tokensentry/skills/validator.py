@@ -77,7 +77,7 @@ class SkillValidator:
         return self.warnings
 
 
-def validate_registry(skill_registry: SkillRegistry) -> dict[str, list[str]]:
+def validate_registry(skill_registry: SkillRegistry) -> dict[str, dict[str, object]]:
     """Validate all skills in a registry."""
     results = {}
     validator = SkillValidator()

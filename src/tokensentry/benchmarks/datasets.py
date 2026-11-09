@@ -17,10 +17,10 @@ class BenchmarkPrompt:
     expected_tokens: int | None = None
     license: str = "MIT"
     source: str = "tokensentry"
-    tags: list[str] = None
+    tags: list[str] | None = None
     reference_output: str | None = None
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if self.tags is None:
             self.tags = []
 
