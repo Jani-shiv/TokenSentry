@@ -5,7 +5,7 @@ from __future__ import annotations
 from tokensentry.core.analyzer import analyze_prompt
 from tokensentry.models import SkillMetadata
 from tokensentry.skills.base import BaseSkill, SkillContext, SkillResult, registry
-from tokensentry.tokenizers import list_tokenizers, get_tokenizer
+from tokensentry.tokenizers import get_tokenizer
 
 
 class ModelAdapterSkill(BaseSkill):
@@ -83,7 +83,7 @@ class ModelAdapterSkill(BaseSkill):
             target_models = self.config.get("target_models", ["gpt-4", "claude-3-sonnet", "llama-3-70b"])
             source_model = self.config.get("source_model")
 
-            analysis = analyze_prompt(context.prompt, tokenizer_name="character-estimate")
+            analyze_prompt(context.prompt, tokenizer_name="character-estimate")
 
             # Calculate token counts for each model
             token_counts = {}

@@ -37,7 +37,7 @@ def generate_markdown_report(
         "# TokenSentry Benchmark Report",
         "",
         f"**Generated:** {__import__('datetime').datetime.now().isoformat()}",
-        f"**Schema Version:** 1.0",
+        "**Schema Version:** 1.0",
         "",
     ]
 

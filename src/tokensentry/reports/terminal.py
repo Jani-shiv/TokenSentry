@@ -2,24 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
 from tokensentry.models import (
     AnalysisReport,
-    Finding,
-    OptimizationProfile,
     OptimizationResult,
     ValidationReport,
-    PreservationStatus,
-    Severity,
-    ValidationCheck,
-    TechnicalLiteral,
-    PromptSection,
-    Requirement,
 )
 
 
@@ -31,7 +21,6 @@ class TerminalExporter:
 
     def export_analysis(self, report: AnalysisReport) -> None:
         """Export analysis report to terminal."""
-        exact_str = "Yes" if report.tokenizer.is_exact else "No"
         self.console.print(Panel.fit(
             f"[bold]Prompt ID:[/bold] {report.prompt_id}\n"
             f"[bold]Tokenizer:[/bold] {report.tokenizer.name} ({report.tokenizer.count_kind.value})\n"

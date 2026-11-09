@@ -5,16 +5,16 @@ from __future__ import annotations
 from tokensentry.reports.json import (
     JSONExporter,
     export_analysis_json,
+    export_combined_json,
     export_optimization_json,
     export_validation_json,
-    export_combined_json,
 )
 from tokensentry.reports.markdown import (
     MarkdownExporter,
     export_analysis_markdown,
+    export_combined_markdown,
     export_optimization_markdown,
     export_validation_markdown,
-    export_combined_markdown,
 )
 from tokensentry.reports.terminal import (
     TerminalExporter,

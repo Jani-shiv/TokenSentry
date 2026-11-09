@@ -9,14 +9,6 @@ from tokensentry.models import (
     AnalysisReport,
     OptimizationResult,
     ValidationReport,
-    Finding,
-    Severity,
-    OptimizationProfile,
-    PromptSection,
-    Requirement,
-    TechnicalLiteral,
-    ValidationCheck,
-    PreservationStatus,
 )
 
 
@@ -26,7 +18,7 @@ class MarkdownExporter:
     def export_analysis(self, report: AnalysisReport) -> str:
         """Export analysis report as Markdown."""
         lines = [
-            f"# TokenSentry Analysis Report",
+            "# TokenSentry Analysis Report",
             f"**Prompt ID:** {report.prompt_id}",
             f"**Generated:** {datetime.now().isoformat()}",
             f"**Tokenizer:** {report.tokenizer.name} ({report.tokenizer.count_kind.value})",
@@ -103,7 +95,7 @@ class MarkdownExporter:
     def export_optimization(self, result: OptimizationResult) -> str:
         """Export optimization result as Markdown."""
         lines = [
-            f"# TokenSentry Optimization Report",
+            "# TokenSentry Optimization Report",
             f"**Profile:** {result.profile.value}",
             f"**Tokenizer:** {result.tokenizer.name}",
             f"**Generated:** {datetime.now().isoformat()}",
@@ -146,7 +138,7 @@ class MarkdownExporter:
         """Export validation report as Markdown."""
         status = "✅ PASS" if report.passed else "❌ REVIEW REQUIRED"
         lines = [
-            f"# TokenSentry Validation Report",
+            "# TokenSentry Validation Report",
             f"**Status:** {status}",
             f"**Generated:** {datetime.now().isoformat()}",
             "",

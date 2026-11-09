@@ -62,13 +62,20 @@ class PromptSecurityAuditorSkill(BaseSkill):
                 )
 
             tokenizer = self.config.get("tokenizer")
-            strict = self.config.get("strict_mode", False)
+            self.config.get("strict_mode", False)
 
             # Use analyzer to get security findings
             analysis = analyze_prompt(context.prompt, tokenizer_name=tokenizer)
 
             # Extract security findings
-            security_findings = [f for f in analysis.findings if f.code.startswith("SECURITY_") or f.code.startswith("PROMPT_INJECTION") or f.code.startswith("SECRET_") or f.code.startswith("UNSAFE_") or f.code.startswith("DATA_LEAKAGE") or f.code.startswith("PRIVILEGE_") or f.code.startswith("BOUNDARY_")]
+            security_codes = (
+                "SECURITY_", "PROMPT_INJECTION", "SECRET_", "UNSAFE_",
+                "DATA_LEAKAGE", "PRIVILEGE_", "BOUNDARY_",
+            )
+            security_findings = [
+                f for f in analysis.findings
+                if any(f.code.startswith(prefix) for prefix in security_codes)
+            ]
 
             # Categorize findings
             categories = {
@@ -96,7 +103,7 @@ class PromptSecurityAuditorSkill(BaseSkill):
                     categories["boundary_issues"].append(f.model_dump())
 
             # Calculate overall risk level
-            risk_counts = {k: len(v) for k, v in categories.items()}
+            {k: len(v) for k, v in categories.items()}
             total_critical = sum(1 for cat in categories.values() for f in cat if f.get("severity") == "error" or f.get("severity") == "critical")
             total_warnings = sum(1 for cat in categories.values() for f in cat if f.get("severity") == "warning")
 

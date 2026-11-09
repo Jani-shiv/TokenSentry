@@ -3,12 +3,7 @@
 from __future__ import annotations
 
 import time
-from typing import Any
 
-from tokensentry.core.analyzer import analyze_prompt
-from tokensentry.core.optimizer import optimize_prompt
-from tokensentry.core.validator import validate_prompt
-from tokensentry.models import OptimizationProfile
 from tokensentry.benchmarks.datasets import BenchmarkPrompt, get_all_prompts
 from tokensentry.benchmarks.metrics import (
     AggregateMetrics,
@@ -18,6 +13,10 @@ from tokensentry.benchmarks.metrics import (
     compute_prompt_metrics,
     format_metrics_summary,
 )
+from tokensentry.core.analyzer import analyze_prompt
+from tokensentry.core.optimizer import optimize_prompt
+from tokensentry.core.validator import validate_prompt
+from tokensentry.models import OptimizationProfile
 
 
 class BenchmarkRunner:
@@ -71,7 +70,7 @@ class BenchmarkRunner:
 
     def _run_single(self, prompt: BenchmarkPrompt, profile: OptimizationProfile) -> BenchmarkResult:
         """Run benchmark on a single prompt with a profile."""
-        start_time = time.perf_counter()
+        time.perf_counter()
 
         try:
             # Analyze original
@@ -108,8 +107,8 @@ class BenchmarkRunner:
                 requirements_weakened=len(validation.weakened_negatives),
                 literals_total=len(analysis.technical_literals),
                 literals_preserved=len([
-                    l for l in analysis.technical_literals
-                    if any(l.value in optimization.optimized for l in analysis.technical_literals)
+                    lit for lit in analysis.technical_literals
+                    if any(lit.value in optimization.optimized for lit in analysis.technical_literals)
                 ]),
                 literals_missing=len(validation.missing_lines),
                 quality_scores=analysis.quality_scores,
@@ -180,5 +179,3 @@ def run_benchmark(
 
 
 # Import time module
-import time
-import json

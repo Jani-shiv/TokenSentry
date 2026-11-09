@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import difflib
 import re
-from typing import Any
 
 from tokensentry.models import (
     PreservationStatus,
@@ -13,9 +12,7 @@ from tokensentry.models import (
     ValidationCheck,
 )
 from tokensentry.validation.schemas import (
-    SchemaValidationError,
     compare_structures,
-    detect_output_format,
 )
 
 
@@ -82,7 +79,7 @@ class PreservationValidator:
                 continue
 
             for pattern, req_type in patterns:
-                for match in re.finditer(pattern, line_lower, re.IGNORECASE):
+                for _match in re.finditer(pattern, line_lower, re.IGNORECASE):
                     req = Requirement(
                         text=line.strip(),
                         type=req_type,  # type: ignore[arg-type]

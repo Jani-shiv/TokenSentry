@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-from tokensentry.skills.base import registry
 from tokensentry.models import SkillMetadata
 from tokensentry.skills.base import BaseSkill, SkillContext, SkillResult, registry
-from tokensentry.skills.composer import SkillComposer, COMPOSITION_PLANS
+from tokensentry.skills.composer import COMPOSITION_PLANS, SkillComposer
 
 
 class SkillComposerSkill(BaseSkill):

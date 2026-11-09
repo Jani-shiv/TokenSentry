@@ -194,17 +194,17 @@ def _compare_text_structure(original: str, optimized: str) -> list[SchemaValidat
     """Fallback text structure comparison."""
     errors: list[SchemaValidationError] = []
 
-    orig_lines = [l.strip() for l in original.splitlines() if l.strip()]
-    opt_lines = [l.strip() for l in optimized.splitlines() if l.strip()]
+    orig_lines = [line.strip() for line in original.splitlines() if line.strip()]
+    opt_lines = [line.strip() for line in optimized.splitlines() if line.strip()]
 
     # Check for major structural elements
-    orig_has_headings = any(l.startswith("#") for l in orig_lines)
-    opt_has_headings = any(l.startswith("#") for l in opt_lines)
+    orig_has_headings = any(line.startswith("#") for line in orig_lines)
+    opt_has_headings = any(line.startswith("#") for line in opt_lines)
 
     if orig_has_headings and not opt_has_headings:
         errors.append(SchemaValidationError(
             "Optimized output lost heading structure",
-            details={"original_headings": sum(1 for l in orig_lines if l.startswith("#"))}
+            details={"original_headings": sum(1 for line in orig_lines if line.startswith("#"))}
         ))
 
     orig_has_code = "```" in original

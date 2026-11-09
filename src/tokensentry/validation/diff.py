@@ -5,7 +5,7 @@ from __future__ import annotations
 import difflib
 from typing import Any
 
-from tokensentry.models import PreservationStatus, Requirement, ValidationCheck
+from tokensentry.models import PreservationStatus
 
 
 class ChangeClassifier:
@@ -162,7 +162,7 @@ def format_diff_for_report(diff: dict[str, Any]) -> str:
     lines.append("### Changes")
     for change in diff["changes"]:
         change_type = change["type"]
-        status = change.get("status", "unknown")
+        change.get("status", "unknown")
 
         if change_type == "unchanged":
             lines.append(f"  ✓ Line {change['original_line']}: {change['content'][:80]}")

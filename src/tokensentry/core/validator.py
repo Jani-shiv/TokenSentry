@@ -6,7 +6,6 @@ from tokensentry.models import (
     PreservationStatus,
     Requirement,
     TechnicalLiteral,
-    ValidationCheck,
     ValidationReport,
 )
 from tokensentry.validation import (

@@ -1,6 +1,5 @@
 """Tests for core TokenSentry functionality."""
 
-import json
 
 from tokensentry.core.analyzer import analyze_prompt
 from tokensentry.core.optimizer import optimize_prompt

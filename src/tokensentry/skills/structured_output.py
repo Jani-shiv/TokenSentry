@@ -2,14 +2,10 @@
 
 from __future__ import annotations
 
-import json
 from tokensentry.core.analyzer import analyze_prompt
 from tokensentry.models import SkillMetadata
 from tokensentry.skills.base import BaseSkill, SkillContext, SkillResult, registry
 from tokensentry.validation.schemas import (
-    validate_json_structure,
-    validate_yaml_structure,
-    compare_structures,
     detect_output_format,
     extract_schema_from_prompt,
 )

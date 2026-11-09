@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 from tokensentry.benchmarks.datasets import (
-    BenchmarkPrompt,
     BENCHMARK_PROMPTS,
     CATEGORIES,
     DIFFICULTIES,
+    BenchmarkPrompt,
     get_all_prompts,
     get_prompts_by_category,
     get_prompts_by_difficulty,

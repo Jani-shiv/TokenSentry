@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from tokensentry.core.analyzer import analyze_prompt
 from tokensentry.models import SkillMetadata
 from tokensentry.skills.base import BaseSkill, SkillContext, SkillResult, registry
@@ -198,13 +197,18 @@ class PromptEvaluatorSkill(BaseSkill):
             recs.append("Reduce ambiguous language; replace vague quantifiers with specifics")
 
         if scores["completeness"] < 0.7:
-            missing = []
-            if "role" not in scores: recs.append("Add explicit role definition")
-            if "context" not in scores: recs.append("Provide context/background")
-            if "task" not in scores: recs.append("Clarify task/objective")
-            if scores.get("constraint_coverage", 1) < 1.0: recs.append("Ensure all critical constraints are explicitly stated")
-            if scores.get("output_structure", 0) < 0.5: recs.append("Add output format requirements")
-            if scores.get("testability", 0) < 0.5: recs.append("Make output verifiable with explicit format/schema")
+            if "role" not in scores:
+                recs.append("Add explicit role definition")
+            if "context" not in scores:
+                recs.append("Provide context/background")
+            if "task" not in scores:
+                recs.append("Clarify task/objective")
+            if scores.get("constraint_coverage", 1) < 1.0:
+                recs.append("Ensure all critical constraints are explicitly stated")
+            if scores.get("output_structure", 0) < 0.5:
+                recs.append("Add output format requirements")
+            if scores.get("testability", 0) < 0.5:
+                recs.append("Make output verifiable with explicit format/schema")
 
         return recs
 

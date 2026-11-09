@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from tokensentry.skills.base import SkillContext, SkillResult, SkillRegistry, registry
+from tokensentry.skills.base import SkillContext, SkillRegistry, SkillResult, registry
 
 
 @dataclass
@@ -43,7 +43,7 @@ class SkillComposer:
         context = initial_context
 
         # Build dependency graph
-        step_map = {step.skill_name: step for step in plan.steps}
+        {step.skill_name: step for step in plan.steps}
         executed = set()
 
         def can_execute(step: CompositionStep) -> bool:

@@ -77,7 +77,7 @@ class ValidatorSkill(BaseSkill):
                 original_requirements = context.analysis.requirements
                 original_literals = context.analysis.technical_literals
 
-            tokenizer = self.config.get("tokenizer")
+            self.config.get("tokenizer")
 
             result = validate_prompt(
                 original=original,
