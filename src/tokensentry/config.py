@@ -50,8 +50,9 @@ class Settings(BaseSettings):
             ".env",
             "secret",
             "credential",
-            "token",
             "api_key",
+            "access_token",
+            "refresh_token",
         ]
     )
 

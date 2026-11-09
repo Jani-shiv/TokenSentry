@@ -27,34 +27,6 @@ app = typer.Typer(
     rich_markup_mode="rich",
 )
 
-ANALYZE_FILE_ARG = typer.Argument(
-    ..., exists=True, readable=True, help="Prompt file to analyze"
-)
-OPTIMIZE_FILE_ARG = typer.Argument(
-    ..., exists=True, readable=True, help="Prompt file to optimize"
-)
-VALIDATE_ORIGINAL_ARG = typer.Argument(
-    ..., exists=True, readable=True, help="Original prompt file"
-)
-VALIDATE_OPTIMIZED_ARG = typer.Argument(
-    ..., exists=True, readable=True, help="Optimized prompt file"
-)
-OUTPUT_OPTION = typer.Option(
-    Path("optimized-prompt.md"), "--output", "-o", help="Output file for optimized prompt"
-)
-TOKENIZER_OPTION = typer.Option(
-    None, "--tokenizer", "-t", help="Tokenizer to use (default: character-estimate)"
-)
-PROFILE_OPTION = typer.Option(
-    OptimizationProfile.CONSERVATIVE, "--profile", "-p", help="Optimization profile"
-)
-FORMAT_OPTION = typer.Option(
-    "terminal", "--format", "-f", help="Output format: json, markdown, terminal"
-)
-LIST_TOKENIZERS_FLAG = typer.Option(
-    False, "--list-tokenizers", help="List available tokenizers and exit"
-)
-
 
 def _read_file(path: Path) -> str:
     """Read file with validation."""
@@ -104,8 +76,10 @@ def _print_analysis_report(report: AnalysisReport, format_: str) -> None:
                 "error": "red",
                 "critical": "bold red",
             }.get(finding.severity.value, "white")
-            print(f"  [{severity_color}]{finding.severity.value.upper()}[/{severity_color}] "
-                  f"[bold]{finding.code}[/bold]: {finding.message}")
+            print(
+                f"  [{severity_color}]{finding.severity.value.upper()}[/{severity_color}] "
+                f"[bold]{finding.code}[/bold]: {finding.message}"
+            )
             if finding.evidence:
                 print(f"    Evidence: {finding.evidence}")
             if finding.suggestion:
@@ -177,15 +151,17 @@ def _print_optimization_result(result: OptimizationResult, format_: str) -> None
         return
 
     # Terminal format
-    print(Panel.fit(
-        f"[bold]Profile:[/bold] {result.profile.value}\n"
-        f"[bold]Tokenizer:[/bold] {result.tokenizer.name}\n"
-        f"[bold]Original tokens:[/bold] {result.original_token_count}\n"
-        f"[bold]Optimized tokens:[/bold] {result.optimized_token_count}\n"
-        f"[bold]Token delta:[/bold] {result.token_delta:+d} ({result.token_reduction_pct:+.1f}%)\n"
-        f"[bold]Transformations:[/bold] {len(result.transformations)}",
-        title="TokenSentry Optimization",
-    ))
+    print(
+        Panel.fit(
+            f"[bold]Profile:[/bold] {result.profile.value}\n"
+            f"[bold]Tokenizer:[/bold] {result.tokenizer.name}\n"
+            f"[bold]Original tokens:[/bold] {result.original_token_count}\n"
+            f"[bold]Optimized tokens:[/bold] {result.optimized_token_count}\n"
+            f"[bold]Token delta:[/bold] {result.token_delta:+d} ({result.token_reduction_pct:+.1f}%)\n"
+            f"[bold]Transformations:[/bold] {len(result.transformations)}",
+            title="TokenSentry Optimization",
+        )
+    )
 
     if result.transformations:
         print("\n[bold]Transformations:[/bold]")
@@ -250,14 +226,16 @@ def _print_validation_report(report: ValidationReport, format_: str) -> None:
 
     # Terminal format
     status = "[green]PASS[/green]" if report.passed else "[red]REVIEW REQUIRED[/red]"
-    print(Panel.fit(
-        f"{status}\n"
-        f"Preserved: {len(report.preserved_lines)} | "
-        f"Missing: {len(report.missing_lines)} | "
-        f"Modified: {len(report.modified_lines)} | "
-        f"Weakened: {len(report.weakened_negatives)}",
-        title="TokenSentry Validation",
-    ))
+    print(
+        Panel.fit(
+            f"{status}\n"
+            f"Preserved: {len(report.preserved_lines)} | "
+            f"Missing: {len(report.missing_lines)} | "
+            f"Modified: {len(report.modified_lines)} | "
+            f"Weakened: {len(report.weakened_negatives)}",
+            title="TokenSentry Validation",
+        )
+    )
 
     if report.missing_lines:
         print("\n[bold red]Missing:[/bold red]")
@@ -320,16 +298,17 @@ def _print_validation_markdown(report: ValidationReport) -> None:
 
 @app.command()
 def analyze(
-    prompt_file: Annotated[Path, ANALYZE_FILE_ARG],
-    tokenizer: Annotated[str | None, TOKENIZER_OPTION] = None,
-    format: Annotated[str, FORMAT_OPTION] = "terminal",
-    list_tokenizers: Annotated[bool, LIST_TOKENIZERS_FLAG] = False,
+    prompt_file: Annotated[
+        Path, typer.Argument(exists=True, readable=True, help="Prompt file to analyze")
+    ],
+    tokenizer: Annotated[
+        str | None, typer.Option("--tokenizer", "-t", help="Tokenizer to use")
+    ] = None,
+    format: Annotated[
+        str, typer.Option("--format", "-f", help="Output format: json, markdown, terminal")
+    ] = "terminal",
 ) -> None:
     """Analyze a prompt file for structure, quality, and token usage."""
-    if list_tokenizers:
-        _list_tokenizers()
-        return
-
     content = _read_file(prompt_file)
     report = analyze_prompt(content, tokenizer_name=tokenizer, prompt_id=prompt_file.stem)
     _print_analysis_report(report, format)
@@ -337,11 +316,21 @@ def analyze(
 
 @app.command()
 def optimize(
-    prompt_file: Annotated[Path, OPTIMIZE_FILE_ARG],
-    output: Annotated[Path, OUTPUT_OPTION] = Path("optimized-prompt.md"),
-    tokenizer: Annotated[str | None, TOKENIZER_OPTION] = None,
-    profile: Annotated[OptimizationProfile, PROFILE_OPTION] = OptimizationProfile.CONSERVATIVE,
-    format: Annotated[str, FORMAT_OPTION] = "terminal",
+    prompt_file: Annotated[
+        Path, typer.Argument(exists=True, readable=True, help="Prompt file to optimize")
+    ],
+    output: Annotated[
+        Path, typer.Option("--output", "-o", help="Output file for optimized prompt")
+    ] = Path("optimized-prompt.md"),
+    tokenizer: Annotated[
+        str | None, typer.Option("--tokenizer", "-t", help="Tokenizer to use")
+    ] = None,
+    profile: Annotated[
+        OptimizationProfile, typer.Option("--profile", "-p", help="Optimization profile")
+    ] = OptimizationProfile.CONSERVATIVE,
+    format: Annotated[
+        str, typer.Option("--format", "-f", help="Output format: json, markdown, terminal")
+    ] = "terminal",
 ) -> None:
     """Optimize a prompt file with the specified profile."""
     content = _read_file(prompt_file)
@@ -363,10 +352,18 @@ def optimize(
 
 @app.command()
 def validate(
-    original_file: Annotated[Path, VALIDATE_ORIGINAL_ARG],
-    optimized_file: Annotated[Path, VALIDATE_OPTIMIZED_ARG],
-    tokenizer: Annotated[str | None, TOKENIZER_OPTION] = None,
-    format: Annotated[str, FORMAT_OPTION] = "terminal",
+    original_file: Annotated[
+        Path, typer.Argument(exists=True, readable=True, help="Original prompt file")
+    ],
+    optimized_file: Annotated[
+        Path, typer.Argument(exists=True, readable=True, help="Optimized prompt file")
+    ],
+    tokenizer: Annotated[
+        str | None, typer.Option("--tokenizer", "-t", help="Tokenizer to use")
+    ] = None,
+    format: Annotated[
+        str, typer.Option("--format", "-f", help="Output format: json, markdown, terminal")
+    ] = "terminal",
 ) -> None:
     """Validate an optimized prompt against the original."""
     original = _read_file(original_file)
@@ -386,16 +383,11 @@ def validate(
 
 
 @app.command()
-def tokenizers(list_tokenizers: Annotated[bool, LIST_TOKENIZERS_FLAG] = True) -> None:
+def tokenizers() -> None:
     """List available tokenizers."""
-    _list_tokenizers()
-
-
-def _list_tokenizers() -> None:
-    """List available tokenizers."""
-    tokenizers = list_tokenizers()
+    tokenizers_list = list_tokenizers()
     print("[bold]Available tokenizers:[/bold]")
-    for t in tokenizers:
+    for t in tokenizers_list:
         print(f"  - {t}")
 
 
@@ -403,6 +395,7 @@ def _list_tokenizers() -> None:
 def version() -> None:
     """Show version information."""
     from tokensentry import __version__
+
     print(f"TokenSentry {__version__}")
 
 
