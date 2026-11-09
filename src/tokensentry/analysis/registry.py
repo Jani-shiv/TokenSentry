@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
 
 

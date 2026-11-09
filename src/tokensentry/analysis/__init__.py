@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from tokensentry.analysis.registry import BaseAnalyzer, AnalyzerRegistry, registry
-
 # Import analyzer modules to trigger registration
 from tokensentry.analysis import (  # noqa: F401,E402
     ambiguity,
@@ -14,5 +12,6 @@ from tokensentry.analysis import (  # noqa: F401,E402
     security,
     structure,
 )
+from tokensentry.analysis.registry import AnalyzerRegistry, BaseAnalyzer, registry
 
 __all__ = ["BaseAnalyzer", "AnalyzerRegistry", "registry"]
