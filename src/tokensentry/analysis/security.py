@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from tokensentry.analysis import BaseAnalyzer
+from tokensentry.analysis.registry import BaseAnalyzer, registry
 from tokensentry.config import get_config
 from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
 
@@ -13,7 +13,10 @@ class SecurityAnalyzer(BaseAnalyzer):
     """Detect security risks in prompts."""
 
     name = "security"
-    description = "Detect prompt injection, secret exposure, unsafe tool instructions, and data leakage risks"
+    description = (
+        "Detect prompt injection, secret exposure, unsafe tool instructions, "
+        "and data leakage risks"
+    )
 
     def analyze(
         self,
@@ -54,9 +57,12 @@ class SecurityAnalyzer(BaseAnalyzer):
 
         injection_patterns = [
             # Direct instruction override
-            (r"(?i)ignore\s+(?:previous|above|all|earlier)\s+instructions?", "instruction override"),
-            (r"(?i)forget\s+(?:previous|above|all|earlier)\s+(?:instructions?|context|prompts?)", "context clearing"),
-            (r"(?i)disregard\s+(?:previous|above|all|earlier)\s+(?:instructions?|context|prompts?)", "context clearing"),
+            (r"(?i)ignore\s+(?:previous|above|all|earlier)\s+instructions?",
+             "instruction override"),
+            (r"(?i)forget\s+(?:previous|above|all|earlier)\s+"
+             r"(?:instructions?|context|prompts?)", "context clearing"),
+            (r"(?i)disregard\s+(?:previous|above|all|earlier)\s+"
+             r"(?:instructions?|context|prompts?)", "context clearing"),
             (r"(?i)new\s+(?:instructions?|prompt|task|role)", "role hijacking"),
             (r"(?i)you\s+are\s+now\s+(?:a|an)\s+\w+", "role hijacking"),
             (r"(?i)system\s*:\s*you\s+are", "system prompt injection"),
@@ -80,7 +86,10 @@ class SecurityAnalyzer(BaseAnalyzer):
                     severity=Severity.WARNING,
                     message=f"Potential prompt injection: {desc}",
                     evidence=match.group(0)[:100],
-                    suggestion="Review and remove injection-like patterns; treat prompt as untrusted data",
+                    suggestion=(
+                        "Review and remove injection-like patterns; "
+                        "treat prompt as untrusted data"
+                    ),
                     location=(line_num, line_num),
                 ))
 
@@ -92,20 +101,30 @@ class SecurityAnalyzer(BaseAnalyzer):
 
         secret_patterns = [
             # API Keys
-            (r"(?i)(?:api[_-]?key|apikey)\s*[:=]\s*['\"]?([a-zA-Z0-9_\-]{20,})['\"]?", "api key"),
-            (r"(?i)(?:secret[_-]?key|secretkey)\s*[:=]\s*['\"]?([a-zA-Z0-9_\-]{20,})['\"]?", "secret key"),
-            (r"(?i)(?:access[_-]?token|accesstoken)\s*[:=]\s*['\"]?([a-zA-Z0-9_\-.\~+/]{20,})['\"]?", "access token"),
-            (r"(?i)(?:refresh[_-]?token|refreshtoken)\s*[:=]\s*['\"]?([a-zA-Z0-9_\-.\~+/]{20,})['\"]?", "refresh token"),
+            (r"(?i)(?:api[_-]?key|apikey)\s*[:=]\s*['\"]?([a-zA-Z0-9_\-]{20,})['\"]?",
+             "api key"),
+            (r"(?i)(?:secret[_-]?key|secretkey)\s*[:=]\s*['\"]?"
+             r"([a-zA-Z0-9_\-]{20,})['\"]?", "secret key"),
+            (r"(?i)(?:access[_-]?token|accesstoken)\s*[:=]\s*['\"]?"
+             r"([a-zA-Z0-9_\-.\~+/]{20,})['\"]?", "access token"),
+            (r"(?i)(?:refresh[_-]?token|refreshtoken)\s*[:=]\s*['\"]?"
+             r"([a-zA-Z0-9_\-.\~+/]{20,})['\"]?", "refresh token"),
             # Cloud provider keys
-            (r"(?i)(?:aws[_-]?access[_-]?key|aws_access_key_id)\s*[:=]\s*['\"]?([A-Z0-9]{16,})['\"]?", "aws access key"),
-            (r"(?i)(?:aws[_-]?secret[_-]?key|aws_secret_access_key)\s*[:=]\s*['\"]?([a-zA-Z0-9/+=]{40,})['\"]?", "aws secret key"),
-            (r"(?i)(?:gcp|google)[_-]?(?:api[_-]?key|service[_-]?account)\s*[:=]\s*['\"]?([a-zA-Z0-9_\-]{20,})['\"]?", "gcp key"),
-            (r"(?i)azure[_-]?(?:client[_-]?secret|subscription[_-]?id)\s*[:=]\s*['\"]?([a-zA-Z0-9_\-]{20,})['\"]?", "azure secret"),
+            (r"(?i)(?:aws[_-]?access[_-]?key|aws_access_key_id)\s*[:=]\s*['\"]?"
+             r"([A-Z0-9]{16,})['\"]?", "aws access key"),
+            (r"(?i)(?:aws[_-]?secret[_-]?key|aws_secret_access_key)\s*[:=]\s*['\"]?"
+             r"([a-zA-Z0-9/+=]{40,})['\"]?", "aws secret key"),
+            (r"(?i)(?:gcp|google)[_-]?(?:api[_-]?key|service[_-]?account)\s*[:=]\s*['\"]?"
+             r"([a-zA-Z0-9_\-]{20,})['\"]?", "gcp key"),
+            (r"(?i)azure[_-]?(?:client[_-]?secret|subscription[_-]?id)\s*[:=]\s*['\"]?"
+             r"([a-zA-Z0-9_\-]{20,})['\"]?", "azure secret"),
             # Database
-            (r"(?i)(?:database[_-]?url|db[_-]?connection)\s*[:=]\s*['\"]?(?:postgres|mysql|mongodb)://[^'\"]+['\"]?", "database connection string"),
+            (r"(?i)(?:database[_-]?url|db[_-]?connection)\s*[:=]\s*['\"]?"
+             r"(?:postgres|mysql|mongodb)://[^'\"]+['\"]?", "database connection string"),
             # Generic patterns
             (r"(?i)password\s*[:=]\s*['\"]?([^\s'\"]{8,})['\"]?", "password"),
-            (r"(?i)(?:private[_-]?key|ssh[_-]?key)\s*[:=]\s*['\"]?([a-zA-Z0-9/+=]{50,})['\"]?", "private key"),
+            (r"(?i)(?:private[_-]?key|ssh[_-]?key)\s*[:=]\s*['\"]?"
+             r"([a-zA-Z0-9/+=]{50,})['\"]?", "private key"),
             # JWT
             (r"eyJ[a-zA-Z0-9_\-]+\.eyJ[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+", "jwt token"),
         ]
@@ -122,7 +141,10 @@ class SecurityAnalyzer(BaseAnalyzer):
                     severity=Severity.ERROR,
                     message=f"Potential secret exposure: {desc}",
                     evidence=evidence,
-                    suggestion="Remove secrets from prompts; use environment variables or secret managers",
+                    suggestion=(
+                        "Remove secrets from prompts; "
+                        "use environment variables or secret managers"
+                    ),
                     location=(line_num, line_num),
                 ))
 
@@ -134,18 +156,25 @@ class SecurityAnalyzer(BaseAnalyzer):
 
         unsafe_patterns = [
             # Command execution
-            (r"(?i)execute\s+(?:command|shell|bash|cmd|powershell|script)", "command execution"),
-            (r"(?i)run\s+(?:command|shell|bash|cmd|powershell|script)", "command execution"),
-            (r"(?i)(?:system|os|subprocess|shell)\s*[.(]\s*(?:exec|run|popen)", "code execution"),
+            (r"(?i)execute\s+(?:command|shell|bash|cmd|powershell|script)",
+             "command execution"),
+            (r"(?i)run\s+(?:command|shell|bash|cmd|powershell|script)",
+             "command execution"),
+            (r"(?i)(?:system|os|subprocess|shell)\s*[.(]\s*(?:exec|run|popen)",
+             "code execution"),
             (r"(?i)eval\s*\(|exec\s*\(|compile\s*\(", "dynamic code execution"),
             # File system
-            (r"(?i)(?:delete|remove|rm\s+-rf|format\s+drive|wipe)\s+(?:all|everything|/|C:\\)", "destructive file operation"),
-            (r"(?i)write\s+(?:to|into)\s+(?:/etc|/root|/boot|C:\\Windows|C:\\System32)", "system file modification"),
+            (r"(?i)(?:delete|remove|rm\s+-rf|format\s+drive|wipe)\s+"
+             r"(?:all|everything|/|C:\\)", "destructive file operation"),
+            (r"(?i)write\s+(?:to|into)\s+(?:/etc|/root|/boot|C:\\Windows|C:\\System32)",
+             "system file modification"),
             # Network
-            (r"(?i)(?:curl|wget|nc|netcat|telnet)\s+[^&\s]+\s*(?:>\s*\/dev\/null|&\s*)", "silent network request"),
+            (r"(?i)(?:curl|wget|nc|netcat|telnet)\s+[^&\s]+\s*"
+             r"(?:>\s*\/dev\/null|&\s*)", "silent network request"),
             (r"(?i)download\s+(?:and\s+)?(?:run|execute|install)", "download and execute"),
             # Process manipulation
-            (r"(?i)(?:kill|terminate|stop)\s+(?:all|every|system|critical)", "process termination"),
+            (r"(?i)(?:kill|terminate|stop)\s+(?:all|every|system|critical)",
+             "process termination"),
             # Privilege
             (r"(?i)sudo\s+(?:su|bash|sh)", "privilege escalation"),
             (r"(?i)run\s+as\s+(?:root|administrator|system)", "privilege escalation"),
@@ -159,7 +188,10 @@ class SecurityAnalyzer(BaseAnalyzer):
                     severity=Severity.WARNING,
                     message=f"Unsafe instruction detected: {desc}",
                     evidence=match.group(0)[:100],
-                    suggestion="Avoid instructing models to execute unsafe operations; use sandboxed environments",
+                    suggestion=(
+                        "Avoid instructing models to execute unsafe operations; "
+                        "use sandboxed environments"
+                    ),
                     location=(line_num, line_num),
                 ))
 
@@ -177,7 +209,8 @@ class SecurityAnalyzer(BaseAnalyzer):
             (r"\b(?:\+?1[-.\s]?)?\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}\b", "phone"),
             # Internal info
             (r"(?i)internal\s+(?:ip|address|url|endpoint|api)", "internal endpoint"),
-            (r"(?i)(?:staging|dev|test|prod)\s+(?:database|server|cluster|environment)", "environment details"),
+            (r"(?i)(?:staging|dev|test|prod)\s+(?:database|server|cluster|environment)",
+             "environment details"),
             # Git/version control
             (r"(?i)commit\s+[a-f0-9]{7,40}", "git commit hash"),
             (r"(?i)branch\s+['\"]?[a-zA-Z0-9_\-/-]+['\"]?", "branch name"),
@@ -191,7 +224,10 @@ class SecurityAnalyzer(BaseAnalyzer):
                     severity=Severity.WARNING,
                     message=f"Potential data leakage: {desc}",
                     evidence=match.group(0)[:50],
-                    suggestion="Remove sensitive data from prompts; use placeholders or synthetic data",
+                    suggestion=(
+                        "Remove sensitive data from prompts; "
+                        "use placeholders or synthetic data"
+                    ),
                     location=(line_num, line_num),
                 ))
 
@@ -202,10 +238,14 @@ class SecurityAnalyzer(BaseAnalyzer):
         findings: list[Finding] = []
 
         escalation_patterns = [
-            (r"(?i)(?:become|act\s+as|impersonate)\s+(?:root|admin|administrator|superuser|system)", "role escalation"),
-            (r"(?i)(?:elevate|escalate)\s+(?:privileges?|permissions?|access)", "privilege escalation"),
-            (r"(?i)grant\s+(?:me|us)\s+(?:admin|root|sudo|all)\s+(?:access|permissions?)", "access escalation"),
-            (r"(?i)bypass\s+(?:security|auth|authentication|authorization|permissions?)", "security bypass"),
+            (r"(?i)(?:become|act\s+as|impersonate)\s+(?:root|admin|administrator|"
+             r"superuser|system)", "role escalation"),
+            (r"(?i)(?:elevate|escalate)\s+(?:privileges?|permissions?|access)",
+             "privilege escalation"),
+            (r"(?i)grant\s+(?:me|us)\s+(?:admin|root|sudo|all)\s+(?:access|permissions?)",
+             "access escalation"),
+            (r"(?i)bypass\s+(?:security|auth|authentication|authorization|permissions?)",
+             "security bypass"),
         ]
 
         for pattern, desc in escalation_patterns:
@@ -216,7 +256,10 @@ class SecurityAnalyzer(BaseAnalyzer):
                     severity=Severity.ERROR,
                     message=f"Privilege escalation attempt: {desc}",
                     evidence=match.group(0)[:100],
-                    suggestion="Remove escalation instructions; follow principle of least privilege",
+                    suggestion=(
+                        "Remove escalation instructions; "
+                        "follow principle of least privilege"
+                    ),
                     location=(line_num, line_num),
                 ))
 
@@ -228,9 +271,11 @@ class SecurityAnalyzer(BaseAnalyzer):
 
         # Check for user input markers without clear boundaries
         boundary_patterns = [
-            (r"(?i)(?:user\s+input|human\s+input|provided\s+data|given\s+data)\s*:", "unmarked user input"),
+            (r"(?i)(?:user\s+input|human\s+input|provided\s+data|given\s+data)\s*:",
+             "unmarked user input"),
             (r"(?i)(?:context|background|information)\s*:\s*$", "unbounded context"),
-            (r"(?i)<\s*(?:user|human|input)\s*>.*?<\s*/\s*(?:user|human|input)\s*>", "xml user input tag"),
+            (r"(?i)<\s*(?:user|human|input)\s*>.*?<\s*/\s*(?:user|human|input)\s*>",
+             "xml user input tag"),
         ]
 
         for pattern, desc in boundary_patterns:
@@ -241,7 +286,10 @@ class SecurityAnalyzer(BaseAnalyzer):
                     severity=Severity.INFO,
                     message=f"Potential content boundary issue: {desc}",
                     evidence=match.group(0)[:100],
-                    suggestion="Clearly demarcate untrusted content with explicit boundaries and instructions to not execute",
+                    suggestion=(
+                        "Clearly demarcate untrusted content with explicit boundaries "
+                        "and instructions to not execute"
+                    ),
                     location=(line_num, line_num),
                 ))
 
@@ -249,6 +297,4 @@ class SecurityAnalyzer(BaseAnalyzer):
 
 
 # Register
-from tokensentry.analysis import registry
-
 registry.register(SecurityAnalyzer())

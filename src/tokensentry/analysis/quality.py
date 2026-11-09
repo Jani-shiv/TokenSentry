@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from tokensentry.analysis import BaseAnalyzer
+from tokensentry.analysis.registry import BaseAnalyzer, registry
 from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
 
 
@@ -48,7 +48,9 @@ class QualityAnalyzer(BaseAnalyzer):
                     code=f"LOW_{dimension.upper()}",
                     severity=Severity.WARNING,
                     message=f"Low {dimension} score: {score:.2f}",
-                    evidence=self._get_dimension_evidence(dimension, prompt, sections, requirements),
+                    evidence=self._get_dimension_evidence(
+                        dimension, prompt, sections, requirements
+                    ),
                     suggestion=self._get_dimension_suggestion(dimension),
                 ))
 
@@ -164,13 +166,22 @@ class QualityAnalyzer(BaseAnalyzer):
         score = min(1.0, found_verbs * 0.07 + numbered_steps * 0.1 + 0.1)
         return score
 
-    def _get_dimension_evidence(self, dimension: str, prompt: str, sections: list[PromptSection], requirements: list[Requirement]) -> str:
+    def _get_dimension_evidence(
+        self,
+        dimension: str,
+        prompt: str,
+        sections: list[PromptSection],
+        requirements: list[Requirement],
+    ) -> str:
         """Get evidence for low score."""
         evidence = {
             "clarity": "Contains vague quantifiers, hedging, or underspecified conditions",
             "completeness": "Missing role, context, task, constraints, output format, or examples",
             "structure": "Lacks headings or has too few sections for content size",
-            "conciseness": f"Prompt is {'very long' if len(prompt) > 1000 else 'very short'} ({len(prompt.split())} words)",
+            "conciseness": (
+                f"Prompt is {'very long' if len(prompt) > 1000 else 'very short'} "
+                f"({len(prompt.split())} words)"
+            ),
             "actionability": "Few explicit action verbs or numbered steps",
         }
         return evidence.get(dimension, "Low score detected")
@@ -188,6 +199,4 @@ class QualityAnalyzer(BaseAnalyzer):
 
 
 # Register
-from tokensentry.analysis import registry
-
 registry.register(QualityAnalyzer())

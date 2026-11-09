@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from tokensentry.analysis import BaseAnalyzer
+from tokensentry.analysis.registry import BaseAnalyzer, registry
 from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
 
 
@@ -64,7 +64,10 @@ class ComplexityAnalyzer(BaseAnalyzer):
             findings.append(Finding(
                 code="LONG_SECTIONS",
                 severity=Severity.INFO,
-                message=f"Average section length is high: {metrics['avg_section_length']:.1f} lines",
+                message=(
+                    f"Average section length is high: "
+                    f"{metrics['avg_section_length']:.1f} lines"
+                ),
                 evidence="Long sections may exceed effective attention span",
                 suggestion="Break long sections into focused subsections",
             ))
@@ -73,7 +76,10 @@ class ComplexityAnalyzer(BaseAnalyzer):
             findings.append(Finding(
                 code="HIGH_REQUIREMENT_DENSITY",
                 severity=Severity.INFO,
-                message=f"High requirement density: {metrics['requirement_density']:.1f} per section",
+                message=(
+                    f"High requirement density: "
+                    f"{metrics['requirement_density']:.1f} per section"
+                ),
                 evidence="Many requirements packed together",
                 suggestion="Consider prioritizing or grouping requirements",
             ))
@@ -89,7 +95,6 @@ class ComplexityAnalyzer(BaseAnalyzer):
         sections: list[PromptSection],
     ) -> dict[str, float]:
         """Compute complexity metrics."""
-        prompt.splitlines()
 
         # Nesting depth from headings
         headings = [s for s in sections if s.type == "heading"]
@@ -129,7 +134,13 @@ class ComplexityAnalyzer(BaseAnalyzer):
 
         # Count imperative sentences
         imperative_patterns = [
-            r"^\s*(?:please\s+)?(?:create|write|generate|analyze|explain|list|describe|compare|implement|build|design|develop|write|produce|output|return|provide|give|show|display|print|format|convert|transform|extract|parse|validate|check|verify|ensure|make|set|configure|define|specify|indicate|state|include|add|remove|delete|update|modify|change)\b",
+            r"^\s*(?:please\s+)?"
+            r"(?:create|write|generate|analyze|explain|list|describe|compare|"
+            r"implement|build|design|develop|write|produce|output|return|"
+            r"provide|give|show|display|print|format|convert|transform|"
+            r"extract|parse|validate|check|verify|ensure|make|set|configure|"
+            r"define|specify|indicate|state|include|add|remove|delete|"
+            r"update|modify|change)\b",
         ]
 
         imperative_count = 0
@@ -150,8 +161,13 @@ class ComplexityAnalyzer(BaseAnalyzer):
 
         # Check for compound instructions (multiple verbs in one sentence)
         compound_count = 0
+        verbs_pattern = r"\b(create|write|generate|analyze|explain|list|describe|" \
+            r"compare|implement|build|design|develop|produce|output|return|" \
+            r"provide|give|show|display|format|convert|transform|extract|" \
+            r"parse|validate|check|verify|ensure|make|set|configure|define|" \
+            r"specify|indicate|state|include|add|remove|delete|update|modify|change)\b"
         for line in prompt.splitlines():
-            verbs = re.findall(r"\b(create|write|generate|analyze|explain|list|describe|compare|implement|build|design|develop|produce|output|return|provide|give|show|display|format|convert|transform|extract|parse|validate|check|verify|ensure|make|set|configure|define|specify|indicate|state|include|add|remove|delete|update|modify|change)\b", line, re.IGNORECASE)
+            verbs = re.findall(verbs_pattern, line, re.IGNORECASE)
             if len(verbs) > 2:
                 compound_count += 1
 
@@ -168,6 +184,4 @@ class ComplexityAnalyzer(BaseAnalyzer):
 
 
 # Register
-from tokensentry.analysis import registry
-
 registry.register(ComplexityAnalyzer())

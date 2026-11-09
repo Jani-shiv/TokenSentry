@@ -5,8 +5,8 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from tokensentry.analysis import BaseAnalyzer
-from tokensentry.models import PromptSection
+from tokensentry.analysis.registry import BaseAnalyzer, registry
+from tokensentry.models import Finding, PromptSection, Severity
 
 
 class StructureAnalyzer(BaseAnalyzer):
@@ -118,15 +118,18 @@ class StructureAnalyzer(BaseAnalyzer):
                 findings.append(self._make_finding(
                     "VERY_LONG_PARAGRAPH",
                     "info",
-                    f"Paragraph section at lines {s.start_line}-{s.end_line} has {content_lines} lines",
+                    (
+                        f"Paragraph section at lines "
+                        f"{s.start_line}-{s.end_line} has {content_lines} lines"
+                    ),
                     "Consider breaking into smaller sections",
                     (s.start_line, s.end_line),
                 ))
 
         return findings
 
-    def _make_finding(self, code: str, severity: str, message: str, suggestion: str, location: tuple[int, int] | None = None) -> Any:
-        from tokensentry.models import Finding, Severity
+    def _make_finding(self, code: str, severity: str, message: str,
+                      suggestion: str, location: tuple[int, int] | None = None) -> Any:
         return Finding(
             code=code,
             severity=Severity(severity),
@@ -136,16 +139,5 @@ class StructureAnalyzer(BaseAnalyzer):
         )
 
 
-# Standalone function for parsing (used by main analyzer)
-def parse_sections(prompt: str) -> list[PromptSection]:
-    """Parse prompt into logical sections."""
-    StructureAnalyzer()
-    # This is a simplified version - the full logic is in the old analyzer
-    # For now, return empty list as placeholder
-    return []
-
-
 # Register analyzer
-from tokensentry.analysis import registry
-
 registry.register(StructureAnalyzer())

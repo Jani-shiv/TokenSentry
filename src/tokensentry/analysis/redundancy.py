@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 
-from tokensentry.analysis import BaseAnalyzer
+from tokensentry.analysis.registry import BaseAnalyzer, registry
 from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
 
 
@@ -158,7 +158,10 @@ class RedundancyAnalyzer(BaseAnalyzer):
                         code="SIMILAR_ADJACENT_SECTIONS",
                         severity=Severity.INFO,
                         message="Adjacent sections have very similar content",
-                        evidence=f"Section {i+1}: {s1.content[:80]} | Section {i+2}: {s2.content[:80]}",
+                        evidence=(
+                            f"Section {i+1}: {s1.content[:80]} | "
+                            f"Section {i+2}: {s2.content[:80]}"
+                        ),
                         suggestion="Consider merging similar sections",
                         location=(s1.start_line, s2.end_line),
                     ))
@@ -180,6 +183,4 @@ class RedundancyAnalyzer(BaseAnalyzer):
 
 
 # Register
-from tokensentry.analysis import registry
-
 registry.register(RedundancyAnalyzer())

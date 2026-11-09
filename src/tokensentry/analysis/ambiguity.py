@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from tokensentry.analysis import BaseAnalyzer
+from tokensentry.analysis.registry import BaseAnalyzer, registry
 from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
 
 
@@ -17,38 +17,51 @@ class AmbiguityAnalyzer(BaseAnalyzer):
     # Ambiguity patterns with descriptions
     PATTERNS = [
         # Vague quantifiers
-        (r"\b(some|several|many|a few|a lot|lots of|various|multiple)\b", "vague quantifier",
+        (r"\b(some|several|many|a few|a lot|lots of|various|multiple)\b",
+         "vague quantifier",
          "Replace with specific numbers or ranges"),
-        (r"\b(a number of|a variety of|a range of)\b", "vague quantifier",
+        (r"\b(a number of|a variety of|a range of)\b",
+         "vague quantifier",
          "Specify exact count or range"),
 
         # Open-ended references
-        (r"\b(etc|and so on|and more|and others|among others)\b", "open-ended list",
+        (r"\b(etc|and so on|and more|and others|among others)\b",
+         "open-ended list",
          "List all items explicitly or define clear criteria"),
-        (r"\b(such as|including|like|e\.g\.)\s+\w+\s*(?:,\s*\w+)*\s*$", "incomplete example list",
+        (r"\b(such as|including|like|e\.g\.)\s+\w+\s*(?:,\s*\w+)*\s*$",
+         "incomplete example list",
          "Complete the example list or add 'for example' context"),
 
         # Uncertainty hedging
-        (r"\b(probably|maybe|might|could be|likely|possibly|potentially)\b", "uncertainty",
+        (r"\b(probably|maybe|might|could be|likely|possibly|potentially)\b",
+         "uncertainty",
          "State requirements definitively or specify conditions"),
-        (r"\b(should|ought to|ideally|preferably)\b", "weak obligation",
+        (r"\b(should|ought to|ideally|preferably)\b",
+         "weak obligation",
          "Use 'must' for requirements, 'should' only for preferences"),
 
         # Conditional without criteria
-        (r"\b(as appropriate|as needed|where applicable|when necessary|if needed)\b", "conditional without criteria",
+        (r"\b(as appropriate|as needed|where applicable|when necessary|if needed)\b",
+         "conditional without criteria",
          "Define specific criteria for when this applies"),
-        (r"\b(if possible|if feasible|where practical)\b", "conditional without criteria",
+        (r"\b(if possible|if feasible|where practical)\b",
+         "conditional without criteria",
          "Specify constraints that determine feasibility"),
 
         # Vague references
-        (r"\b(the above|the following|the previous|mentioned earlier|as stated)\b", "vague reference",
+        (r"\b(the above|the following|the previous|mentioned earlier|as stated)\b",
+         "vague reference",
          "Reference specific section numbers or quote the relevant text"),
-        (r"\b(here|there|this|that)\s+(?:is|are|was|were)\b", "vague demonstrative",
+        (r"\b(here|there|this|that)\s+(?:is|are|was|were)\b",
+         "vague demonstrative",
          "Be explicit about what 'this' refers to"),
 
         # Time/quantity without units
-        (r"\b(short|long|brief|quick|fast|slow|large|small|big|tiny)\b(?!\\s*(?:term|time|period|duration|size|amount))", "relative without scale",
-         "Add specific measurements (e.g., 'under 500 tokens', 'within 2 seconds')"),
+        (
+            r"\b(short|long|brief|quick|fast|slow|large|small|big|tiny)\b"
+            r"(?!\s*(?:term|time|period|duration|size|amount))",
+            "relative without scale",
+            "Add specific measurements (e.g., 'under 500 tokens', 'within 2 seconds')"),
     ]
 
     def analyze(
@@ -102,7 +115,8 @@ class AmbiguityAnalyzer(BaseAnalyzer):
 
         return findings
 
-    def _check_output_specificity(self, prompt: str, requirements: list[Requirement]) -> list[Finding]:
+    def _check_output_specificity(self, prompt: str,
+                                  requirements: list[Requirement]) -> list[Finding]:
         """Check if output format is sufficiently specified."""
         findings: list[Finding] = []
 
@@ -126,6 +140,4 @@ class AmbiguityAnalyzer(BaseAnalyzer):
 
 
 # Register
-from tokensentry.analysis import registry
-
 registry.register(AmbiguityAnalyzer())

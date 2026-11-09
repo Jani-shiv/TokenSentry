@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from tokensentry.analysis import BaseAnalyzer
+from tokensentry.analysis.registry import BaseAnalyzer, registry
 from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
 
 
@@ -155,7 +155,8 @@ class ContradictionAnalyzer(BaseAnalyzer):
 
         return findings
 
-    def _find_instruction_constraint_conflicts(self, prompt: str, requirements: list[Requirement]) -> list[Finding]:
+    def _find_instruction_constraint_conflicts(self, prompt: str,
+                                               requirements: list[Requirement]) -> list[Finding]:
         """Find conflicts between instructions and constraints."""
         findings: list[Finding] = []
 
@@ -184,9 +185,12 @@ class ContradictionAnalyzer(BaseAnalyzer):
 
         # "Do X but don't do X" patterns
         contradiction_patterns = [
-            (r"(?:do|perform|execute)\s+(\w+).{0,100}(?:not|never|don't)\s+\1", "action prohibition conflict"),
-            (r"(?:include|add|provide)\s+(\w+).{0,100}(?:exclude|remove|omit)\s+\1", "include/exclude conflict"),
-            (r"(?:must|shall)\s+(\w+).{0,100}(?:must not|shall not)\s+\1", "must/must not conflict"),
+            (r"(?:do|perform|execute)\s+(\w+).{0,100}(?:not|never|don't)\s+\1",
+             "action prohibition conflict"),
+            (r"(?:include|add|provide)\s+(\w+).{0,100}(?:exclude|remove|omit)\s+\1",
+             "include/exclude conflict"),
+            (r"(?:must|shall)\s+(\w+).{0,100}(?:must not|shall not)\s+\1",
+             "must/must not conflict"),
         ]
 
         for pattern, desc in contradiction_patterns:
@@ -205,13 +209,12 @@ class ContradictionAnalyzer(BaseAnalyzer):
 
     def _normalize_words(self, text: str) -> list[str]:
         """Extract meaningful words from text."""
-        stop = {"the", "a", "an", "and", "or", "to", "for", "of", "in", "on", "with", "by", "use", "using",
-                "you", "your", "must", "shall", "should", "not", "never", "no", "be", "is", "are"}
+        stop = {"the", "a", "an", "and", "or", "to", "for", "of", "in", "on", "with", "by",
+                "use", "using", "you", "your", "must", "shall", "should", "not", "never",
+                "no", "be", "is", "are"}
         words = re.findall(r"\b\w+\b", text.lower())
         return [w for w in words if w not in stop and len(w) > 2]
 
 
 # Register
-from tokensentry.analysis import registry
-
 registry.register(ContradictionAnalyzer())

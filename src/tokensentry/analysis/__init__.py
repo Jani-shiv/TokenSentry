@@ -1,78 +1,11 @@
-"""Analysis module base classes and utilities."""
+"""Analysis module package."""
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any
-
-from tokensentry.models import Finding, PromptSection, Requirement, Severity, TechnicalLiteral
-
-
-class BaseAnalyzer(ABC):
-    """Base class for prompt analyzers."""
-
-    name: str = "base"
-    description: str = "Base analyzer"
-
-    @abstractmethod
-    def analyze(
-        self,
-        prompt: str,
-        sections: list[PromptSection],
-        requirements: list[Requirement],
-        technical_literals: list[TechnicalLiteral],
-    ) -> list[Finding]:
-        """Analyze prompt and return findings."""
-        pass
-
-
-class AnalyzerRegistry:
-    """Registry for analyzer modules."""
-
-    def __init__(self) -> None:
-        self._analyzers: dict[str, BaseAnalyzer] = {}
-
-    def register(self, analyzer: BaseAnalyzer) -> None:
-        """Register an analyzer."""
-        self._analyzers[analyzer.name] = analyzer
-
-    def get(self, name: str) -> BaseAnalyzer | None:
-        """Get analyzer by name."""
-        return self._analyzers.get(name)
-
-    def get_all(self) -> list[BaseAnalyzer]:
-        """Get all registered analyzers."""
-        return list(self._analyzers.values())
-
-    def run_all(
-        self,
-        prompt: str,
-        sections: list[PromptSection],
-        requirements: list[Requirement],
-        technical_literals: list[TechnicalLiteral],
-    ) -> list[Finding]:
-        """Run all analyzers and collect findings."""
-        findings: list[Finding] = []
-        for analyzer in self._analyzers.values():
-            try:
-                findings.extend(analyzer.analyze(prompt, sections, requirements, technical_literals))
-            except Exception as e:
-                findings.append(
-                    Finding(
-                        code="ANALYZER_ERROR",
-                        severity=Severity.WARNING,
-                        message=f"Analyzer '{analyzer.name}' failed: {e}",
-                        evidence=str(e),
-                    )
-                )
-        return findings
-
-
-# Global registry instance
-registry = AnalyzerRegistry()
+from tokensentry.analysis.registry import BaseAnalyzer, AnalyzerRegistry, registry
 
 # Import analyzer modules to trigger registration
-from tokensentry.analysis import (  # noqa: F401
+from tokensentry.analysis import (  # noqa: F401,E402
     ambiguity,
     complexity,
     contradictions,
@@ -81,3 +14,5 @@ from tokensentry.analysis import (  # noqa: F401
     security,
     structure,
 )
+
+__all__ = ["BaseAnalyzer", "AnalyzerRegistry", "registry"]
