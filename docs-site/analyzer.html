@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TokenSentry Analyzer Engine - 7 modular analyzers for deep prompt analysis.">
+  <meta name="theme-color" content="#000000">
+  <title>Analyzer Engine - TokenSentry Docs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="styles/brutal.css">
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
+        </div>
+        <span class="brand-text">TokenSentry</span>
+        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <div class="nav-menu" id="navMenu" role="menubar">
+        <div class="nav-section">
+          <span class="nav-section-title">GET STARTED</span>
+          <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+          <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Quick Start</a>
+          <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+          <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">CORE ENGINES</span>
+          <a href="analyzer.html" class="nav-link active" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">AI AGENT SKILLS</span>
+          <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+          <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+          <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+          <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+          <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+          <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+          <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+          <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+          <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+          <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+          <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+          <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+          <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">ADVANCED</span>
+          <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
+          <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+          <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+          <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">COMMUNITY</span>
+          <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+          <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="version-badge">v0.1.1</div>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="star"></i> STAR ON GITHUB
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main-content" class="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <div class="grid-pattern" id="gridPattern"></div>
+        <div class="scanline" id="scanline"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+      </div>
+      
+      <div class="hero-content container">
+        <div class="hero-badge badge badge-cyan">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>CORE ENGINE</span>
+        </div>
+        
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line" data-text="ANALYZER ENGINE">ANALYZER ENGINE</span>
+          <span class="title-line" data-text="7 MODULAR ANALYZERS">7 MODULAR ANALYZERS</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          DEEP PROMPT ANALYSIS WITH STRUCTURE PARSING, REDUNDANCY DETECTION, AMBIGUITY FINDING, 
+          CONTRADICTION IDENTIFICATION, COMPLEXITY METRICS, QUALITY SCORING, AND SECURITY AUDITING.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="getting-started.html" class="btn btn-primary btn-lg">
+            <i data-lucide="zap"></i>
+            QUICK START
+          </a>
+          <a href="cli-reference.html#analyze-command" class="btn btn-secondary btn-lg">
+            <i data-lucide="terminal"></i>
+            CLI REFERENCE
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview" aria-labelledby="overview-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">OVERVIEW</span>
+          <h2 id="overview-title" class="section-title">ANALYZER ARCHITECTURE</h2>
+          <p class="section-description">THE ANALYZER ENGINE COMPOSES 7 INDEPENDENT MODULES, EACH FOCUSED ON A SPECIFIC ASPECT OF PROMPT QUALITY.</p>
+        </header>
+
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>MODULE</th><th>PURPOSE</th><th>KEY OUTPUTS</th><th>ENABLED BY DEFAULT</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>STRUCTURE</strong></td><td>PARSE HEADINGS, CODE FENCES, LISTS, TABLES, LINKS, IMAGES</td><td>ELEMENT COUNTS, NESTING DEPTH, DOCUMENT OUTLINE</td><td>✅ YES</td></tr>
+              <tr><td><strong>REDUNDANCY</strong></td><td>DETECT DUPLICATE LINES, REPEATED PHRASES, REDUNDANT REQUIREMENTS</td><td>DUPLICATE GROUPS, SIMILARITY SCORES, LOCATION MAPS</td><td>✅ YES</td></tr>
+              <tr><td><strong>AMBIGUITY</strong></td><td>IDENTIFY VAGUE TERMS, RELATIVE WITHOUT SCALE, MISSING CONTEXT</td><td>AMBIGUOUS TERMS, CONFIDENCE SCORES, SUGGESTIONS</td><td>✅ YES</td></tr>
+              <tr><td><strong>CONTRADICTIONS</strong></td><td>FIND CONFLICTING INSTRUCTIONS, MUTUALLY EXCLUSIVE REQUIREMENTS</td><td>CONTRADICTION PAIRS, SEVERITY, RESOLUTION HINTS</td><td>✅ YES</td></tr>
+              <tr><td><strong>COMPLEXITY</strong></td><td>MEASURE LINGUISTIC COMPLEXITY, READABILITY, COGNITIVE LOAD</td><td>FOG INDEX, FLESCH-KINCAID, SYNTACTIC DEPTH</td><td>✅ YES</td></tr>
+              <tr><td><strong>QUALITY</strong></td><td>SCORE CLARITY, COMPLETENESS, STRUCTURE, CONCISENESS, ACTIONABILITY</td><td>6 DIMENSION SCORES (0-1), OVERALL SCORE</td><td>✅ YES</td></tr>
+              <tr><td><strong>SECURITY</strong></td><td>DETECT PROMPT INJECTION, SECRET LEAKAGE, UNSAFE PATTERNS</td><td>THREAT CLASSIFICATION, RISK LEVEL, MITIGATION</td><td>🔧 OPTIONAL</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="modules" aria-labelledby="modules-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-magenta">MODULES</span>
+          <h2 id="modules-title" class="section-title">DETAILED MODULE REFERENCE</h2>
+        </header>
+
+        <div class="accordion" id="modulesAccordion">
+          <details class="accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">STRUCTURE ANALYZER</summary>
+            <div class="accordion-content">
+              <p>PARSES MARKDOWN STRUCTURE TO EXTRACT DOCUMENT ORGANIZATION.</p>
+              <h4>DETECTS:</h4>
+              <ul class="feature-list">
+                <li>HEADINGS (H1-H6) WITH HIERARCHY</li>
+                <li>CODE FENCES WITH LANGUAGE TAGS</li>
+                <li>ORDERED AND UNORDERED LISTS</li>
+                <li>TABLES WITH ROW/COLUMN COUNTS</li>
+                <li>LINKS AND IMAGES WITH DESTINATIONS</li>
+                <li>BLOCKQUOTES AND HORIZONTAL RULES</li>
+              </ul>
+              <h4>OUTPUT:</h4>
+              <div class="code-block">
+                <pre><code class="language-json">{
+  "headings": [{"level": 1, "text": "Title", "line": 1}],
+  "code_fences": [{"language": "python", "lines": "10-20"}],
+  "lists": [{"type": "unordered", "items": 5, "nesting": 1}],
+  "tables": [{"rows": 10, "cols": 3}],
+  "links": [{"url": "https://example.com", "text": "Link"}],
+  "images": [{"alt": "Diagram", "src": "diagram.png"}]
+}</code></pre>
+              </div>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">REDUNDANCY ANALYZER</summary>
+            <div class="accordion-content">
+              <p>IDENTIFIES THREE TYPES OF REDUNDANCY WITH SIMILARITY SCORING.</p>
+              <h4>TYPES:</h4>
+              <ul class="feature-list">
+                <li><strong>LINE REDUNDANCY:</strong> EXACT OR NEAR-EXACT DUPLICATE LINES</li>
+                <li><strong>PHRASE REDUNDANCY:</strong> REPEATED N-GRAMS (DEFAULT 4-GRAM)</li>
+                <li><strong>REQUIREMENT REDUNDANCY:</strong> SEMANTICALLY SIMILAR INSTRUCTIONS</li>
+              </ul>
+              <h4>CONFIGURATION:</h4>
+              <div class="code-block">
+                <pre><code class="language-yaml">analyzer:
+  redundancy:
+    min_phrase_length: 4
+    similarity_threshold: 0.85
+    max_findings: 20</code></pre>
+              </div>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">AMBIGUITY ANALYZER</summary>
+            <div class="accordion-content">
+              <p>DETECTS VAGUE LANGUAGE THAT LEADS TO INCONSISTENT MODEL OUTPUTS.</p>
+              <h4>PATTERNS DETECTED:</h4>
+              <ul class="feature-list">
+                <li>RELATIVE TERMS WITHOUT SCALE ("SHORT", "LARGE", "FAST")</li>
+                <li>UNQUALIFIED QUANTIFIERS ("MANY", "FEW", "SEVERAL")</li>
+                <li>MISSING CONTEXT FOR DOMAIN-SPECIFIC TERMS</li>
+                <li>VAGUE ACTION VERBS ("HANDLE", "PROCESS", "MANAGE")</li>
+                <li>AMBIGUOUS PRONOUNS WITHOUT CLEAR ANTECEDENTS</li>
+              </ul>
+              <h4>EXAMPLE FINDINGS:</h4>
+              <div class="code-block">
+                <pre><code class="language-json">{
+  "type": "AMBIGUOUS_RELATIVE_WITHOUT_SCALE",
+  "evidence": "short",
+  "location": {"line": 5, "column": 12},
+  "suggestion": "Specify exact length: 'under 100 words' or 'maximum 2 paragraphs'",
+  "confidence": 0.92
+}</code></pre>
+              </div>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">CONTRADICTIONS ANALYZER</summary>
+            <div class="accordion-content">
+              <p>IDENTIFIES MUTUALLY EXCLUSIVE OR CONFLICTING INSTRUCTIONS.</p>
+              <h4>DETECTION TYPES:</h4>
+              <ul class="feature-list">
+                <li>DIRECT CONTRADICTION: "DO X" VS "DO NOT DO X"</li>
+                <li>MUTUALLY EXCLUSIVE: "USE PYTHON" VS "USE JAVASCRIPT"</li>
+                <li>CONSTRAINT CONFLICT: "MAX 100 WORDS" VS "MIN 200 WORDS"</li>
+                <li>STYLE CONFLICT: "BE CONCISE" VS "PROVIDE DETAILED EXPLANATIONS"</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">COMPLEXITY ANALYZER</summary>
+            <div class="accordion-content">
+              <p>COMPUTES LINGUISTIC COMPLEXITY METRICS FOR COGNITIVE LOAD ESTIMATION.</p>
+              <h4>METRICS:</h4>
+              <ul class="feature-list">
+                <li>GUNNING FOG INDEX</li>
+                <li>FLESCH-KINCAID GRADE LEVEL</li>
+                <li>COLEMAN-LIAU INDEX</li>
+                <li>AUTOMATED READABILITY INDEX (ARI)</li>
+                <li>SYNTACTIC TREE DEPTH</li>
+                <li>AVERAGE SENTENCE LENGTH</li>
+                <li>VOCABULARY DIVERSITY (TYPE-TOKEN RATIO)</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">QUALITY SCORER</summary>
+            <div class="accordion-content">
+              <p>COMPUTES 6-DIMENSION QUALITY SCORES (0.0 - 1.0) WITH OVERALL AGGREGATE.</p>
+              <h4>DIMENSIONS:</h4>
+              <ul class="feature-list">
+                <li><strong>CLARITY:</strong> UNAMBIGUOUS LANGUAGE, DEFINED TERMS</li>
+                <li><strong>COMPLETENESS:</strong> ALL REQUIRED ELEMENTS PRESENT</li>
+                <li><strong>STRUCTURE:</strong> LOGICAL ORGANIZATION, PROPER FORMATTING</li>
+                <li><strong>CONCISENESS:</strong> MINIMAL REDUNDANCY, EFFICIENT PHRASING</li>
+                <li><strong>ACTIONABILITY:</strong> EXPLICIT VERBS, MEASURABLE OUTCOMES</li>
+                <li><strong>OVERALL:</strong> WEIGHTED AGGREGATE OF ABOVE</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">SECURITY AUDITOR</summary>
+            <div class="accordion-content">
+              <p>OPTIONAL MODULE FOR PROMPT INJECTION AND SECRET DETECTION.</p>
+              <h4>THREAT CATEGORIES:</h4>
+              <ul class="feature-list">
+                <li>PROMPT INJECTION ATTEMPTS</li>
+                <li>ROLE OVERRIDE ATTEMPTS</li>
+                <li>SECRET/API KEY LEAKAGE</li>
+                <li>ENCODING/OBFUSCATION BYPASS</li>
+                <li>CHAIN-OF-THOUGHT EXTRACTION</li>
+                <li>UNSAFE OUTPUT REQUESTS</li>
+              </ul>
+              <h4>ENABLE:</h4>
+              <div class="code-block">
+                <pre><code class="language-bash"># CLI
+tokensentry analyze prompt.md --enable-security
+
+# CONFIG
+analyzer:
+  enable_security: true</code></pre>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="output-formats" aria-labelledby="output-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-lime">OUTPUT</span>
+          <h2 id="output-title" class="section-title">OUTPUT FORMATS</h2>
+        </header>
+
+        <div class="tabs">
+          <div class="tabs-nav" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true" data-tab="text">TEXT (DEFAULT)</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="json">JSON</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="markdown">MARKDOWN</button>
+          </div>
+          
+          <div class="tab-panels">
+            <div class="tab-panel active" role="tabpanel" id="tab-text">
+              <div class="code-block">
+                <pre><code class="language-text">╭───────────── TOKENSENTRY ANALYSIS ─────────────╮
+│ PROMPT ID: SAMPLE-PROMPT                       │
+│ CHARACTERS: 368   WORDS: 55   LINES: 5         │
+│ TOKENIZER: CHARACTER-ESTIMATE                  │
+│ TOKEN COUNT: 92 (ESTIMATE)                     │
+├────────────────────────────────────────────────┤
+│ FINDINGS:                                      │
+│   ℹ️  AMBIGUOUS_RELATIVE_WITHOUT_SCALE         │
+│       EVIDENCE: "SHORT"                        │
+│       SUGGESTION: ADD SPECIFIC MEASUREMENTS    │
+│   ⚠️  LOW_STRUCTURE                            │
+│       LACKS HEADINGS OR SECTIONS               │
+│   ⚠️  LOW_ACTIONABILITY                        │
+│       FEW EXPLICIT ACTION VERBS                │
+│                                                │
+│ QUALITY SCORES:                                │
+│   CLARITY: 1.00  COMPLETENESS: 0.50           │
+│   STRUCTURE: 0.20  CONCISENESS: 0.55          │
+│   ACTIONABILITY: 0.17  OVERALL: 0.48          │
+╰────────────────────────────────────────────────╯</code></pre>
+              </div>
+            </div>
+            
+            <div class="tab-panel" role="tabpanel" id="tab-json" hidden>
+              <div class="code-block">
+                <pre><code class="language-json">{
+  "prompt_id": "sample-prompt",
+  "meta": {
+    "characters": 368,
+    "words": 55,
+    "lines": 5,
+    "tokenizer": "character-estimate",
+    "token_count": 92,
+    "count_kind": "estimate"
+  },
+  "findings": [
+    {
+      "type": "AMBIGUOUS_RELATIVE_WITHOUT_SCALE",
+      "severity": "info",
+      "evidence": "short",
+      "location": {"line": 3, "column": 12},
+      "suggestion": "Add specific measurements",
+      "confidence": 0.92
+    }
+  ],
+  "quality_scores": {
+    "clarity": 1.00,
+    "completeness": 0.50,
+    "structure": 0.20,
+    "conciseness": 0.55,
+    "actionability": 0.17,
+    "overall": 0.48
+  },
+  "structure": {
+    "headings": 0,
+    "code_fences": 0,
+    "lists": 0,
+    "tables": 0,
+    "links": 0,
+    "images": 0
+  }
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="tab-panel" role="tabpanel" id="tab-markdown" hidden>
+              <div class="code-block">
+                <pre><code class="language-markdown"># TOKENSENTRY ANALYSIS REPORT
+
+**PROMPT ID:** sample-prompt
+**CHARACTERS:** 368 | **WORDS:** 55 | **LINES:** 5
+**TOKENIZER:** character-estimate
+**TOKEN COUNT:** 92 (ESTIMATE)
+
+## FINDINGS
+
+### ℹ️ AMBIGUOUS_RELATIVE_WITHOUT_SCALE
+**EVIDENCE:** "short"
+**SUGGESTION:** Add specific measurements
+**CONFIDENCE:** 0.92
+
+### ⚠️ LOW_STRUCTURE
+**DETAILS:** Lacks headings or sections
+
+### ⚠️ LOW_ACTIONABILITY
+**DETAILS:** Few explicit action verbs
+
+## QUALITY SCORES
+
+| METRIC | SCORE |
+|--------|-------|
+| CLARITY | 1.00 |
+| COMPLETENESS | 0.50 |
+| STRUCTURE | 0.20 |
+| CONCISENESS | 0.55 |
+| ACTIONABILITY | 0.17 |
+| **OVERALL** | **0.48**</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cli-usage" aria-labelledby="cli-usage-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-red">CLI USAGE</span>
+          <h2 id="cli-usage-title" class="section-title">COMMAND LINE USAGE</h2>
+        </header>
+
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>BASIC</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>WITH TIKTOKEN</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --tokenizer tiktoken:gpt-4</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>WITH HUGGINGFACE</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --tokenizer hf:meta-llama/Llama-2-7b-hf</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>FULL ANALYSIS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md \
+  --tokenizer tiktoken:gpt-4 \
+  --enable-security \
+  --enable-quality \
+  --format json</code></pre>
+            </div>
+          </article>
+          <article class="example-card card">
+            <h4>STDIN INPUT</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">cat prompt.md | tokensentry analyze - --format json</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-gold">
+            <h4>SAVE TO FILE</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --output analysis.json --format json</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <span class="brand-text">TOKENSENTRY</span>
+          </a>
+          <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
+          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>DOCUMENTATION</h4>
+            <ul>
+              <li><a href="getting-started.html">GETTING STARTED</a></li>
+              <li><a href="cli-reference.html">CLI REFERENCE</a></li>
+              <li><a href="analyzer.html">ANALYZER</a></li>
+              <li><a href="optimizer.html">OPTIMIZER</a></li>
+              <li><a href="validator.html">VALIDATOR</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SKILLS</h4>
+            <ul>
+              <li><a href="skills/overview.html">ALL SKILLS</a></li>
+              <li><a href="skills/analyzer.html">ANALYZER</a></li>
+              <li><a href="skills/optimizer.html">OPTIMIZER</a></li>
+              <li><a href="skills/validator.html">VALIDATOR</a></li>
+              <li><a href="skills/composer.html">COMPOSER</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>ADVANCED</h4>
+            <ul>
+              <li><a href="benchmarks.html">BENCHMARKS</a></li>
+              <li><a href="reports.html">REPORTS</a></li>
+              <li><a href="api-reference.html">API REFERENCE</a></li>
+              <li><a href="configuration.html">CONFIGURATION</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>COMMUNITY</h4>
+            <ul>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
+              <li><a href="contributing.html">CONTRIBUTING</a></li>
+              <li><a href="changelog.html">CHANGELOG</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
+        <div class="footer-links">
+          <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="15" x2="12" y2="9"></line>
+      <line x1="6" y1="15" x2="12" y2="9"></line>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+  <script src="scripts/brutal.js"></script>
+</body>
+</html>

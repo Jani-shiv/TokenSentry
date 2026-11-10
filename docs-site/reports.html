@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TokenSentry Reports - JSON, Markdown, and Rich terminal output with schema versioning.">
+  <meta name="theme-color" content="#000000">
+  <title>Reports - TokenSentry Docs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="styles/brutal.css">
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
+        </div>
+        <span class="brand-text">TokenSentry</span>
+        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <div class="nav-menu" id="navMenu" role="menubar">
+        <div class="nav-section">
+          <span class="nav-section-title">GET STARTED</span>
+          <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+          <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Quick Start</a>
+          <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+          <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">CORE ENGINES</span>
+          <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">AI AGENT SKILLS</span>
+          <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+          <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+          <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+          <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+          <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+          <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+          <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+          <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+          <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+          <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+          <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+          <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+          <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">ADVANCED</span>
+          <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
+          <a href="reports.html" class="nav-link active" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+          <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+          <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">COMMUNITY</span>
+          <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+          <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="version-badge">v0.1.1</div>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="star"></i> STAR ON GITHUB
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main-content" class="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <div class="grid-pattern" id="gridPattern"></div>
+        <div class="scanline" id="scanline"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+      </div>
+      
+      <div class="hero-content container">
+        <div class="hero-badge badge badge-cyan">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>REPORT EXPORTERS</span>
+        </div>
+        
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line" data-text="REPORTS">REPORTS</span>
+          <span class="title-line" data-text="JSON • MARKDOWN • TERMINAL">JSON • MARKDOWN • TERMINAL</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          EXPORT ANALYSIS, OPTIMIZATION, AND VALIDATION RESULTS IN MULTIPLE FORMATS. 
+          SCHEMA VERSIONING ENSURES BACKWARD COMPATIBILITY.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="cli-reference.html" class="btn btn-primary btn-lg">
+            <i data-lucide="terminal"></i>
+            CLI REFERENCE
+          </a>
+          <a href="getting-started.html" class="btn btn-secondary btn-lg">
+            <i data-lucide="zap"></i>
+            QUICK START
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formats" aria-labelledby="formats-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">OUTPUT FORMATS</span>
+          <h2 id="formats-title" class="section-title">SUPPORTED REPORT FORMATS</h2>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature-card card card-cyan">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>JSON</h3>
+            <p>MACHINE-READABLE OUTPUT WITH FULL SCHEMA VERSIONING. IDEAL FOR CI/CD PIPELINES AND AUTOMATION.</p>
+            <ul class="feature-list">
+              <li>SCHEMA VERSION IN EVERY RESPONSE</li>
+              <li>COMPLETE DATA FIDELITY</li>
+              <li>EASY PARSING WITH JQ</li>
+              <li>STREAMING SUPPORT FOR LARGE OUTPUTS</li>
+            </ul>
+            <div class="code-block" style="margin-top: var(--space-4);">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --format json
+tokensentry validate a.md b.md --format json | jq .</code></pre>
+            </div>
+          </article>
+
+          <article class="feature-card card card-magenta">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+            </div>
+            <h3>MARKDOWN</h3>
+            <p>HUMAN-READABLE DOCUMENTATION-READY OUTPUT WITH TABLES, CODE BLOCKS, AND STRUCTURED SECTIONS.</p>
+            <ul class="feature-list">
+              <li>GITHUB-FLAVORED MARKDOWN</li>
+              <li>TABLES FOR METRICS</li>
+              <li>CODE BLOCKS FOR EVIDENCE</li>
+              <li>ANCHOR LINKS FOR NAVIGATION</li>
+            </ul>
+            <div class="code-block" style="margin-top: var(--space-4);">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --format markdown > report.md
+tokensentry benchmark report results.json --format markdown</code></pre>
+            </div>
+          </article>
+
+          <article class="feature-card card card-lime">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="9" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+            <h3>TERMINAL (RICH)</h3>
+            <p>BEAUTIFUL INTERACTIVE TERMINAL OUTPUT WITH COLORS, TABLES, PROGRESS BARS, AND SYNTAX HIGHLIGHTING.</p>
+            <ul class="feature-list">
+              <li>RICH LIBRARY RENDERING</li>
+              <li>COLOR-CODED SEVERITY</li>
+              <li>INTERACTIVE TABLES</li>
+              <li>PROGRESS INDICATORS</li>
+            </ul>
+            <div class="code-block" style="margin-top: var(--space-4);">
+              <pre><code class="language-bash">tokensentry analyze prompt.md
+# DEFAULT OUTPUT IS RICH TERMINAL</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="json-schema" aria-labelledby="schema-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-magenta">SCHEMA VERSIONING</span>
+          <h2 id="schema-title" class="section-title">JSON SCHEMA VERSIONING</h2>
+        </header>
+
+        <p>ALL JSON OUTPUT INCLUDES SCHEMA VERSION METADATA FOR BACKWARD COMPATIBILITY AND TOOLING SUPPORT.</p>
+
+        <h3>SCHEMA STRUCTURE</h3>
+        <div class="code-block card">
+          <pre><code class="language-json">{
+  "schema_version": "1.0.0",
+  "schema_url": "https://tokensentry.dev/schemas/v1/report.json",
+  "generated_at": "2024-01-15T14:30:22Z",
+  "generator": {
+    "name": "tokensentry",
+    "version": "0.1.1"
+  },
+  "report_type": "analysis",
+  "data": {
+    "prompt_id": "sample-prompt",
+    "meta": {...},
+    "findings": [...],
+    "quality_scores": {...}
+  }
+}</code></pre>
+        </div>
+
+        <h3>VERSION POLICY</h3>
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>VERSION</th><th>RELEASE</th><th>BREAKING CHANGES</th><th>SUPPORT</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>1.0.0</strong></td><td>v0.1.0</td><td>INITIAL RELEASE</td><td>CURRENT</td></tr>
+              <tr><td>1.1.0</td><td>v0.2.0 (PLANNED)</td><td>ADDED BENCHMARK FIELDS</td><td>BACKWARD COMPATIBLE</td></tr>
+              <tr><td>2.0.0</td><td>v1.0.0 (FUTURE)</td><td>RESTRUCTURED OUTPUT</td><td>MIGRATION GUIDE PROVIDED</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>CHECKING SCHEMA VERSION</h3>
+        <div class="code-block card">
+          <pre><code class="language-bash"># EXTRACT SCHEMA VERSION
+tokensentry analyze prompt.md --format json | jq -r '.schema_version'
+
+# VALIDATE AGAINST SCHEMA
+tokensentry analyze prompt.md --format json | \
+  jsonschema -i /dev/stdin https://tokensentry.dev/schemas/v1/report.json</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="report-types" aria-labelledby="types-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-lime">REPORT TYPES</span>
+          <h2 id="types-title" class="section-title">AVAILABLE REPORTS</h2>
+        </header>
+
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>COMMAND</th><th>REPORT TYPE</th><th>FORMATS</th><th>DESCRIPTION</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>analyze</code></td><td>ANALYSIS</td><td>TEXT, JSON, MARKDOWN</td><td>FULL PROMPT ANALYSIS WITH FINDINGS AND QUALITY SCORES</td></tr>
+              <tr><td><code>optimize</code></td><td>OPTIMIZATION</td><td>TEXT, JSON, MARKDOWN</td><td>TRANSFORMATION DETAILS, TOKEN DELTA, LITERAL PRESERVATION</td></tr>
+              <tr><td><code>validate</code></td><td>VALIDATION</td><td>TEXT, JSON, MARKDOWN</td><td>7-STATUS CLASSIFICATION, NEGATIVE CONSTRAINTS, SCHEMA</td></tr>
+              <tr><td><code>benchmark run</code></td><td>BENCHMARK RESULTS</td><td>JSON</td><td>RAW RESULTS FOR ALL PROMPTS AND PROFILES</td></tr>
+              <tr><td><code>benchmark report</code></td><td>BENCHMARK REPORT</td><td>TEXT, JSON, MARKDOWN</td><td>AGGREGATED METRICS, COMPARISONS, SUMMARY TABLES</td></tr>
+              <tr><td><code>skill run</code></td><td>SKILL RESULT</td><td>TEXT, JSON, MARKDOWN</td><td>INDIVIDUAL SKILL OUTPUT</td></tr>
+              <tr><td><code>workflow run</code></td><td>WORKFLOW RESULT</td><td>TEXT, JSON, MARKDOWN</td><td>COMPOSITE MULTI-SKILL OUTPUT</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="combined" aria-labelledby="combined-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-gold">COMBINED REPORTS</span>
+          <h2 id="combined-title" class="section-title">COMBINED WORKFLOW REPORTS</h2>
+        </header>
+
+        <p>RUN MULTIPLE OPERATIONS AND GENERATE A SINGLE COMPREHENSIVE REPORT:</p>
+
+        <div class="code-block card">
+          <pre><code class="language-bash"># STANDARD WORKFLOW WITH COMBINED REPORT
+tokensentry workflow run standard \
+  --prompt-file prompt.md \
+  --format markdown \
+  --output workflow-report.md
+
+# CUSTOM WORKFLOW
+tokensentry workflow run custom \
+  --steps '["tokensentry-analyzer", "tokensentry-optimizer", "tokensentry-validator"]' \
+  --prompt-file prompt.md \
+  --format json \
+  --output combined.json</code></pre>
+        </div>
+
+        <h3>COMBINED REPORT STRUCTURE</h3>
+        <div class="code-block card">
+          <pre><code class="language-json">{
+  "schema_version": "1.0.0",
+  "report_type": "workflow_combined",
+  "workflow": "standard",
+  "timestamp": "2024-01-15T14:30:22Z",
+  "steps": [
+    {
+      "step": 1,
+      "skill": "tokensentry-analyzer",
+      "status": "SUCCESS",
+      "duration_ms": 245,
+      "output": {...}
+    },
+    {
+      "step": 2,
+      "skill": "tokensentry-optimizer",
+      "status": "SUCCESS",
+      "duration_ms": 189,
+      "output": {...}
+    },
+    {
+      "step": 3,
+      "skill": "tokensentry-validator",
+      "status": "SUCCESS",
+      "duration_ms": 156,
+      "output": {...}
+    }
+  ],
+  "summary": {
+    "total_duration_ms": 590,
+    "total_tokens_original": 1247,
+    "total_tokens_optimized": 987,
+    "overall_reduction_pct": 20.85,
+    "validation_verdict": "REVIEW_REQUIRED"
+  }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ci-cd" aria-labelledby="ci-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-red">CI/CD INTEGRATION</span>
+          <h2 id="ci-title" class="section-title">AUTOMATED REPORTING IN PIPELINES</h2>
+        </header>
+
+        <h3>GITHUB ACTIONS ARTIFACTS</h3>
+        <div class="code-block card">
+          <pre><code class="language-yaml"># .github/workflows/tokensentry-reports.yml
+name: TokenSentry Reports
+
+on: [push, pull_request]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install TokenSentry
+        run: pip install tokensentry[openai-tokenizer]
+      - name: Generate Analysis Report
+        run: |
+          tokensentry analyze prompts/main.md \
+            --tokenizer tiktoken:gpt-4 \
+            --format markdown > analysis-report.md
+      - name: Upload Analysis Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: tokensentry-analysis
+          path: analysis-report.md
+      - name: Generate JSON for Dashboard
+        run: |
+          tokensentry analyze prompts/main.md \
+            --tokenizer tiktoken:gpt-4 \
+            --format json > analysis.json
+      - name: Upload JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: tokensentry-analysis-json
+          path: analysis.json</code></pre>
+        </div>
+
+        <h3>PR COMMENT BOT</h3>
+        <div class="code-block card">
+          <pre><code class="language-yaml"># .github/workflows/pr-comment.yml
+name: PR TokenSentry Report
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: pip install tokensentry[openai-tokenizer]
+      - name: Analyze Changed Prompts
+        id: analyze
+        run: |
+          # FIND CHANGED .MD FILES
+          CHANGED=$(git diff --name-only ${{ github.base_ref }}..${{ github.head_ref }} | grep '\.md$')
+          for file in $CHANGED; do
+            tokensentry analyze "$file" --tokenizer tiktoken:gpt-4 --format markdown >> pr-report.md
+          done
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('pr-report.md', 'utf8');
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '## TokenSentry Analysis Report\n\n' + report
+            });</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <span class="brand-text">TOKENSENTRY</span>
+          </a>
+          <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
+          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>DOCUMENTATION</h4>
+            <ul>
+              <li><a href="getting-started.html">GETTING STARTED</a></li>
+              <li><a href="cli-reference.html">CLI REFERENCE</a></li>
+              <li><a href="analyzer.html">ANALYZER</a></li>
+              <li><a href="optimizer.html">OPTIMIZER</a></li>
+              <li><a href="validator.html">VALIDATOR</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SKILLS</h4>
+            <ul>
+              <li><a href="skills/overview.html">ALL SKILLS</a></li>
+              <li><a href="skills/analyzer.html">ANALYZER</a></li>
+              <li><a href="skills/optimizer.html">OPTIMIZER</a></li>
+              <li><a href="skills/validator.html">VALIDATOR</a></li>
+              <li><a href="skills/composer.html">COMPOSER</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>ADVANCED</h4>
+            <ul>
+              <li><a href="benchmarks.html">BENCHMARKS</a></li>
+              <li><a href="reports.html">REPORTS</a></li>
+              <li><a href="api-reference.html">API REFERENCE</a></li>
+              <li><a href="configuration.html">CONFIGURATION</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>COMMUNITY</h4>
+            <ul>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
+              <li><a href="contributing.html">CONTRIBUTING</a></li>
+              <li><a href="changelog.html">CHANGELOG</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
+        <div class="footer-links">
+          <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="15" x2="12" y2="9"></line>
+      <line x1="6" y1="15" x2="12" y2="9"></line>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+  <script src="scripts/brutal.js"></script>
+</body>
+</html>

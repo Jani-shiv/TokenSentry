@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete CLI reference for TokenSentry - analyze, optimize, validate, and more.">
+  <meta name="theme-color" content="#000000">
+  <title>CLI Reference - TokenSentry Docs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="styles/brutal.css">
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
+        </div>
+        <span class="brand-text">TokenSentry</span>
+        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <div class="nav-menu" id="navMenu" role="menubar">
+        <div class="nav-section">
+          <span class="nav-section-title">GET STARTED</span>
+          <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+          <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Quick Start</a>
+          <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+          <a href="cli-reference.html" class="nav-link active" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">CORE ENGINES</span>
+          <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">AI AGENT SKILLS</span>
+          <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+          <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+          <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+          <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+          <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+          <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+          <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+          <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+          <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+          <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+          <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+          <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+          <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">ADVANCED</span>
+          <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
+          <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+          <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+          <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">COMMUNITY</span>
+          <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+          <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="version-badge">v0.1.1</div>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="star"></i> STAR ON GITHUB
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main-content" class="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <div class="grid-pattern" id="gridPattern"></div>
+        <div class="scanline" id="scanline"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+      </div>
+      
+      <div class="hero-content container">
+        <div class="hero-badge badge badge-cyan">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>CLI REFERENCE</span>
+        </div>
+        
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line" data-text="CLI REFERENCE">CLI REFERENCE</span>
+          <span class="title-line" data-text="COMPLETE COMMAND GUIDE">COMPLETE COMMAND GUIDE</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          COMPLETE COMMAND REFERENCE FOR ANALYZE, OPTIMIZE, VALIDATE, TOKENIZERS, SKILLS, 
+          WORKFLOWS, BENCHMARKS, AND MORE. ALL COMMANDS SUPPORT <code>--format json</code> FOR AUTOMATION.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="global-options" aria-labelledby="global-options-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">GLOBAL OPTIONS</span>
+          <h2 id="global-options-title" class="section-title">GLOBAL FLAGS</h2>
+          <p class="section-description">AVAILABLE ON ALL COMMANDS.</p>
+        </header>
+
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>FLAG</th>
+                <th>SHORT</th>
+                <th>DESCRIPTION</th>
+                <th>DEFAULT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--format</code></td><td><code>-f</code></td><td>OUTPUT FORMAT: TEXT, JSON, MARKDOWN</td><td>TEXT</td></tr>
+              <tr><td><code>--tokenizer</code></td><td><code>-t</code></td><td>TOKENIZER TO USE (E.G. TIKTOKEN:GPT-4)</td><td>CHARACTER-ESTIMATE</td></tr>
+              <tr><td><code>--config</code></td><td><code>-c</code></td><td>PATH TO CONFIG FILE</td><td>.TOKENSENTRY.YAML</td></tr>
+              <tr><td><code>--verbose</code></td><td><code>-v</code></td><td>ENABLE VERBOSE OUTPUT</td><td>FALSE</td></tr>
+              <tr><td><code>--quiet</code></td><td><code>-q</code></td><td>SUPPRESS NON-ERROR OUTPUT</td><td>FALSE</td></tr>
+              <tr><td><code>--no-color</code></td><td></td><td>DISABLE COLOR OUTPUT</td><td>FALSE</td></tr>
+              <tr><td><code>--help</code></td><td><code>-h</code></td><td>SHOW HELP MESSAGE</td><td>-</td></tr>
+              <tr><td><code>--version</code></td><td></td><td>SHOW VERSION AND EXIT</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="analyze-command" aria-labelledby="analyze-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-magenta">ANALYZE</span>
+          <h2 id="analyze-title" class="section-title">TOKENSENTRY ANALYZE</h2>
+          <p class="section-description">ANALYZE PROMPT STRUCTURE, QUALITY, TOKENS, AND SECURITY.</p>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry analyze PROMPT_FILE [OPTIONS]
+
+ARGUMENTS:
+  PROMPT_FILE    PATH TO PROMPT FILE (.MD, .TXT, OR - FOR STDIN)
+
+OPTIONS:
+  -f, --format FORMAT        OUTPUT FORMAT: TEXT, JSON, MARKDOWN
+  -t, --tokenizer TOKENIZER  TOKENIZER TO USE
+  --enable-security          ENABLE SECURITY ANALYSIS
+  --enable-quality           ENABLE QUALITY SCORING
+  --max-findings N           MAXIMUM FINDINGS TO REPORT
+  --output FILE              WRITE OUTPUT TO FILE</code></pre>
+        </div>
+
+        <h3>EXAMPLES</h3>
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>BASIC ANALYSIS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>WITH GPT-4 TOKENIZER</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --tokenizer tiktoken:gpt-4</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>JSON FOR SCRIPTING</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --format json | jq .</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>MARKDOWN REPORT</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md --format markdown > report.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card">
+            <h4>FULL ANALYSIS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry analyze prompt.md \
+  --tokenizer tiktoken:gpt-4 \
+  --enable-security \
+  --enable-quality \
+  --format json</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-gold">
+            <h4>FROM STDIN</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">cat prompt.md | tokensentry analyze - --format json</code></pre>
+            </div>
+          </article>
+        </div>
+
+        <h3>OUTPUT FIELDS (JSON)</h3>
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>FIELD</th><th>TYPE</th><th>DESCRIPTION</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>prompt_id</td><td>STRING</td><td>UNIQUE IDENTIFIER FOR THE PROMPT</td></tr>
+              <tr><td>characters</td><td>INTEGER</td><td>TOTAL CHARACTER COUNT</td></tr>
+              <tr><td>words</td><td>INTEGER</td><td>TOTAL WORD COUNT</td></tr>
+              <tr><td>lines</td><td>INTEGER</td><td>TOTAL LINE COUNT</td></tr>
+              <tr><td>tokenizer</td><td>STRING</td><td>TOKENIZER NAME USED</td></tr>
+              <tr><td>token_count</td><td>INTEGER</td><td>TOKEN COUNT (EXACT OR ESTIMATE)</td></tr>
+              <tr><td>count_kind</td><td>STRING</td><td>"EXACT" OR "ESTIMATE"</td></tr>
+              <tr><td>findings</td><td>ARRAY</td><td>ARRAY OF FINDING OBJECTS</td></tr>
+              <tr><td>quality_scores</td><td>OBJECT</td><td>CLARITY, COMPLETENESS, STRUCTURE, CONCISENESS, ACTIONABILITY, OVERALL</td></tr>
+              <tr><td>structure</td><td>OBJECT</td><td>HEADINGS, CODE_FENCES, LISTS, TABLES, LINKS, IMAGES</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="optimize-command" aria-labelledby="optimize-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-lime">OPTIMIZE</span>
+          <h2 id="optimize-title" class="section-title">TOKENSENTRY OPTIMIZE</h2>
+          <p class="section-description">OPTIMIZE PROMPTS WITH THREE PROFILES: CONSERVATIVE, BALANCED, AGGRESSIVE.</p>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry optimize PROMPT_FILE [OPTIONS]
+
+ARGUMENTS:
+  PROMPT_FILE    PATH TO PROMPT FILE
+
+OPTIONS:
+  -p, --profile PROFILE      OPTIMIZATION PROFILE: CONSERVATIVE, BALANCED, AGGRESSIVE
+  -o, --output FILE          OUTPUT FILE PATH (REQUIRED)
+  -t, --tokenizer TOKENIZER  TOKENIZER FOR EXACT COUNTS
+  --preserve LIST            COMMA-SEPARATED LIST OF STRINGS TO PRESERVE
+  --max-iterations N         MAX OPTIMIZATION ITERATIONS (DEFAULT: 3)
+  --format FORMAT            OUTPUT FORMAT: TEXT, JSON, MARKDOWN</code></pre>
+        </div>
+
+        <h3>PROFILE COMPARISON</h3>
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>PROFILE</th><th>DESCRIPTION</th><th>TOKEN REDUCTION</th><th>RISK LEVEL</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>CONSERVATIVE</strong></td><td>WHITESPACE NORMALIZATION, EXACT DUPLICATE REMOVAL ONLY</td><td>5-15%</td><td>MINIMAL</td></tr>
+              <tr><td><strong>BALANCED</strong></td><td>PHRASE CONSOLIDATION, REDUNDANT TRANSITION REMOVAL, BULLET NORMALIZATION</td><td>15-30%</td><td>LOW</td></tr>
+              <tr><td><strong>AGGRESSIVE</strong></td><td>FILLER SENTENCE REMOVAL, EXPLANATION COMPRESSION, SECTION REORGANIZATION</td><td>30-50%</td><td>MODERATE</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>EXAMPLES</h3>
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>CONSERVATIVE (DEFAULT)</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --output optimized.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>BALANCED PROFILE</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile balanced --output opt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>AGGRESSIVE PROFILE</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile aggressive --output opt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>WITH EXACT TOKENIZER</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile balanced \
+  --tokenizer tiktoken:gpt-4 --output opt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card">
+            <h4>PRESERVE SPECIFIC STRINGS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile balanced \
+  --preserve "MUST INCLUDE,REQUIRED" --output opt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-gold">
+            <h4>JSON OUTPUT</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile balanced \
+  --output opt.md --format json</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="validate-command" aria-labelledby="validate-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-red">VALIDATE</span>
+          <h2 id="validate-title" class="section-title">TOKENSENTRY VALIDATE</h2>
+          <p class="section-description">VALIDATE OPTIMIZED PROMPTS AGAINST ORIGINALS WITH 7-STATUS CLASSIFICATION.</p>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry validate ORIGINAL_FILE OPTIMIZED_FILE [OPTIONS]
+
+ARGUMENTS:
+  ORIGINAL_FILE    PATH TO ORIGINAL PROMPT
+  OPTIMIZED_FILE   PATH TO OPTIMIZED PROMPT
+
+OPTIONS:
+  -t, --tokenizer TOKENIZER  TOKENIZER FOR EXACT COUNTS
+  --strict                   STRICT MODE (FAIL ON ANY ISSUE)
+  --format FORMAT            OUTPUT FORMAT: TEXT, JSON, MARKDOWN
+  --output FILE              WRITE OUTPUT TO FILE</code></pre>
+        </div>
+
+        <h3>VALIDATION STATUSES</h3>
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>STATUS</th><th>ICON</th><th>DESCRIPTION</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>EXACT</td><td>✅</td><td>BYTE-FOR-BYTE MATCH</td></tr>
+              <tr><td>STRUCTURAL</td><td>✅</td><td>SEMANTICALLY EQUIVALENT, MINOR FORMATTING DIFFERENCES</td></tr>
+              <tr><td>PROBABLE</td><td>⚠️</td><td>LIKELY PRESERVED BUT CANNOT CONFIRM</td></tr>
+              <tr><td>UNCERTAIN</td><td>❓</td><td>AMBIGUOUS - MANUAL REVIEW RECOMMENDED</td></tr>
+              <tr><td>MODIFIED</td><td>✏️</td><td>CHANGED BUT REQUIREMENT STILL MET</td></tr>
+              <tr><td>WEAKENED</td><td>⚠️</td><td>NEGATIVE CONSTRAINT WEAKENED (E.G. "DO NOT" REMOVED)</td></tr>
+              <tr><td>MISSING</td><td>❌</td><td>REQUIREMENT COMPLETELY REMOVED</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>EXAMPLES</h3>
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>BASIC VALIDATION</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry validate original.md optimized.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>WITH GPT-4 TOKENIZER</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry validate original.md optimized.md --tokenizer tiktoken:gpt-4</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>STRICT MODE FOR CI</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry validate original.md optimized.md --strict --format json || exit 1</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>MARKDOWN REPORT</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry validate original.md optimized.md --format markdown > validation.md</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tokenizers-command" aria-labelledby="tokenizers-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-gold">TOKENIZERS</span>
+          <h2 id="tokenizers-title" class="section-title">TOKENSENTRY TOKENIZERS</h2>
+          <p class="section-description">MANAGE AND LIST AVAILABLE TOKENIZERS.</p>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry tokenizers [OPTIONS]
+
+OPTIONS:
+  --format FORMAT    OUTPUT FORMAT: TEXT, JSON
+  --available        SHOW ONLY AVAILABLE (INSTALLED) TOKENIZERS</code></pre>
+        </div>
+
+        <h3>SUPPORTED TOKENIZERS</h3>
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>PREFIX</th><th>PROVIDER</th><th>EXAMPLES</th><th>EXACTNESS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>tiktoken:</td><td>OPENAI</td><td>gpt-4, gpt-3.5-turbo, gpt-4o, gpt-4-turbo, text-embedding-ada-002</td><td>EXACT</td></tr>
+              <tr><td>hf:</td><td>HUGGINGFACE</td><td>meta-llama/Llama-2-7b-hf, mistralai/Mistral-7B-v0.1, google/gemma-7b</td><td>EXACT</td></tr>
+              <tr><td>spm:</td><td>SENTENCEPIECE</td><td>/path/to/model.spm</td><td>EXACT</td></tr>
+              <tr><td>char-estimate</td><td>BUILT-IN</td><td>N/A (FALLBACK)</td><td>ESTIMATE (~4 CHARS/TOKEN)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>EXAMPLES</h3>
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>LIST ALL TOKENIZERS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry tokenizers</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>LIST AVAILABLE ONLY</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry tokenizers --available</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>JSON OUTPUT</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry tokenizers --format json | jq .</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills-command" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-green">SKILLS</span>
+          <h2 id="skills-title" class="section-title">TOKENSENTRY SKILL / WORKFLOW</h2>
+          <p class="section-description">RUN INDIVIDUAL SKILLS OR COMPOSE WORKFLOWS.</p>
+        </header>
+
+        <h3>LIST SKILLS</h3>
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry skill list [--format FORMAT]</code></pre>
+        </div>
+
+        <h3>RUN SINGLE SKILL</h3>
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry skill run SKILL_NAME [OPTIONS]
+
+OPTIONS:
+  --prompt TEXT       PROMPT TEXT (OR USE --prompt-file)
+  --prompt-file FILE  PATH TO PROMPT FILE
+  --format FORMAT     OUTPUT FORMAT: TEXT, JSON, MARKDOWN
+  --config FILE       SKILL-SPECIFIC CONFIG FILE</code></pre>
+        </div>
+
+        <h3>RUN WORKFLOW</h3>
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry workflow run PLAN_NAME [OPTIONS]
+
+BUILT-IN PLANS:
+  standard          ANALYZE → OPTIMIZE (BALANCED) → VALIDATE
+  conservative      ANALYZE → OPTIMIZE (CONSERVATIVE) → VALIDATE
+  aggressive        ANALYZE → OPTIMIZE (AGGRESSIVE) → VALIDATE
+  security          ANALYZE → SECURITY AUDIT → VALIDATE
+  full              ALL ANALYZERS → ALL OPTIMIZERS → VALIDATE → REPORT
+
+OPTIONS:
+  --prompt TEXT       PROMPT TEXT
+  --prompt-file FILE  PATH TO PROMPT FILE
+  --steps LIST        CUSTOM STEPS: '["skill1", "skill2", ...]'
+  --format FORMAT     OUTPUT FORMAT: TEXT, JSON, MARKDOWN</code></pre>
+        </div>
+
+        <h3>EXAMPLES</h3>
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>LIST ALL SKILLS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry skill list</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>RUN ANALYZER SKILL</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry skill run tokensentry-analyzer \
+  --prompt "YOUR PROMPT HERE" --format json</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>STANDARD WORKFLOW</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry workflow run standard \
+  --prompt-file prompt.md --format json</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>CUSTOM WORKFLOW</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry workflow run custom \
+  --steps '["tokensentry-analyzer", "tokensentry-optimizer", "tokensentry-validator"]' \
+  --prompt "YOUR PROMPT HERE"</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benchmarks-command" aria-labelledby="benchmarks-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">BENCHMARKS</span>
+          <h2 id="benchmarks-title" class="section-title">TOKENSENTRY BENCHMARK</h2>
+          <p class="section-description">RUN BENCHMARKS ON CURATED PROMPT CORPUS.</p>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry benchmark run [OPTIONS]
+
+OPTIONS:
+  --profiles LIST          PROFILES TO RUN: CONSERVATIVE, BALANCED, AGGRESSIVE
+  --max-prompts N          MAXIMUM PROMPTS TO PROCESS
+  --categories LIST        CATEGORIES TO INCLUDE
+  --tokenizer TOKENIZER    TOKENIZER FOR EXACT COUNTS
+  --output FILE            SAVE RESULTS TO FILE
+  --format FORMAT          OUTPUT FORMAT: TEXT, JSON</code></pre>
+        </div>
+
+        <h3>REPORT GENERATION</h3>
+        <div class="code-block card">
+          <pre><code class="language-bash">tokensentry benchmark report RESULTS_FILE [OPTIONS]
+
+OPTIONS:
+  --format FORMAT    OUTPUT FORMAT: TEXT, MARKDOWN, JSON
+  --output FILE      WRITE REPORT TO FILE
+  --compare          COMPARE AGAINST BASELINE</code></pre>
+        </div>
+
+        <h3>EXAMPLES</h3>
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>RUN ALL BENCHMARKS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>SPECIFIC PROFILES</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --profiles conservative balanced</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>LIMIT PROMPTS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --max-prompts 5</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>SAVE & REPORT</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --output results.json
+tokensentry benchmark report results.json --format markdown</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ci-cd" aria-labelledby="ci-cd-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-red">CI/CD INTEGRATION</span>
+          <h2 id="ci-cd-title" class="section-title">CONTINUOUS INTEGRATION</h2>
+          <p class="section-description">USE TOKENSENTRY IN YOUR CI/CD PIPELINES.</p>
+        </header>
+
+        <h3>GITHUB ACTIONS</h3>
+        <div class="code-block card">
+          <pre><code class="language-yaml"># .github/workflows/tokensentry.yml
+name: TokenSentry Validation
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install TokenSentry
+        run: pip install tokensentry[openai-tokenizer]
+      - name: Validate Prompts
+        run: |
+          tokensentry validate prompts/original.md prompts/optimized.md \
+            --tokenizer tiktoken:gpt-4 --strict --format json
+      - name: Analyze Prompt Quality
+        run: |
+          tokensentry analyze prompts/main.md \
+            --tokenizer tiktoken:gpt-4 --format json > analysis.json
+      - name: Upload Analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: tokensentry-analysis
+          path: analysis.json</code></pre>
+        </div>
+
+        <h3>GITLAB CI</h3>
+        <div class="code-block card">
+          <pre><code class="language-yaml"># .gitlab-ci.yml
+tokensentry_validate:
+  stage: test
+  image: python:3.11-slim
+  script:
+    - pip install tokensentry[openai-tokenizer]
+    - tokensentry validate prompts/original.md prompts/optimized.md --strict --format json
+  artifacts:
+    reports:
+      junit: tokensentry-report.xml
+    when: always</code></pre>
+        </div>
+
+        <h3>EXIT CODES</h3>
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>CODE</th><th>MEANING</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>0</td><td>SUCCESS</td></tr>
+              <tr><td>1</td><td>VALIDATION FAILED (STRICT MODE) OR GENERAL ERROR</td></tr>
+              <tr><td>2</td><td>INVALID ARGUMENTS</td></tr>
+              <tr><td>3</td><td>FILE NOT FOUND</td></tr>
+              <tr><td>4</td><td>TOKENIZER ERROR</td></tr>
+              <tr><td>5</td><td>CONFIG ERROR</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <span class="brand-text">TOKENSENTRY</span>
+          </a>
+          <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
+          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>DOCUMENTATION</h4>
+            <ul>
+              <li><a href="getting-started.html">GETTING STARTED</a></li>
+              <li><a href="cli-reference.html">CLI REFERENCE</a></li>
+              <li><a href="analyzer.html">ANALYZER</a></li>
+              <li><a href="optimizer.html">OPTIMIZER</a></li>
+              <li><a href="validator.html">VALIDATOR</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SKILLS</h4>
+            <ul>
+              <li><a href="skills/overview.html">ALL SKILLS</a></li>
+              <li><a href="skills/analyzer.html">ANALYZER</a></li>
+              <li><a href="skills/optimizer.html">OPTIMIZER</a></li>
+              <li><a href="skills/validator.html">VALIDATOR</a></li>
+              <li><a href="skills/composer.html">COMPOSER</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>ADVANCED</h4>
+            <ul>
+              <li><a href="benchmarks.html">BENCHMARKS</a></li>
+              <li><a href="reports.html">REPORTS</a></li>
+              <li><a href="api-reference.html">API REFERENCE</a></li>
+              <li><a href="configuration.html">CONFIGURATION</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>COMMUNITY</h4>
+            <ul>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
+              <li><a href="contributing.html">CONTRIBUTING</a></li>
+              <li><a href="changelog.html">CHANGELOG</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
+        <div class="footer-links">
+          <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="15" x2="12" y2="9"></line>
+      <line x1="6" y1="15" x2="12" y2="9"></line>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+  <script src="scripts/brutal.js"></script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TokenSentry AI Agent Skills - 15 composable skills for analysis, optimization, validation, and more.">
+  <meta name="theme-color" content="#000000">
+  <title>AI Agent Skills - TokenSentry Docs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="styles/brutal.css">
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
+        </div>
+        <span class="brand-text">TokenSentry</span>
+        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <div class="nav-menu" id="navMenu" role="menubar">
+        <div class="nav-section">
+          <span class="nav-section-title">GET STARTED</span>
+          <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+          <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Quick Start</a>
+          <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+          <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">CORE ENGINES</span>
+          <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">AI AGENT SKILLS</span>
+          <a href="skills/overview.html" class="nav-link active" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+          <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+          <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+          <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+          <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+          <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+          <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+          <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+          <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+          <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+          <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+          <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+          <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">ADVANCED</span>
+          <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
+          <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+          <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+          <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">COMMUNITY</span>
+          <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+          <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="version-badge">v0.1.1</div>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="star"></i> STAR ON GITHUB
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main-content" class="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <div class="grid-pattern" id="gridPattern"></div>
+        <div class="scanline" id="scanline"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+      </div>
+      
+      <div class="hero-content container">
+        <div class="hero-badge badge badge-cyan">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>AI AGENT ECOSYSTEM</span>
+        </div>
+        
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line" data-text="15 AI AGENT SKILLS">15 AI AGENT SKILLS</span>
+          <span class="title-line" data-text="COMPOSABLE • REUSABLE • EXTENSIBLE">COMPOSABLE • REUSABLE • EXTENSIBLE</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          BUILD POWERFUL PROMPT INTELLIGENCE WORKFLOWS WITH COMPOSABLE SKILLS. 
+          RUN INDIVIDUALLY OR CHAIN TOGETHER WITH THE SKILL COMPOSER.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="skills/composer.html" class="btn btn-primary btn-lg">
+            <i data-lucide="git-merge"></i>
+            SKILL COMPOSER
+          </a>
+          <a href="cli-reference.html#skills-command" class="btn btn-secondary btn-lg">
+            <i data-lucide="terminal"></i>
+            CLI REFERENCE
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="core-skills" aria-labelledby="core-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">CORE SKILLS</span>
+          <h2 id="core-title" class="section-title">FOUNDATIONAL SKILLS</h2>
+          <p class="section-description">THE THREE CORE SKILLS THAT MIRROR THE MAIN ENGINES.</p>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature-card card card-cyan">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <h3>TOKENSENTRY-ANALYZER</h3>
+            <p>DEEP PROMPT ANALYSIS WITH ALL 7 MODULES: STRUCTURE, REDUNDANCY, AMBIGUITY, CONTRADICTIONS, COMPLEXITY, QUALITY, SECURITY.</p>
+            <ul class="feature-list">
+              <li>FULL ANALYSIS PIPELINE</li>
+              <li>CONFIGURABLE MODULE SELECTION</li>
+              <li>JSON/MARKDOWN OUTPUT</li>
+              <li>TOKENIZER INTEGRATION</li>
+            </ul>
+            <a href="skills/analyzer.html" class="btn btn-sm btn-cyan" style="margin-top: var(--space-3);">VIEW DETAILS <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card card-magenta">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+            </div>
+            <h3>TOKENSENTRY-OPTIMIZER</h3>
+            <p>PROMPT OPTIMIZATION WITH THREE PROFILES: CONSERVATIVE, BALANCED, AGGRESSIVE. FULL TRANSFORMATION TRACKING.</p>
+            <ul class="feature-list">
+              <li>THREE OPTIMIZATION PROFILES</li>
+              <li>LITERAL PRESERVATION</li>
+              <li>TRANSFORMATION DELTA TRACKING</li>
+              <li>ITERATIVE REFINEMENT</li>
+            </ul>
+            <a href="skills/optimizer.html" class="btn btn-sm btn-magenta" style="margin-top: var(--space-3);">VIEW DETAILS <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card card-lime">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>TOKENSENTRY-VALIDATOR</h3>
+            <p>SEMANTIC VALIDATION WITH 7-STATUS CLASSIFICATION, LITERAL PRESERVATION, NEGATIVE CONSTRAINT CHECKING.</p>
+            <ul class="feature-list">
+              <li>7-STATUS CLASSIFICATION</li>
+              <li>BYTE-FOR-BYTE VERIFICATION</li>
+              <li>NEGATIVE CONSTRAINT AUDIT</li>
+              <li>SCHEMA VALIDATION</li>
+            </ul>
+            <a href="skills/validator.html" class="btn btn-sm btn-lime" style="margin-top: var(--space-3);">VIEW DETAILS <i data-lucide="arrow-right"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="specialized-skills" aria-labelledby="specialized-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-magenta">SPECIALIZED SKILLS</span>
+          <h2 id="specialized-title" class="section-title">DOMAIN-SPECIFIC SKILLS</h2>
+          <p class="section-description">TARGETED SKILLS FOR SPECIFIC PROMPT ENGINEERING TASKS.</p>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="0"></rect>
+                <path d="M8 21h13a2 2 0 0 0 2-2V5"></path>
+              </svg>
+            </div>
+            <h3>TOKEN-AUDITOR</h3>
+            <p>DETAILED TOKEN-LEVEL ANALYSIS WITH PER-TOKEN BREAKDOWN, VOCABULARY USAGE, AND COMPRESSION OPPORTUNITIES.</p>
+            <a href="skills/token-auditor.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3>CONTEXT-ENGINEER</h3>
+            <p>OPTIMIZES CONTEXT WINDOW USAGE, SUGGESTS RETRIEVAL STRATEGIES, AND BALANCES CONTEXT VS COMPLETION TOKENS.</p>
+            <a href="skills/context-engineer.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>SYSTEM-PROMPT-DESIGNER</h3>
+            <p>GENERATES OPTIMIZED SYSTEM PROMPTS FOR SPECIFIC MODELS AND TASKS WITH ROLE DEFINITION AND BEHAVIORAL GUARDRAILS.</p>
+            <a href="skills/system-prompt-designer.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M9 12l2 2 4-4"></path>
+                <path d="M12 16h.01"></path>
+              </svg>
+            </div>
+            <h3>SECURITY-AUDITOR</h3>
+            <p>COMPREHENSIVE SECURITY SCANNING: PROMPT INJECTION, SECRET LEAKAGE, ROLE OVERRIDE, UNSAFE OUTPUT REQUESTS.</p>
+            <a href="skills/security-auditor.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              </svg>
+            </div>
+            <h3>STRUCTURED-OUTPUT</h3>
+            <p>ENFORCES STRUCTURED OUTPUT FORMATS: JSON SCHEMA, YAML, MARKDOWN TEMPLATES, CUSTOM REGEX PATTERNS.</p>
+            <a href="skills/structured-output.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3>FEW-SHOT-OPTIMIZER</h3>
+            <p>SELECTS AND ORDERS FEW-SHOT EXAMPLES FOR MAXIMUM EFFECTIVENESS WITH MINIMAL TOKEN OVERHEAD.</p>
+            <a href="skills/few-shot.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="0"></rect>
+                <path d="M8 21h13a2 2 0 0 0 2-2V5"></path>
+              </svg>
+            </div>
+            <h3>AGENT-WORKFLOW</h3>
+            <p>ORCHESTRATES MULTI-AGENT WORKFLOWS WITH STATE MANAGEMENT, ERROR HANDLING, AND PARALLEL EXECUTION.</p>
+            <a href="skills/agent-workflow.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="0"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>MODEL-ADAPTER</h3>
+            <p>ADAPTS PROMPTS FOR SPECIFIC MODELS: GPT-4, CLAUDE, LLAMA, MISTRAL, GEMMA WITH MODEL-AWARE OPTIMIZATIONS.</p>
+            <a href="skills/model-adapter.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3>COST-ANALYST</h3>
+            <p>ESTIMATES API COSTS ACROSS PROVIDERS, SUGGESTS MODEL SUBSTITUTIONS, TRACKS TOKEN SPENDING.</p>
+            <a href="skills/cost-analyst.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <h3>PROMPT-EVALUATOR</h3>
+            <p>EVALUATES PROMPT EFFECTIVENESS AGAINST TEST CASES WITH METRICS: ACCURACY, CONSISTENCY, ROBUSTNESS.</p>
+            <a href="skills/evaluator.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>PROMPT-DOCUMENTER</h3>
+            <p>GENERATES COMPREHENSIVE PROMPT DOCUMENTATION: METADATA, VERSION HISTORY, TEST RESULTS, USAGE EXAMPLES.</p>
+            <a href="skills/documenter.html" class="btn btn-sm btn-ghost" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <article class="feature-card card card-gold">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M9 12l2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3>SKILL-COMPOSER</h3>
+            <p>ORCHESTRATES MULTIPLE SKILLS INTO COMPOSABLE WORKFLOWS WITH DEPENDENCY RESOLUTION AND PARALLEL EXECUTION.</p>
+            <a href="skills/composer.html" class="btn btn-sm btn-gold" style="margin-top: var(--space-3);">VIEW <i data-lucide="arrow-right"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="usage" aria-labelledby="usage-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-red">USAGE</span>
+          <h2 id="usage-title" class="section-title">USING SKILLS</h2>
+        </header>
+
+        <div class="tabs">
+          <div class="tabs-nav" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true" data-tab="cli">CLI</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="python">PYTHON API</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="workflows">WORKFLOWS</button>
+          </div>
+          
+          <div class="tab-panels">
+            <div class="tab-panel active" role="tabpanel" id="tab-cli">
+              <h3>LIST ALL SKILLS</h3>
+              <div class="code-block">
+                <pre><code class="language-bash">tokensentry skill list</code></pre>
+              </div>
+
+              <h3>RUN SINGLE SKILL</h3>
+              <div class="code-block">
+                <pre><code class="language-bash"># WITH PROMPT TEXT
+tokensentry skill run tokensentry-analyzer --prompt "YOUR PROMPT HERE"
+
+# WITH PROMPT FILE
+tokensentry skill run tokensentry-optimizer --prompt-file prompt.md --profile balanced
+
+# JSON OUTPUT
+tokensentry skill run tokensentry-validator --prompt-file original.md --prompt-file-optimized optimized.md --format json</code></pre>
+              </div>
+
+              <h3>RUN WORKFLOW</h3>
+              <div class="code-block">
+                <pre><code class="language-bash"># BUILT-IN PLANS
+tokensentry workflow run standard --prompt-file prompt.md
+tokensentry workflow run security --prompt-file prompt.md
+
+# CUSTOM WORKFLOW
+tokensentry workflow run custom \
+  --steps '["tokensentry-analyzer", "tokensentry-optimizer", "tokensentry-validator"]' \
+  --prompt-file prompt.md</code></pre>
+              </div>
+            </div>
+            
+            <div class="tab-panel" role="tabpanel" id="tab-python" hidden>
+              <h3>PYTHON API</h3>
+              <div class="code-block">
+                <pre><code class="language-python">from tokensentry.skills import SkillRegistry, SkillMetadata
+from tokensentry.skills.analyzer import AnalyzerSkill
+from tokensentry.skills.optimizer import OptimizerSkill
+from tokensentry.skills.validator import ValidatorSkill
+
+# REGISTRY
+registry = SkillRegistry()
+registry.auto_load()
+
+# RUN SINGLE SKILL
+analyzer = registry.get("tokensentry-analyzer")
+result = analyzer.execute(prompt="YOUR PROMPT HERE")
+print(result)
+
+# RUN WORKFLOW
+from tokensentry.workflows import WorkflowRunner
+runner = WorkflowRunner()
+result = runner.run("standard", prompt="YOUR PROMPT HERE")
+
+# CUSTOM WORKFLOW
+result = runner.run_custom(
+    steps=["tokensentry-analyzer", "tokensentry-optimizer", "tokensentry-validator"],
+    prompt="YOUR PROMPT HERE"
+)</code></pre>
+              </div>
+            </div>
+            
+            <div class="tab-panel" role="tabpanel" id="tab-workflows" hidden>
+              <h3>BUILT-IN WORKFLOW PLANS</h3>
+              <div class="table-wrapper card">
+                <table class="table">
+                  <thead>
+                    <tr><th>PLAN</th><th>STEPS</th><th>USE CASE</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>STANDARD</td><td>ANALYZER → OPTIMIZER (BALANCED) → VALIDATOR</td><td>GENERAL PURPOSE OPTIMIZATION</td></tr>
+                    <tr><td>CONSERVATIVE</td><td>ANALYZER → OPTIMIZER (CONSERVATIVE) → VALIDATOR</td><td>SAFE OPTIMIZATION</td></tr>
+                    <tr><td>AGGRESSIVE</td><td>ANALYZER → OPTIMIZER (AGGRESSIVE) → VALIDATOR</td><td>MAXIMUM TOKEN REDUCTION</td></tr>
+                    <tr><td>SECURITY</td><td>ANALYZER → SECURITY-AUDITOR → VALIDATOR</td><td>SECURITY-FOCUSED REVIEW</td></tr>
+                    <tr><td>FULL</td><td>ALL ANALYZERS → ALL OPTIMIZERS → VALIDATOR → REPORT</td><td>COMPREHENSIVE ANALYSIS</td></tr>
+                    <tr><td>TOKEN-AUDIT</td><td>ANALYZER → TOKEN-AUDITOR → OPTIMIZER → VALIDATOR</td><td>TOKEN-LEVEL OPTIMIZATION</td></tr>
+                    <tr><td>COST-OPTIMIZED</td><td>ANALYZER → COST-ANALYST → MODEL-ADAPTER → OPTIMIZER</td><td>COST-AWARE OPTIMIZATION</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3>CUSTOM WORKFLOW EXAMPLE</h3>
+              <div class="code-block">
+                <pre><code class="language-bash"># SECURITY + COST WORKFLOW
+tokensentry workflow run custom \
+  --steps '["tokensentry-analyzer", "tokensentry-security-auditor", "tokensentry-cost-analyst", "tokensentry-optimizer", "tokensentry-validator"]' \
+  --prompt-file prompt.md \
+  --format json</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="creating-skills" aria-labelledby="creating-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-green">EXTENDING</span>
+          <h2 id="creating-title" class="section-title">CREATING CUSTOM SKILLS</h2>
+          <p class="section-description">EXTEND TOKENSENTRY WITH YOUR OWN DOMAIN-SPECIFIC SKILLS.</p>
+        </header>
+
+        <h3>SKILL TEMPLATE</h3>
+        <div class="code-block card">
+          <pre><code class="language-python"># my_skill.py
+from tokensentry.skills import BaseSkill, SkillMetadata, SkillResult
+from tokensentry.models import Prompt
+
+class MyCustomSkill(BaseSkill):
+    METADATA = SkillMetadata(
+        name="my-custom-skill",
+        display_name="My Custom Skill",
+        description="Does something amazing with prompts",
+        version="1.0.0",
+        author="Your Name",
+        category="custom",
+        tags=["custom", "example"],
+        config_schema={
+            "type": "object",
+            "properties": {
+                "option1": {"type": "string", "default": "default_value"}
+            }
+        }
+    )
+
+    async def execute(self, prompt: Prompt, **kwargs) -> SkillResult:
+        # YOUR LOGIC HERE
+        analysis = self.analyze(prompt.text)
+        
+        return SkillResult(
+            success=True,
+            data={"analysis": analysis},
+            metadata={"tokens_processed": len(prompt.text.split())}
+        )
+
+    def analyze(self, text: str) -> dict:
+        # IMPLEMENT YOUR ANALYSIS
+        return {"custom_metric": len(text)}
+
+# REGISTER
+from tokensentry.skills import register_skill
+register_skill(MyCustomSkill)</code></pre>
+        </div>
+
+        <h3>LOADING CUSTOM SKILLS</h3>
+        <div class="code-block">
+          <pre><code class="language-yaml"># .tokensentry.yaml
+skills:
+  auto_load: true
+  directories:
+    - "./custom-skills"
+    - "/path/to/skills"
+  default_skills:
+    - "tokensentry-analyzer"
+    - "tokensentry-optimizer"
+    - "my-custom-skill"</code></pre>
+        </div>
+
+        <h3>BEST PRACTICES</h3>
+        <ul class="feature-list">
+          <li>IMPLEMENT <code>BaseSkill</code> INTERFACE</li>
+          <li>DEFINE <code>SkillMetadata</code> WITH JSON SCHEMA CONFIG</li>
+          <li>RETURN <code>SkillResult</code> WITH SUCCESS FLAG</li>
+          <li>HANDLE ERRORS GRACEFULLY</li>
+          <li>USE TYPE HINTS FOR BETTER IDE SUPPORT</li>
+          <li>ADD UNIT TESTS FOR YOUR SKILL</li>
+          <li>DOCUMENT CONFIG OPTIONS IN METADATA</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <span class="brand-text">TOKENSENTRY</span>
+          </a>
+          <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
+          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>DOCUMENTATION</h4>
+            <ul>
+              <li><a href="getting-started.html">GETTING STARTED</a></li>
+              <li><a href="cli-reference.html">CLI REFERENCE</a></li>
+              <li><a href="analyzer.html">ANALYZER</a></li>
+              <li><a href="optimizer.html">OPTIMIZER</a></li>
+              <li><a href="validator.html">VALIDATOR</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SKILLS</h4>
+            <ul>
+              <li><a href="skills/overview.html">ALL SKILLS</a></li>
+              <li><a href="skills/analyzer.html">ANALYZER</a></li>
+              <li><a href="skills/optimizer.html">OPTIMIZER</a></li>
+              <li><a href="skills/validator.html">VALIDATOR</a></li>
+              <li><a href="skills/composer.html">COMPOSER</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>ADVANCED</h4>
+            <ul>
+              <li><a href="benchmarks.html">BENCHMARKS</a></li>
+              <li><a href="reports.html">REPORTS</a></li>
+              <li><a href="api-reference.html">API REFERENCE</a></li>
+              <li><a href="configuration.html">CONFIGURATION</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>COMMUNITY</h4>
+            <ul>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
+              <li><a href="contributing.html">CONTRIBUTING</a></li>
+              <li><a href="changelog.html">CHANGELOG</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
+        <div class="footer-links">
+          <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="15" x2="12" y2="9"></line>
+      <line x1="6" y1="15" x2="12" y2="9"></line>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+  <script src="scripts/brutal.js"></script>
+</body>
+</html>

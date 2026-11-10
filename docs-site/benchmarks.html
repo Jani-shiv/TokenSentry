@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TokenSentry Benchmarks - 13 curated prompts across 7 categories with token reduction, preservation, and quality metrics.">
+  <meta name="theme-color" content="#000000">
+  <title>Benchmarks - TokenSentry Docs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="styles/brutal.css">
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
+        </div>
+        <span class="brand-text">TokenSentry</span>
+        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <div class="nav-menu" id="navMenu" role="menubar">
+        <div class="nav-section">
+          <span class="nav-section-title">GET STARTED</span>
+          <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+          <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Quick Start</a>
+          <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+          <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">CORE ENGINES</span>
+          <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">AI AGENT SKILLS</span>
+          <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+          <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+          <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+          <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+          <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+          <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+          <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+          <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+          <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+          <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+          <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+          <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+          <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">ADVANCED</span>
+          <a href="benchmarks.html" class="nav-link active" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
+          <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+          <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+          <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">COMMUNITY</span>
+          <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+          <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="version-badge">v0.1.1</div>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="star"></i> STAR ON GITHUB
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main-content" class="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <div class="grid-pattern" id="gridPattern"></div>
+        <div class="scanline" id="scanline"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+      </div>
+      
+      <div class="hero-content container">
+        <div class="hero-badge badge badge-cyan">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>BENCHMARK SUITE</span>
+        </div>
+        
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line" data-text="BENCHMARKS">BENCHMARKS</span>
+          <span class="title-line" data-text="13 PROMPTS • 7 CATEGORIES">13 PROMPTS • 7 CATEGORIES</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          CURATED BENCHMARK CORPUS FOR MEASURING TOKEN REDUCTION, REQUIREMENT PRESERVATION, 
+          AND QUALITY METRICS ACROSS OPTIMIZATION PROFILES.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="cli-reference.html#benchmarks-command" class="btn btn-primary btn-lg">
+            <i data-lucide="terminal"></i>
+            RUN BENCHMARKS
+          </a>
+          <a href="getting-started.html" class="btn btn-secondary btn-lg">
+            <i data-lucide="zap"></i>
+            QUICK START
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview" aria-labelledby="overview-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">OVERVIEW</span>
+          <h2 id="overview-title" class="section-title">BENCHMARK DESIGN</h2>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature-card card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>13 CURATED PROMPTS</h3>
+            <p>HAND-SELECTED PROMPTS COVERING REAL-WORLD USE CASES FROM SIMPLE TO COMPLEX.</p>
+            <ul class="feature-list">
+              <li>SOFTWARE ENGINEERING (3)</li>
+              <li>DEVOPS & INFRASTRUCTURE (2)</li>
+              <li>SECURITY ANALYSIS (2)</li>
+              <li>DATA SCIENCE (2)</li>
+              <li>TECHNICAL WRITING (2)</li>
+              <li>CODE REVIEW (1)</li>
+              <li>ARCHITECTURE DESIGN (1)</li>
+            </ul>
+          </article>
+
+          <article class="feature-card card card-cyan">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+            </div>
+            <h3>THREE PROFILES TESTED</h3>
+            <p>EACH PROMPT RUN THROUGH CONSERVATIVE, BALANCED, AND AGGRESSIVE OPTIMIZATION.</p>
+            <ul class="feature-list">
+              <li>TOKEN REDUCTION PERCENTAGE</li>
+              <li>TRANSFORMATION COUNT</li>
+              <li>VALIDATION PASS RATE</li>
+              <li>QUALITY SCORE DELTA</li>
+            </ul>
+          </article>
+
+          <article class="feature-card card card-magenta">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3>VALIDATION METRICS</h3>
+            <p>COMPREHENSIVE VALIDATION OF OPTIMIZED OUTPUTS AGAINST ORIGINALS.</p>
+            <ul class="feature-list">
+              <li>7-STATUS CLASSIFICATION COUNTS</li>
+              <li>LITERAL PRESERVATION RATE</li>
+              <li>NEGATIVE CONSTRAINT INTEGRITY</li>
+              <li>SCHEMA VALIDATION RESULTS</li>
+            </ul>
+          </article>
+
+          <article class="feature-card card card-lime">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3>TOKENIZER COMPARISON</h3>
+            <p>BENCHMARKS RUN WITH MULTIPLE TOKENIZERS FOR CROSS-MODEL ANALYSIS.</p>
+            <ul class="feature-list">
+              <li>TIKTOKEN: GPT-4, GPT-4O</li>
+              <li>HUGGINGFACE: LLAMA-3, MISTRAL</li>
+              <li>CHARACTER ESTIMATE BASELINE</li>
+              <li>EXACT VS ESTIMATE COMPARISON</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categories" aria-labelledby="categories-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-magenta">CATEGORIES</span>
+          <h2 id="categories-title" class="section-title">BENCHMARK CATEGORIES</h2>
+        </header>
+
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>CATEGORY</th><th>PROMPTS</th><th>DESCRIPTION</th><th>KEY METRICS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>SOFTWARE ENGINEERING</strong></td><td>3</td><td>CODE REVIEW, REFACTORING, DEBUGGING</td><td>TECHNICAL LITERAL PRESERVATION, STRUCTURE</td></tr>
+              <tr><td><strong>DEVOPS & INFRASTRUCTURE</strong></td><td>2</td><td>CI/CD, KUBERNETES, TERRAFORM, MONITORING</td><td>COMMAND ACCURACY, PARAMETER PRESERVATION</td></tr>
+              <tr><td><strong>SECURITY ANALYSIS</strong></td><td>2</td><td>VULNERABILITY SCANNING, THREAT MODELING</td><td>NEGATIVE CONSTRAINT INTEGRITY, SECRET HANDLING</td></tr>
+              <tr><td><strong>DATA SCIENCE</strong></td><td>2</td><td>ML PIPELINE, FEATURE ENGINEERING, EVALUATION</td><td>MATH NOTATION PRESERVATION, STRUCTURE</td></tr>
+              <tr><td><strong>TECHNICAL WRITING</strong></td><td>2</td><td>API DOCS, TUTORIALS, ARCHITECTURE DECISIONS</td><td>CLARITY, COMPLETENESS, ACTIONABILITY</td></tr>
+              <tr><td><strong>CODE REVIEW</strong></td><td>1</td><td>PR REVIEW WITH SECURITY FOCUS</td><td>FINDING PRESERVATION, ACTIONABILITY</td></tr>
+              <tr><td><strong>ARCHITECTURE DESIGN</strong></td><td>1</td><td>SYSTEM DESIGN WITH TRADE-OFFS</td><td>DECISION PRESERVATION, COMPLEXITY</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="running" aria-labelledby="running-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-lime">CLI USAGE</span>
+          <h2 id="running-title" class="section-title">RUNNING BENCHMARKS</h2>
+        </header>
+
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>RUN ALL BENCHMARKS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>SPECIFIC PROFILES</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --profiles conservative balanced</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>LIMIT PROMPTS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --max-prompts 5</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>SPECIFIC CATEGORIES</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --categories software_engineering security</code></pre>
+            </div>
+          </article>
+          <article class="example-card card">
+            <h4>WITH TIKTOKEN</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --tokenizer tiktoken:gpt-4</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-gold">
+            <h4>SAVE RESULTS</h4>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry benchmark run --output results.json</code></pre>
+            </div>
+          </article>
+        </div>
+
+        <h3>REPORT GENERATION</h3>
+        <div class="code-block card">
+          <pre><code class="language-bash"># MARKDOWN REPORT
+tokensentry benchmark report results.json --format markdown
+
+# JSON REPORT
+tokensentry benchmark report results.json --format json
+
+# COMPARE AGAINST BASELINE
+tokensentry benchmark report results.json --compare --format markdown</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-gold">RESULTS FORMAT</span>
+          <h2 id="results-title" class="section-title">BENCHMARK RESULTS STRUCTURE</h2>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-json">{
+  "benchmark_id": "bench_20240115_143022",
+  "timestamp": "2024-01-15T14:30:22Z",
+  "tokenizer": "tiktoken:gpt-4",
+  "profiles": ["conservative", "balanced", "aggressive"],
+  "categories": ["software_engineering", "devops", "security"],
+  "results": [
+    {
+      "prompt_id": "code_review_security",
+      "category": "security",
+      "original_tokens": 1247,
+      "profiles": {
+        "conservative": {
+          "optimized_tokens": 1189,
+          "token_delta": -58,
+          "reduction_pct": 4.65,
+          "transformations": 3,
+          "validation": {
+            "verdict": "PASSED",
+            "preserved": 8,
+            "missing": 0,
+            "weakened": 0
+          },
+          "quality_delta": {"overall": -0.02}
+        },
+        "balanced": {
+          "optimized_tokens": 987,
+          "token_delta": -260,
+          "reduction_pct": 20.85,
+          "transformations": 12,
+          "validation": {
+            "verdict": "REVIEW_REQUIRED",
+            "preserved": 6,
+            "missing": 0,
+            "weakened": 0,
+            "probable": 1,
+            "modified": 1
+          },
+          "quality_delta": {"overall": -0.08}
+        },
+        "aggressive": {
+          "optimized_tokens": 723,
+          "token_delta": -524,
+          "reduction_pct": 42.02,
+          "transformations": 28,
+          "validation": {
+            "verdict": "FAILED",
+            "preserved": 4,
+            "missing": 1,
+            "weakened": 1
+          },
+          "quality_delta": {"overall": -0.23}
+        }
+      }
+    }
+  ],
+  "summary": {
+    "total_prompts": 13,
+    "avg_reduction": {"conservative": 5.2, "balanced": 18.7, "aggressive": 38.4},
+    "pass_rate": {"conservative": 1.0, "balanced": 0.85, "aggressive": 0.46}
+  }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="corpus" aria-labelledby="corpus-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-red">CORPUS</span>
+          <h2 id="corpus-title" class="section-title">CUSTOM BENCHMARK CORPUS</h2>
+        </header>
+
+        <h3>ADD YOUR OWN PROMPTS</h3>
+        <p>CREATE A BENCHMARK CORPUS DIRECTORY WITH MARKDOWN FILES AND METADATA:</p>
+
+        <div class="code-block card">
+          <pre><code class="language-text">benchmarks/
+├── corpus/
+│   ├── software_engineering/
+│   │   ├── code_review.md
+│   │   ├── refactoring.md
+│   │   └── metadata.yaml
+│   ├── devops/
+│   │   ├── kubernetes_debug.md
+│   │   └── metadata.yaml
+│   └── security/
+│       ├── vuln_scan.md
+│       └── metadata.yaml
+└── results/</code></pre>
+        </div>
+
+        <h3>METADATA FORMAT</h3>
+        <div class="code-block card">
+          <pre><code class="language-yaml"># metadata.yaml
+category: "software_engineering"
+prompts:
+  - id: "code_review"
+    file: "code_review.md"
+    description: "Security-focused code review"
+    expected_tokens_gpt4: 1200
+    difficulty: "medium"
+    tags: ["security", "code-review", "python"]
+    
+  - id: "refactoring"
+    file: "refactoring.md"
+    description: "Legacy code refactoring"
+    expected_tokens_gpt4: 1800
+    difficulty: "hard"
+    tags: ["refactoring", "legacy", "patterns"]</code></pre>
+        </div>
+
+        <h3>CONFIGURATION</h3>
+        <div class="code-block card">
+          <pre><code class="language-yaml"># .tokensentry.yaml
+benchmarks:
+  corpus_path: "./benchmarks/corpus"
+  results_path: "./benchmarks/results"
+  default_profiles: ["conservative", "balanced", "aggressive"]
+  categories: 
+    - "software_engineering"
+    - "devops"
+    - "security"
+    - "data_science"
+    - "technical_writing"
+  tokenizer: "tiktoken:gpt-4"</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <span class="brand-text">TOKENSENTRY</span>
+          </a>
+          <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
+          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>DOCUMENTATION</h4>
+            <ul>
+              <li><a href="getting-started.html">GETTING STARTED</a></li>
+              <li><a href="cli-reference.html">CLI REFERENCE</a></li>
+              <li><a href="analyzer.html">ANALYZER</a></li>
+              <li><a href="optimizer.html">OPTIMIZER</a></li>
+              <li><a href="validator.html">VALIDATOR</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SKILLS</h4>
+            <ul>
+              <li><a href="skills/overview.html">ALL SKILLS</a></li>
+              <li><a href="skills/analyzer.html">ANALYZER</a></li>
+              <li><a href="skills/optimizer.html">OPTIMIZER</a></li>
+              <li><a href="skills/validator.html">VALIDATOR</a></li>
+              <li><a href="skills/composer.html">COMPOSER</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>ADVANCED</h4>
+            <ul>
+              <li><a href="benchmarks.html">BENCHMARKS</a></li>
+              <li><a href="reports.html">REPORTS</a></li>
+              <li><a href="api-reference.html">API REFERENCE</a></li>
+              <li><a href="configuration.html">CONFIGURATION</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>COMMUNITY</h4>
+            <ul>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
+              <li><a href="contributing.html">CONTRIBUTING</a></li>
+              <li><a href="changelog.html">CHANGELOG</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
+        <div class="footer-links">
+          <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="15" x2="12" y2="9"></line>
+      <line x1="6" y1="15" x2="12" y2="9"></line>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+  <script src="scripts/brutal.js"></script>
+</body>
+</html>

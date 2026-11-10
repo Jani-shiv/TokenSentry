@@ -1,277 +1,276 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get started with TokenSentry in minutes. Installation, quick start guide, and first steps.">
-    <title>Getting Started - TokenSentry Docs</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
-    
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/theme.css">
-    <link rel="stylesheet" href="styles/components.css">
-    <link rel="stylesheet" href="styles/animations.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get started with TokenSentry in minutes. Installation, quick start guide, and first steps.">
+  <meta name="theme-color" content="#000000">
+  <title>Getting Started - TokenSentry Docs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="styles/brutal.css">
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    </button>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
 
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
-                <div class="brand-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-                        <line x1="12" y1="22" x2="12" y2="15.5"></line>
-                        <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
-                    </svg>
-                </div>
-                <span class="brand-text">TokenSentry</span>
-                <span class="brand-tagline">Analyze. Optimize. Validate.</span>
-            </a>
-            
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-                <span class="hamburger"></span>
-            </button>
-            
-            <div class="nav-menu" id="navMenu" role="menubar">
-                <div class="nav-section">
-                    <span class="nav-section-title">Get Started</span>
-                    <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
-                    <a href="getting-started.html" class="nav-link active" role="menuitem"><i data-lucide="rocket"></i> Quick Start</a>
-                    <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
-                    <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
-                </div>
-                
-                <div class="nav-section">
-                    <span class="nav-section-title">Core Engines</span>
-                    <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
-                    <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
-                    <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="check-circle"></i> Validator</a>
-                    <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
-                </div>
-                
-                <div class="nav-section">
-                    <span class="nav-section-title">AI Agent Skills</span>
-                    <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
-                    <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
-                    <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
-                    <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
-                    <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
-                    <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
-                    <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
-                    <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
-                    <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
-                    <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
-                    <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
-                    <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
-                    <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
-                    <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
-                    <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
-                    <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
-                </div>
-                
-                <div class="nav-section">
-                    <span class="nav-section-title">Advanced</span>
-                    <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart"></i> Benchmarks</a>
-                    <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
-                    <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
-                    <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
-                </div>
-                
-                <div class="nav-section">
-                    <span class="nav-section-title">Community</span>
-                    <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
-                    <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
-                    <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
-                    <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
-                    <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
-                </div>
-                
-                <div class="nav-footer">
-                    <div class="version-badge">v0.1.1</div>
-                    <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
-                        <i data-lucide="star"></i> Star us on GitHub
-                    </a>
-                </div>
-            </div>
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
         </div>
-    </nav>
+        <span class="brand-text">TokenSentry</span>
+        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <div class="nav-menu" id="navMenu" role="menubar">
+        <div class="nav-section">
+          <span class="nav-section-title">GET STARTED</span>
+          <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+          <a href="getting-started.html" class="nav-link active" role="menuitem"><i data-lucide="zap"></i> Quick Start</a>
+          <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+          <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">CORE ENGINES</span>
+          <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">AI AGENT SKILLS</span>
+          <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+          <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+          <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+          <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+          <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+          <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+          <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+          <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+          <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+          <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+          <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+          <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+          <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">ADVANCED</span>
+          <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
+          <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+          <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+          <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">COMMUNITY</span>
+          <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+          <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="version-badge">v0.1.1</div>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="star"></i> STAR ON GITHUB
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <main id="main-content" class="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <div class="grid-pattern" id="gridPattern"></div>
+        <div class="scanline" id="scanline"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+      </div>
+      
+      <div class="hero-content container">
+        <div class="hero-badge badge badge-cyan">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>GETTING STARTED GUIDE</span>
+        </div>
+        
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line" data-text="GETTING STARTED">GETTING STARTED</span>
+          <span class="title-line" data-text="WITH TOKENSENTRY">WITH TOKENSENTRY</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          GET UP AND RUNNING WITH TOKENSENTRY IN MINUTES. LEARN INSTALLATION, BASIC USAGE, 
+          AND BEST PRACTICES FOR PROMPT ANALYSIS, OPTIMIZATION, AND VALIDATION.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="#installation" class="btn btn-primary btn-lg">
+            <i data-lucide="download"></i>
+            INSTALL NOW
+          </a>
+          <a href="#quick-start" class="btn btn-secondary btn-lg">
+            <i data-lucide="zap"></i>
+            QUICK START
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <main id="main-content" class="main-content" role="main">
-        <!-- Hero Section -->
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-background">
-                <div class="paper-layer" style="--layer: 1;"></div>
-                <div class="paper-layer" style="--layer: 2;"></div>
-                <div class="paper-layer" style="--layer: 3;"></div>
-            </div>
-            
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    <span>Getting Started Guide</span>
-                </div>
-                
-                <h1 id="hero-title" class="hero-title">
-                    <span class="title-line">Getting Started</span>
-                    <span class="title-line">with TokenSentry</span>
-                </h1>
-                
-                <p class="hero-subtitle">
-                    Get up and running with TokenSentry in minutes. Learn installation, basic usage, 
-                    and best practices for prompt analysis, optimization, and validation.
-                </p>
-                
-                <div class="hero-actions">
-                    <a href="#installation" class="btn btn-primary btn-lg">
-                        <i data-lucide="download"></i>
-                        Install Now
-                    </a>
-                    <a href="#quick-start" class="btn btn-secondary btn-lg">
-                        <i data-lucide="zap"></i>
-                        Quick Start
-                    </a>
-                </div>
-            </div>
-        </section>
+    <section class="section" id="installation" aria-labelledby="installation-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">INSTALLATION</span>
+          <h2 id="installation-title" class="section-title">INSTALL TOKENSENTRY</h2>
+          <p class="section-description">GET TOKENSENTRY INSTALLED AND CONFIGURED IN YOUR ENVIRONMENT.</p>
+        </header>
 
-        <section class="section" id="installation" aria-labelledby="installation-title">
-            <div class="container">
-                <header class="section-header">
-                    <span class="section-tag">Installation</span>
-                    <h2 id="installation-title" class="section-title">Install TokenSentry</h2>
-                    <p class="section-description">Get TokenSentry installed and configured in your environment.</                </header>
-
-                <div class="install-methods">
-                    <article class="install-card">
-                        <header class="install-header">
-                            <div class="install-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                    <polyline points="17 8 12 3 7 8"></polyline>
-                                    <line x1="12" y1="3" x2="12" y2="15"></line>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>PyPI (Recommended)</h3>
-                                <p class="install-desc">Install from PyPI with all optional dependencies</p>
-                            </div>
-                        </header>
-                        <div class="install-body">
-                            <pre><code class="language-bash"># Install with all optional dependencies
+        <div class="install-methods">
+          <article class="install-card card">
+            <header class="install-header">
+              <div class="install-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <div>
+                <h3>PYPI (RECOMMENDED)</h3>
+                <p class="install-desc">INSTALL FROM PYPI WITH ALL OPTIONAL DEPENDENCIES</p>
+              </div>
+            </header>
+            <div class="install-body">
+              <div class="code-block">
+                <pre><code class="language-bash"># INSTALL WITH ALL OPTIONAL DEPENDENCIES
 pip install -e ".[dev]"
 
-# Or install with specific extras
+# OR INSTALL WITH SPECIFIC EXTRAS
 pip install "tokensentry[openai-tokenizer]"
 pip install "tokensentry[huggingface-tokenizer]"
 pip install "tokensentry[sentencepiece]"
 
-# Minimal install (core only)
+# MINIMAL INSTALL (CORE ONLY)
 pip install tokensentry</code></pre>
-                            <p class="install-note"><strong>Requirements:</strong> Python 3.11+</p>
-                        </div>
-                    </article>
+              </div>
+              <p class="install-note"><strong>REQUIREMENTS:</strong> PYTHON 3.11+</p>
+            </div>
+          </article>
 
-                    <article class="install-card">
-                        <header class="install-header">
-                            <div class="install-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>Docker</h3>
-                                <p class="install-desc">Run TokenSentry in a container</p>
-                            </div>
-                        </header>
-                        <div class="install-body">
-                            <pre><code class="language-bash"># Pull the image
+          <article class="install-card card card-cyan">
+            <header class="install-header">
+              <div class="install-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3>DOCKER</h3>
+                <p class="install-desc">RUN TOKENSENTRY IN A CONTAINER</p>
+              </div>
+            </header>
+            <div class="install-body">
+              <div class="code-block">
+                <pre><code class="language-bash"># PULL THE IMAGE
 docker pull ghcr.io/jani-shiv/tokensentry:latest
 
-# Run with volume mount
+# RUN WITH VOLUME MOUNT
 docker run -v $(pwd):/workspace -it tokensentry analyze /workspace/prompt.md
 
-# With tokenizer
+# WITH TOKENIZER
 docker run -v $(pwd):/workspace -it tokensentry optimize /workspace/prompt.md --tokenizer tiktoken:gpt-4</code></pre>
-                        </div>
-                    </article>
+              </div>
+            </div>
+          </article>
 
-                    <article class="install-card">
-                        <header class="install-header">
-                            <div class="install-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <polygon points="23 7 16 12 9 7 2 12l11 5 11-5"></polygon>
-                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3>From Source</h3>
-                                <p class="install-desc">Clone and install from GitHub</p>
-                            </div>
-                        </header>
-                        <div class="install-body">
-                            <pre><code class="language-bash">git clone https://github.com/Jani-shiv/TokenSentry.git
+          <article class="install-card card card-magenta">
+            <header class="install-header">
+              <div class="install-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="23 7 16 12 9 7 2 12l11 5 11-5"></polygon>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
+                </svg>
+              </div>
+              <div>
+                <h3>FROM SOURCE</h3>
+                <p class="install-desc">CLONE AND INSTALL FROM GITHUB</p>
+              </div>
+            </header>
+            <div class="install-body">
+              <div class="code-block">
+                <pre><code class="language-bash">git clone https://github.com/Jani-shiv/TokenSentry.git
 cd TokenSentry
 pip install -e ".[dev]"
 
-# Verify installation
+# VERIFY INSTALLATION
 tokensentry version
 tokensentry --help</code></pre>
-                            <p class="install-note">Requires Git and Python 3.11+</p>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="requirements-box">
-                    <h3>System Requirements</h3>
-                    <ul class="requirements-list">
-                        <li><strong>Python:</strong> 3.11 or higher</li>
-                        <li><strong>OS:</strong> Linux, macOS, Windows (WSL recommended)</li>
-                        <li><strong>Memory:</strong> 512MB minimum, 2GB recommended</li>
-                        <li><strong>Disk:</strong> ~200MB for installation</li>
-                        <li><strong>Optional:</strong> Docker for containerized usage</li>
-                    </ul>
-                </div>
+              </div>
+              <p class="install-note">REQUIRES GIT AND PYTHON 3.11+</p>
             </div>
-        </section>
+          </article>
+        </div>
 
-        <section class="section" id="quick-start" aria-labelledby="quick-start-title">
-            <div class="container">
-                <header class="section-header">
-                    <span class="section-tag">Quick Start</span>
-                    <h2 id="quick-start-title" class="section-title">Your First Analysis in 30 Seconds</h2>
-                    <p class="section-description">Run your first prompt analysis and see TokenSentry in action.</                </header>
+        <div class="requirements-box card card-lime">
+          <h3>SYSTEM REQUIREMENTS</h3>
+          <ul class="requirements-list">
+            <li><strong>PYTHON:</strong> 3.11 OR HIGHER</li>
+            <li><strong>OS:</strong> LINUX, MACOS, WINDOWS (WSL RECOMMENDED)</li>
+            <li><strong>MEMORY:</strong> 512MB MINIMUM, 2GB RECOMMENDED</li>
+            <li><strong>DISK:</strong> ~200MB FOR INSTALLATION</li>
+            <li><strong>OPTIONAL:</strong> DOCKER FOR CONTAINERIZED USAGE</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-                <div class="quickstart-steps">
-                    <article class="quickstart-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Create a Prompt File</h3>
-                            <p>Create a file called <code>my-prompt.md</code> with your prompt:</p>
-                            <pre><code class="language-markdown"># My Prompt
+    <section class="section" id="quick-start" aria-labelledby="quick-start-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-magenta">QUICK START</span>
+          <h2 id="quick-start-title" class="section-title">YOUR FIRST ANALYSIS IN 30 SECONDS</h2>
+          <p class="section-description">RUN YOUR FIRST PROMPT ANALYSIS AND SEE TOKENSENTRY IN ACTION.</p>
+        </header>
 
-Act as a senior software engineer.
+        <div class="quickstart-steps">
+          <article class="quickstart-step card" data-step="1">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>CREATE A PROMPT FILE</h3>
+              <p>CREATE A FILE CALLED <code>my-prompt.md</code> WITH YOUR PROMPT:</p>
+              <div class="code-block">
+                <pre><code class="language-markdown"># MY PROMPT
 
-Review this Python code for performance issues:
+ACT AS A SENIOR SOFTWARE ENGINEER.
+
+REVIEW THIS PYTHON CODE FOR PERFORMANCE ISSUES:
 
 ```python
 def process_items(items):
@@ -282,120 +281,132 @@ def process_items(items):
     return results
 ```
 
-Identify performance bottlenecks and suggest optimizations.
-Provide specific code examples for improvements.</code></pre>
-                        </div>
-                    </article>
+IDENTIFY PERFORMANCE BOTTLENECKS AND SUGGEST OPTIMIZATIONS.
+PROVIDE SPECIFIC CODE EXAMPLES FOR IMPROVEMENTS.</code></pre>
+              </div>
+            </div>
+          </article>
 
-                    <article class="quickstart-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Run Analysis</h3>
-                            <p>Run TokenSentry to analyze your prompt:</p>
-                            <pre><code class="language-bash">tokensentry analyze my-prompt.md</code></pre>
-                            <p class="step-output">You'll see output like:</p>
-                            <pre><code class="language-bash">╭───────────── TokenSentry Analysis ─────────────╮
-│ Prompt ID: my-prompt                           │
-│ Characters: 456   Words: 78   Lines: 12        │
-│ Tokenizer: character-estimate                  │
-│ Token count: 115 (estimate)                    │
+          <article class="quickstart-step card card-cyan" data-step="2">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>RUN ANALYSIS</h3>
+              <p>RUN TOKENSENTRY TO ANALYZE YOUR PROMPT:</p>
+              <div class="code-block">
+                <pre><code class="language-bash">tokensentry analyze my-prompt.md</code></pre>
+              </div>
+              <p class="step-output">YOU'LL SEE OUTPUT LIKE:</p>
+              <div class="code-block">
+                <pre><code class="language-bash">╭───────────── TOKENSENTRY ANALYSIS ─────────────╮
+│ PROMPT ID: MY-PROMPT                           │
+│ CHARACTERS: 456   WORDS: 78   LINES: 12        │
+│ TOKENIZER: CHARACTER-ESTIMATE                  │
+│ TOKEN COUNT: 115 (ESTIMATE)                    │
 ├────────────────────────────────────────────────┤
-│ Findings:                                      │
-│   ⚠️  LOW_ACTIONABILITY: Few explicit verbs   │
-│   ℹ️  MISSING_OUTPUT_FORMAT: No format spec   │
+│ FINDINGS:                                      │
+│   ⚠️  LOW_ACTIONABILITY: FEW EXPLICIT VERBS   │
+│   ℹ️  MISSING_OUTPUT_FORMAT: NO FORMAT SPEC   │
 │                                                │
-│ Quality Scores:                                │
-│   clarity: 0.85  completeness: 0.60           │
-│   structure: 0.70  conciseness: 0.80          │
-│   actionability: 0.45  overall: 0.69          │
+│ QUALITY SCORES:                                │
+│   CLARITY: 0.85  COMPLETENESS: 0.60           │
+│   STRUCTURE: 0.70  CONCISENESS: 0.80          │
+│   ACTIONABILITY: 0.45  OVERALL: 0.69          │
 ╰────────────────────────────────────────────────╯</code></pre>
-                        </div>
-                    </article>
+              </div>
+            </div>
+          </article>
 
-                    <article class="quickstart-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Optimize & Validate</h3>
-                            <p>Optimize your prompt and validate the result:</p>
-                            <pre><code class="language-bash"># Optimize with balanced profile
+          <article class="quickstart-step card card-magenta" data-step="3">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>OPTIMIZE & VALIDATE</h3>
+              <p>OPTIMIZE YOUR PROMPT AND VALIDATE THE RESULT:</p>
+              <div class="code-block">
+                <pre><code class="language-bash"># OPTIMIZE WITH BALANCED PROFILE
 tokensentry optimize my-prompt.md --profile balanced --output optimized.md
 
-# Validate the optimized version
+# VALIDATE THE OPTIMIZED VERSION
 tokensentry validate my-prompt.md optimized.md
 
-# Check token savings
+# CHECK TOKEN SAVINGS
 tokensentry analyze optimized.md --tokenizer tiktoken:gpt-4</code></pre>
-                            <p class="step-output">Expected output:</p>
-                            <pre><code class="language-bash">+-- TokenSentry Optimization ---+
-| Profile: balanced           |
-| Original tokens: 115        |
-| Optimized tokens: 98        |
-| Token delta: -17 (-14.8%)   |
-| Transformations: 3          |
+              </div>
+              <p class="step-output">EXPECTED OUTPUT:</p>
+              <div class="code-block">
+                <pre><code class="language-bash">+-- TOKENSENTRY OPTIMIZATION ---+
+| PROFILE: BALANCED           |
+| ORIGINAL TOKENS: 115        |
+| OPTIMIZED TOKENS: 98        |
+| TOKEN DELTA: -17 (-14.8%)   |
+| TRANSFORMATIONS: 3          |
 +-------------------------------+
 
-+-------- TokenSentry Validation --------+
++-------- TOKENSENTRY VALIDATION --------+
 | REVIEW REQUIRED                       |
-| Preserved: 5 | Missing: 0 | Weak: 0  |
+| PRESERVED: 5 | MISSING: 0 | WEAK: 0  |
 +---------------------------------------+</code></pre>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="next-steps">
-                    <h3>What's Next?</h3>
-                    <ul class="next-steps-list">
-                        <li><a href="cli-reference.html"><i data-lucide="terminal"></i> Explore CLI Commands</a></li>
-                        <li><a href="analyzer.html"><i data-lucide="search"></i> Deep Dive: Analyzer Engine</a></li>
-                        <li><a href="optimizer.html"><i data-lucide="zap"></i> Optimization Profiles</a></li>
-                        <li><a href="skills/overview.html"><i data-lucide="puzzle"></i> Explore 15 AI Agent Skills</a></li>
-                        <li><a href="benchmarks.html"><i data-lucide="bar-chart"></i> Run Benchmarks</a></li>
-                    </ul>
-                </div>
+              </div>
             </div>
-        </section>
+          </article>
+        </div>
 
-        <section class="section" id="configuration" aria-labelledby="config-title">
-            <div class="container">
-                <header class="section-header">
-                    <span class="section-tag">Configuration</span>
-                    <h2 id="config-title" class="section-title">Configuration</h2>
-                    <p class="section-description">Customize TokenSentry behavior with configuration files and environment variables.
-                </header>
+        <div class="next-steps card card-lime">
+          <h3>WHAT'S NEXT?</h3>
+          <ul class="next-steps-list">
+            <li><a href="cli-reference.html"><i data-lucide="terminal"></i> EXPLORE CLI COMMANDS</a></li>
+            <li><a href="analyzer.html"><i data-lucide="search"></i> DEEP DIVE: ANALYZER ENGINE</a></li>
+            <li><a href="optimizer.html"><i data-lucide="zap"></i> OPTIMIZATION PROFILES</a></li>
+            <li><a href="skills/overview.html"><i data-lucide="puzzle"></i> EXPLORE 15 AI AGENT SKILLS</a></li>
+            <li><a href="benchmarks.html"><i data-lucide="bar-chart-2"></i> RUN BENCHMARKS</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-                <div class="config-grid">
-                    <article class="config-card">
-                        <h3>Environment Variables</h3>
-                        <pre><code class="language-bash"># Core settings
-TOKENSENTRY_MAX_PROMPT_SIZE=10485760      # 10MB max prompt size
+    <section class="section" id="configuration" aria-labelledby="config-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-gold">CONFIGURATION</span>
+          <h2 id="config-title" class="section-title">CONFIGURATION</h2>
+          <p class="section-description">CUSTOMIZE TOKENSENTRY BEHAVIOR WITH CONFIGURATION FILES AND ENVIRONMENT VARIABLES.</p>
+        </header>
+
+        <div class="config-grid">
+          <article class="config-card card">
+            <h3>ENVIRONMENT VARIABLES</h3>
+            <div class="code-block">
+              <pre><code class="language-bash"># CORE SETTINGS
+TOKENSENTRY_MAX_PROMPT_SIZE=10485760      # 10MB MAX PROMPT SIZE
 TOKENSENTRY_DEFAULT_TOKENIZER=character-estimate
 TOKENSENTRY_DEFAULT_PROFILE=conservative
 TOKENSENTRY_ENABLE_SECURITY_CHECKS=true
 TOKENSENTRY_TIMEOUT_SECONDS=30
 
-# Tokenizer settings
+# TOKENIZER SETTINGS
 TOKENSENTRY_TIKTOKEN_CACHE_DIR=/path/to/cache
 TOKENSENTRY_HF_CACHE_DIR=/path/to/hf/cache
 TOKENSENTRY_HF_OFFLINE_MODE=false
 
-# Skill settings
+# SKILL SETTINGS
 TOKENSENTRY_SKILL_DIRS=/custom/skills/path
 TOKENSENTRY_AUTO_LOAD_SKILLS=true
 
-# Benchmark settings
+# BENCHMARK SETTINGS
 TOKENSENTRY_BENCHMARK_CORPUS=/path/to/corpus
 TOKENSENTRY_BENCHMARK_RESULTS=/path/to/results
 
-# API (future)
+# API (FUTURE)
 TOKENSENTRY_API_HOST=127.0.0.1
 TOKENSENTRY_API_PORT=8000
 TOKENSENTRY_API_ENABLED=false</code></pre>
-                    </article>
+            </div>
+          </article>
 
-                    <article class="config-card">
-                        <h3>Configuration File</h3>
-                        <p>Create <code>.tokensentry.yaml</code> in your project root:</p>
-                        <pre><code class="language-yaml"># .tokensentry.yaml
+          <article class="config-card card card-cyan">
+            <h3>CONFIGURATION FILE</h3>
+            <p>CREATE <code>.tokensentry.yaml</code> IN YOUR PROJECT ROOT:</p>
+            <div class="code-block">
+              <pre><code class="language-yaml"># .tokensentry.yaml
 default_tokenizer: "tiktoken:gpt-4"
 default_optimization_profile: "balanced"
 enable_security_checks: true
@@ -430,12 +441,14 @@ benchmarks:
   results_path: "./benchmarks/results"
   default_profiles: ["conservative", "balanced", "aggressive"]
   categories: ["software_engineering", "devops", "security"]</code></pre>
-                    </article>
+            </div>
+          </article>
 
-                    <article class="config-card">
-                        <h3>Project-Level Config</h3>
-                        <p>Override settings per project with <code>tokensentry.config.yaml</code>:</p>
-                        <pre><code class="language-yaml"># tokensentry.config.yaml
+          <article class="config-card card card-magenta">
+            <h3>PROJECT-LEVEL CONFIG</h3>
+            <p>OVERRIDE SETTINGS PER PROJECT WITH <code>tokensentry.config.yaml</code>:</p>
+            <div class="code-block">
+              <pre><code class="language-yaml"># tokensentry.config.yaml
 project_name: "my-project"
 version: "1.0.0"
 
@@ -467,254 +480,284 @@ skills:
     - "tokensentry-cost-analyst"
   custom_skills:
     - "./skills/my-custom-skill"</code></pre>
-                    </article>
-                </div>
             </div>
-        </section>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <section class="section" id="troubleshooting" aria-labelledby="troubleshooting-title">
-            <div class="container">
-                <header class="section-header">
-                    <span class="section-tag">Troubleshooting</span>
-                    <h2 id="troubleshooting-title" class="section-title">Common Issues & Solutions</h2>
-                </header>
+    <section class="section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-red">TROUBLESHOOTING</span>
+          <h2 id="troubleshooting-title" class="section-title">COMMON ISSUES & SOLUTIONS</h2>
+        </header>
 
-                <div class="troubleshooting-grid">
-                    <article class="trouble-card">
-                        <h3><i data-lucide="alert-circle"></i> Import Error: No module named 'tokensentry'</h3>
-                        <p><strong>Cause:</strong> Package not installed or not in PATH</p>
-                        <p><strong>Solution:</strong></p>
-                        <pre><code class="language-bash"># Reinstall with pip
+        <div class="troubleshooting-grid">
+          <article class="trouble-card card">
+            <h3><i data-lucide="alert-circle"></i> IMPORT ERROR: NO MODULE NAMED 'TOKENSENTRY'</h3>
+            <p><strong>CAUSE:</strong> PACKAGE NOT INSTALLED OR NOT IN PATH</p>
+            <p><strong>SOLUTION:</strong></p>
+            <div class="code-block">
+              <pre><code class="language-bash"># REINSTALL WITH PIP
 pip install --force-reinstall -e ".[dev]"
 
-# Or verify installation
+# OR VERIFY INSTALLATION
 python -c "import tokensentry; print(tokensentry.__version__)"
 </code></pre>
-                    </article>
+            </div>
+          </article>
 
-                    <article class="trouble-card">
-                        <h3><i data-lucide="alert-circle"></i> Tokenizer Not Found</h3>
-                        <p><strong>Cause:</strong> Optional tokenizer dependencies not installed</p>
-                        <p><strong>Solution:</strong></p>
-                        <pre><code class="language-bash"># Install specific tokenizer
-pip install tokensentry[openai-tokenizer]    # For tiktoken
-pip install tokensentry[huggingface-tokenizer]  # For HF models
-pip install tokensentry[sentencepiece]        # For SentencePiece
+          <article class="trouble-card card card-cyan">
+            <h3><i data-lucide="alert-circle"></i> TOKENIZER NOT FOUND</h3>
+            <p><strong>CAUSE:</strong> OPTIONAL TOKENIZER DEPENDENCIES NOT INSTALLED</p>
+            <p><strong>SOLUTION:</strong></p>
+            <div class="code-block">
+              <pre><code class="language-bash"># INSTALL SPECIFIC TOKENIZER
+pip install tokensentry[openai-tokenizer]    # FOR TIKTOKEN
+pip install tokensentry[huggingface-tokenizer]  # FOR HF MODELS
+pip install tokensentry[sentencepiece]        # FOR SENTENCEPIECE
 
-# Or install all
+# OR INSTALL ALL
 pip install "tokensentry[all]"
 </code></pre>
-                    </article>
+            </div>
+          </article>
 
-                    <article class="trouble-card">
-                        <h3><i data-lucide="alert-circle"></i> Memory Error on Large Prompts</h3>
-                        <p><strong>Cause:</strong> Prompt exceeds memory limit</p>
-                        <p><strong>Solution:</strong></p>
-                        <pre><code class="language-bash"># Increase limit via env var
+          <article class="trouble-card card card-magenta">
+            <h3><i data-lucide="alert-circle"></i> MEMORY ERROR ON LARGE PROMPTS</h3>
+            <p><strong>CAUSE:</strong> PROMPT EXCEEDS MEMORY LIMIT</p>
+            <p><strong>SOLUTION:</strong></p>
+            <div class="code-block">
+              <pre><code class="language-bash"># INCREASE LIMIT VIA ENV VAR
 export TOKENSENTRY_MAX_PROMPT_SIZE=52428800  # 50MB
 
-# Or in config
+# OR IN CONFIG
 # max_prompt_size: 52428800
 </code></pre>
-                    </article>
+            </div>
+          </article>
 
-                    <article class="trouble-card">
-                        <h3><i data-lucide="alert-circle"></i> Tokenizer Model Not Found</h3>
-                        <p><strong>Cause:</strong> HuggingFace model not cached or unavailable</p>
-                        <p><strong>Solution:</strong></p>
-                        <pre><code class="language-bash"># Pre-download model
+          <article class="trouble-card card card-lime">
+            <h3><i data-lucide="alert-circle"></i> TOKENIZER MODEL NOT FOUND</h3>
+            <p><strong>CAUSE:</strong> HUGGINGFACE MODEL NOT CACHED OR UNAVAILABLE</p>
+            <p><strong>SOLUTION:</strong></p>
+            <div class="code-block">
+              <pre><code class="language-bash"># PRE-DOWNLOAD MODEL
 python -c "from transformers import AutoTokenizer; AutoTokenizer.from_pretrained('meta-llama/Llama-2-7b-hf')"
 
-# Or use offline mode
+# OR USE OFFLINE MODE
 export TOKENSENTRY_HF_OFFLINE_MODE=true
 </code></pre>
-                    </article>
+            </div>
+          </article>
 
-                    <article class="trouble-card">
-                        <h3><i data-lucide="alert-circle"></i> Validation Fails Unexpectedly</h3>
-                        <p><strong>Cause:</strong> Optimizer removed required elements</p>
-                        <p><strong>Solution:</strong></p>
-                        <pre><code class="language-bash"># Use conservative profile
+          <article class="trouble-card card card-gold">
+            <h3><i data-lucide="alert-circle"></i> VALIDATION FAILS UNEXPECTEDLY</h3>
+            <p><strong>CAUSE:</strong> OPTIMIZER REMOVED REQUIRED ELEMENTS</p>
+            <p><strong>SOLUTION:</strong></p>
+            <div class="code-block">
+              <pre><code class="language-bash"># USE CONSERVATIVE PROFILE
 tokensentry optimize prompt.md --profile conservative
 
-# Check what was removed
+# CHECK WHAT WAS REMOVED
 tokensentry validate original.md optimized.md --format json
 
-# Add explicit preservation
+# ADD EXPLICIT PRESERVATION
 # tokensentry optimize prompt.md --preserve "requirement1,requirement2"
 </code></pre>
-                    </article>
+            </div>
+          </article>
 
-                    <article class="trouble-card">
-                        <h3><i data-lucide="alert-circle"></i> Slow Performance</h3>
-                        <p><strong>Cause:</strong> Large prompts or complex analysis</p>
-                        <p><strong>Solution:</strong></p>
-                        <pre><code class="language-bash"># Use character estimate for speed
+          <article class="trouble-card card">
+            <h3><i data-lucide="alert-circle"></i> SLOW PERFORMANCE</h3>
+            <p><strong>CAUSE:</strong> LARGE PROMPTS OR COMPLEX ANALYSIS</p>
+            <p><strong>SOLUTION:</strong></p>
+            <div class="code-block">
+              <pre><code class="language-bash"># USE CHARACTER ESTIMATE FOR SPEED
 tokensentry analyze huge-prompt.md --tokenizer character-estimate
 
-# Disable heavy analysis
+# DISABLE HEAVY ANALYSIS
 export TOKENSENTRY_ENABLE_SECURITY_CHECKS=false
 export TOKENSENTRY_ENABLE_QUALITY_SCORING=false
 
-# Profile specific sections
+# PROFILE SPECIFIC SECTIONS
 tokensentry benchmark run --max-prompts 1 --profiles conservative
 </code></pre>
-                    </article>
-                </div>
             </div>
-        </section>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <section class="section" id="faq" aria-labelledby="faq-title">
-            <div class="container">
-                <header class="section-header">
-                    <span class="section-tag">FAQ</span>
-                    <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
-                </header>
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-green">FAQ</span>
+          <h2 id="faq-title" class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+        </header>
 
-                <div class="faq-accordion">
-                    <details class="faq-item open">
-                        <summary>What is TokenSentry and why should I use it?</summary>
-                        <p>TokenSentry is a local-first prompt intelligence toolkit that helps you analyze, optimize, and validate AI prompts. It runs entirely locally with no API keys required, providing deep insights into prompt structure, token usage, quality metrics, and security risks. It's designed for developers, prompt engineers, and AI practitioners who want to improve their prompts systematically.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Is TokenSentry free and open source?</summary>
-                        <p>Yes! TokenSentry is open source under the Apache 2.0 license. It's free to use, modify, and distribute. There are no paid tiers, no API keys required, and no usage limits. All processing happens locally on your machine.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Which Python versions are supported?</summary>
-                        <p>TokenSentry requires Python 3.11 or higher. We test against Python 3.11, 3.12, and 3.13. Older versions are not supported due to typing features and standard library dependencies.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Does TokenSentry send my prompts to external servers?</summary>
-                        <p>No. TokenSentry is completely local-first. Your prompts never leave your machine. All analysis, optimization, and validation happens locally. Optional tokenizer adapters (like HuggingFace) may download model weights on first use, but prompt content never leaves your machine.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Which tokenizers are supported?</summary>
-                        <p>TokenSentry supports: <strong>tiktoken</strong> (OpenAI models: GPT-4, GPT-3.5, GPT-4o, etc.), <strong>HuggingFace tokenizers</strong> (Llama, Mistral, Gemma, etc.), <strong>SentencePiece</strong> (custom models), and a built-in <strong>character-estimate</strong> fallback. Run <code>tokensentry tokenizers</code> to see all available options.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>What's the difference between optimization profiles?</summary>
-                        <p><strong>Conservative:</strong> Only removes redundant whitespace and exact duplicate lines. Safest option. <br><strong>Balanced:</strong> Consolidates repeated phrases, removes redundant transitions, normalizes bullets. Good balance of safety and token reduction. <br><strong>Aggressive:</strong> Removes filler sentences, compresses explanations, reorganizes sections. Maximum token reduction but with warnings. Always review aggressive output before use.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>How accurate are the token counts?</summary>
-                        <p>Token counts are <strong>exact</strong> when using tiktoken or HuggingFace tokenizers. The character-estimate tokenizer provides <strong>estimates</strong> (~4 chars per token) and is clearly labeled as such. Never compare token counts from different tokenizers directly—they use different vocabularies and encoding schemes.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can I use TokenSentry in CI/CD pipelines?</summary>
-                        <p>Yes! TokenSentry is designed for automation. All commands support <code>--format json</code> for machine-readable output. Exit codes indicate success/failure. Example CI usage: <code>tokensentry validate original.md optimized.md --format json || exit 1</code>. See <a href="cli-reference.html#ci-cd">CI/CD Integration</a> for complete examples.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>How do I create a custom skill?</summary>
-                        <p>Create a Python class inheriting from <code>BaseSkill</code>, define metadata with <code>SkillMetadata</code>, implement the <code>execute()</code> method, and register with the skill registry. See <a href="skills/creating-skills.html">Creating Custom Skills</a> for a complete tutorial with examples.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can I extend TokenSentry with custom tokenizers?</summary>
-                        <p>Yes! Implement the <code>BaseTokenizer</code> interface and register with <code>register_tokenizer()</code>. Your tokenizer must provide <code>count()</code>, <code>name</code>, <code>count_kind</code>, and metadata. See <a href="tokenizers/custom.html">Custom Tokenizers</a> for a complete guide.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>How do I report a bug or request a feature?</summary>
-                        <p>Open an issue on <a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank">GitHub Issues</a>. For security vulnerabilities, use GitHub's private vulnerability reporting. Please include: Python version, TokenSentry version, OS, steps to reproduce, and expected vs actual behavior.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can I contribute to TokenSentry?</summary>
-                        <p>Absolutely! We welcome contributions. See <a href="contributing.html">Contributing Guide</a> for guidelines on code contributions, documentation, testing, and skill development. All contributions are licensed under Apache 2.0.</p>
-                    </details>
-                </div>
+        <div class="accordion" id="faqAccordion">
+          <details class="faq-item accordion-item open">
+            <summary class="accordion-trigger" aria-expanded="true">WHAT IS TOKENSENTRY AND WHY SHOULD I USE IT?</summary>
+            <div class="accordion-content open">
+              <p>TOKENSENTRY IS A LOCAL-FIRST PROMPT INTELLIGENCE TOOLKIT THAT HELPS YOU ANALYZE, OPTIMIZE, AND VALIDATE AI PROMPTS. IT RUNS ENTIRELY LOCALLY WITH NO API KEYS REQUIRED, PROVIDING DEEP INSIGHTS INTO PROMPT STRUCTURE, TOKEN USAGE, QUALITY METRICS, AND SECURITY RISKS. IT'S DESIGNED FOR DEVELOPERS, PROMPT ENGINEERS, AND AI PRACTITIONERS WHO WANT TO IMPROVE THEIR PROMPTS SYSTEMATICALLY.</p>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-brand-link">
-                        <div class="brand-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-                                <line x1="12" y1="22" x2="12" y2="15.5"></line>
-                                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
-                            </svg>
-                        </div>
-                        <span class="brand-text">TokenSentry</span>
-                    </a>
-                    <p class="brand-tagline">Analyze. Optimize. Validate. Make every token count.</p>
-                    <p class="footer-version">v0.1.1 · Apache-2.0 License</p>
-                </div>
-                
-                <nav class="footer-nav" aria-label="Footer navigation">
-                    <div class="footer-col">
-                        <h4>Documentation</h4>
-                        <ul>
-                            <li><a href="getting-started.html">Getting Started</a></li>
-                            <li><a href="cli-reference.html">CLI Reference</a></li>
-                            <li><a href="analyzer.html">Analyzer</a></li>
-                            <li><a href="optimizer.html">Optimizer</a></li>
-                            <li><a href="validator.html">Validator</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Skills</h4>
-                        <ul>
-                            <li><a href="skills/overview.html">All Skills</a></li>
-                            <li><a href="skills/analyzer.html">Analyzer</a></li>
-                            <li><a href="skills/optimizer.html">Optimizer</a></li>
-                            <li><a href="skills/validator.html">Validator</a></li>
-                            <li><a href="skills/composer.html">Composer</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Advanced</h4>
-                        <ul>
-                            <li><a href="benchmarks.html">Benchmarks</a></li>
-                            <li><a href="reports.html">Reports</a></li>
-                            <li><a href="api-reference.html">API Reference</a></li>
-                            <li><a href="configuration.html">Configuration</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Community</h4>
-                        <ul>
-                            <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                            <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
-                            <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">Discussions</a></li>
-                            <li><a href="contributing.html">Contributing</a></li>
-                            <li><a href="changelog.html">Changelog</a></li>
-                        </ul>
-                    </div>
-                </nav>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">IS TOKENSENTRY FREE AND OPEN SOURCE?</summary>
+            <div class="accordion-content">
+              <p>YES! TOKENSENTRY IS OPEN SOURCE UNDER THE APACHE 2.0 LICENSE. IT'S FREE TO USE, MODIFY, AND DISTRIBUTE. THERE ARE NO PAID TIERS, NO API KEYS REQUIRED, AND NO USAGE LIMITS. ALL PROCESSING HAPPENS LOCALLY ON YOUR MACHINE.</p>
             </div>
-            
-            <div class="footer-bottom">
-                <p>Built with care by the TokenSentry community. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">View contributors</a></p>
-                <div class="footer-links">
-                    <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                    <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                    </a>
-                </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">WHICH PYTHON VERSIONS ARE SUPPORTED?</summary>
+            <div class="accordion-content">
+              <p>TOKENSENTRY REQUIRES PYTHON 3.11 OR HIGHER. WE TEST AGAINST PYTHON 3.11, 3.12, AND 3.13. OLDER VERSIONS ARE NOT SUPPORTED DUE TO TYPING FEATURES AND STANDARD LIBRARY DEPENDENCIES.</p>
             </div>
-        </footer>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">DOES TOKENSENTRY SEND MY PROMPTS TO EXTERNAL SERVERS?</summary>
+            <div class="accordion-content">
+              <p>NO. TOKENSENTRY IS COMPLETELY LOCAL-FIRST. YOUR PROMPTS NEVER LEAVE YOUR MACHINE. ALL ANALYSIS, OPTIMIZATION, AND VALIDATION HAPPENS LOCALLY. OPTIONAL TOKENIZER ADAPTERS (LIKE HUGGINGFACE) MAY DOWNLOAD MODEL WEIGHTS ON FIRST USE, BUT PROMPT CONTENT NEVER LEAVES YOUR MACHINE.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">WHICH TOKENIZERS ARE SUPPORTED?</summary>
+            <div class="accordion-content">
+              <p>TOKENSENTRY SUPPORTS: <strong>TIKTOKEN</strong> (OPENAI MODELS: GPT-4, GPT-3.5, GPT-4O, ETC.), <strong>HUGGINGFACE TOKENIZERS</strong> (LLAMA, MISTRAL, GEMMA, ETC.), <strong>SENTENCEPIECE</strong> (CUSTOM MODELS), AND A BUILT-IN <strong>CHARACTER-ESTIMATE</strong> FALLBACK. RUN <code>tokensentry tokenizers</code> TO SEE ALL AVAILABLE OPTIONS.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">WHAT'S THE DIFFERENCE BETWEEN OPTIMIZATION PROFILES?</summary>
+            <div class="accordion-content">
+              <p><strong>CONSERVATIVE:</strong> ONLY REMOVES REDUNDANT WHITESPACE AND EXACT DUPLICATE LINES. SAFEST OPTION. <br><strong>BALANCED:</strong> CONSOLIDATES REPEATED PHRASES, REMOVES REDUNDANT TRANSITIONS, NORMALIZES BULLETS. GOOD BALANCE OF SAFETY AND TOKEN REDUCTION. <br><strong>AGGRESSIVE:</strong> REMOVES FILLER SENTENCES, COMPRESSES EXPLANATIONS, REORGANIZES SECTIONS. MAXIMUM TOKEN REDUCTION BUT WITH WARNINGS. ALWAYS REVIEW AGGRESSIVE OUTPUT BEFORE USE.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">HOW ACCURATE ARE THE TOKEN COUNTS?</summary>
+            <div class="accordion-content">
+              <p>TOKEN COUNTS ARE <strong>EXACT</strong> WHEN USING TIKTOKEN OR HUGGINGFACE TOKENIZERS. THE CHARACTER-ESTIMATE TOKENIZER PROVIDES <strong>ESTIMATES</strong> (~4 CHARS PER TOKEN) AND IS CLEARLY LABELED AS SUCH. NEVER COMPARE TOKEN COUNTS FROM DIFFERENT TOKENIZERS DIRECTLY—THEY USE DIFFERENT VOCABULARIES AND ENCODING SCHEMES.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">CAN I USE TOKENSENTRY IN CI/CD PIPELINES?</summary>
+            <div class="accordion-content">
+              <p>YES! TOKENSENTRY IS DESIGNED FOR AUTOMATION. ALL COMMANDS SUPPORT <code>--format json</code> FOR MACHINE-READABLE OUTPUT. EXIT CODES INDICATE SUCCESS/FAILURE. EXAMPLE CI USAGE: <code>tokensentry validate original.md optimized.md --format json || exit 1</code>. SEE <a href="cli-reference.html#ci-cd">CI/CD INTEGRATION</a> FOR COMPLETE EXAMPLES.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">HOW DO I CREATE A CUSTOM SKILL?</summary>
+            <div class="accordion-content">
+              <p>CREATE A PYTHON CLASS INHERITING FROM <code>BaseSkill</code>, DEFINE METADATA WITH <code>SkillMetadata</code>, IMPLEMENT THE <code>execute()</code> METHOD, AND REGISTER WITH THE SKILL REGISTRY. SEE <a href="skills/creating-skills.html">CREATING CUSTOM SKILLS</a> FOR A COMPLETE TUTORIAL WITH EXAMPLES.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">CAN I EXTEND TOKENSENTRY WITH CUSTOM TOKENIZERS?</summary>
+            <div class="accordion-content">
+              <p>YES! IMPLEMENT THE <code>BaseTokenizer</code> INTERFACE AND REGISTER WITH <code>register_tokenizer()</code>. YOUR TOKENIZER MUST PROVIDE <code>count()</code>, <code>name</code>, <code>count_kind</code>, AND METADATA. SEE <a href="tokenizers/custom.html">CUSTOM TOKENIZERS</a> FOR A COMPLETE GUIDE.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">HOW DO I REPORT A BUG OR REQUEST A FEATURE?</summary>
+            <div class="accordion-content">
+              <p>OPEN AN ISSUE ON <a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank">GITHUB ISSUES</a>. FOR SECURITY VULNERABILITIES, USE GITHUB'S PRIVATE VULNERABILITY REPORTING. PLEASE INCLUDE: PYTHON VERSION, TOKENSENTRY VERSION, OS, STEPS TO REPRODUCE, AND EXPECTED VS ACTUAL BEHAVIOR.</p>
+            </div>
+          </details>
+          <details class="faq-item accordion-item">
+            <summary class="accordion-trigger" aria-expanded="false">CAN I CONTRIBUTE TO TOKENSENTRY?</summary>
+            <div class="accordion-content">
+              <p>ABSOLUTELY! WE WELCOME CONTRIBUTIONS. SEE <a href="contributing.html">CONTRIBUTING GUIDE</a> FOR GUIDELINES ON CODE CONTRIBUTIONS, DOCUMENTATION, TESTING, AND SKILL DEVELOPMENT. ALL CONTRIBUTIONS ARE LICENSED UNDER APACHE 2.0.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="15" x2="12" y2="9"></line>
-                <line x1="6" y1="15" x2="12" y2="9"></line>
-            </svg>
-        </button>
-    </main>
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <span class="brand-text">TOKENSENTRY</span>
+          </a>
+          <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
+          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>DOCUMENTATION</h4>
+            <ul>
+              <li><a href="getting-started.html">GETTING STARTED</a></li>
+              <li><a href="cli-reference.html">CLI REFERENCE</a></li>
+              <li><a href="analyzer.html">ANALYZER</a></li>
+              <li><a href="optimizer.html">OPTIMIZER</a></li>
+              <li><a href="validator.html">VALIDATOR</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SKILLS</h4>
+            <ul>
+              <li><a href="skills/overview.html">ALL SKILLS</a></li>
+              <li><a href="skills/analyzer.html">ANALYZER</a></li>
+              <li><a href="skills/optimizer.html">OPTIMIZER</a></li>
+              <li><a href="skills/validator.html">VALIDATOR</a></li>
+              <li><a href="skills/composer.html">COMPOSER</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>ADVANCED</h4>
+            <ul>
+              <li><a href="benchmarks.html">BENCHMARKS</a></li>
+              <li><a href="reports.html">REPORTS</a></li>
+              <li><a href="api-reference.html">API REFERENCE</a></li>
+              <li><a href="configuration.html">CONFIGURATION</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>COMMUNITY</h4>
+            <ul>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
+              <li><a href="contributing.html">CONTRIBUTING</a></li>
+              <li><a href="changelog.html">CHANGELOG</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
+        <div class="footer-links">
+          <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/theme.js"></script>
-    <script src="scripts/navigation.js"></script>
-    <script src="scripts/animations.js"></script>
-    <script src="scripts/tabs.js"></script>
-    <script src="scripts/code-highlight.js"></script>
-    <script src="scripts/scroll-spy.js"></script>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="15" x2="12" y2="9"></line>
+      <line x1="6" y1="15" x2="12" y2="9"></line>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+  <script src="scripts/brutal.js"></script>
 </body>
 </html>

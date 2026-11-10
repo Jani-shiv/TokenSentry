@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TokenSentry Optimizer - Three profiles: Conservative, Balanced, Aggressive with transformation tracking.">
+  <meta name="theme-color" content="#000000">
+  <title>Optimizer - TokenSentry Docs</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="styles/brutal.css">
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container container">
+      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+          </svg>
+        </div>
+        <span class="brand-text">TokenSentry</span>
+        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      
+      <div class="nav-menu" id="navMenu" role="menubar">
+        <div class="nav-section">
+          <span class="nav-section-title">GET STARTED</span>
+          <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
+          <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Quick Start</a>
+          <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
+          <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">CORE ENGINES</span>
+          <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="optimizer.html" class="nav-link active" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">AI AGENT SKILLS</span>
+          <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+          <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+          <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+          <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+          <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+          <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+          <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+          <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+          <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+          <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+          <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+          <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+          <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+          <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+          <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+          <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">ADVANCED</span>
+          <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
+          <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+          <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+          <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+        </div>
+        
+        <div class="nav-section">
+          <span class="nav-section-title">COMMUNITY</span>
+          <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+          <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+        </div>
+        
+        <div class="nav-footer">
+          <div class="version-badge">v0.1.1</div>
+          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="star"></i> STAR ON GITHUB
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <main id="main-content" class="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-background">
+        <div class="grid-pattern" id="gridPattern"></div>
+        <div class="scanline" id="scanline"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+      </div>
+      
+      <div class="hero-content container">
+        <div class="hero-badge badge badge-lime">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>CORE ENGINE</span>
+        </div>
+        
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-line" data-text="OPTIMIZER ENGINE">OPTIMIZER ENGINE</span>
+          <span class="title-line" data-text="3 PROFILES • TRANSFORMATION TRACKING">3 PROFILES • TRANSFORMATION TRACKING</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          REDUCE TOKEN USAGE BY 15-50% WITH CONSERVATIVE, BALANCED, OR AGGRESSIVE PROFILES. 
+          FULL TRANSFORMATION TRACKING WITH TECHNICAL LITERAL PRESERVATION.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="getting-started.html#quick-start" class="btn btn-primary btn-lg">
+            <i data-lucide="zap"></i>
+            TRY IT NOW
+          </a>
+          <a href="cli-reference.html#optimize-command" class="btn btn-secondary btn-lg">
+            <i data-lucide="terminal"></i>
+            CLI REFERENCE
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="profiles" aria-labelledby="profiles-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-cyan">PROFILES</span>
+          <h2 id="profiles-title" class="section-title">OPTIMIZATION PROFILES</h2>
+          <p class="section-description">CHOOSE THE RIGHT BALANCE OF TOKEN REDUCTION AND SAFETY FOR YOUR USE CASE.</p>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature-card card" data-step="1">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <h3>CONSERVATIVE</h3>
+            <p>SAFEST PROFILE. ONLY NORMALIZES WHITESPACE AND REMOVES EXACT DUPLICATE LINES. ZERO SEMANTIC CHANGES.</p>
+            <ul class="feature-list">
+              <li>WHITESPACE NORMALIZATION</li>
+              <li>EXACT DUPLICATE LINE REMOVAL</li>
+              <li>TRAILING SPACE TRIMMING</li>
+              <li>MULTIPLE BLANK LINE COLLAPSE</li>
+              <li>ZERO SEMANTIC MODIFICATIONS</li>
+            </ul>
+            <div class="code-block" style="margin-top: var(--space-4);">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --output opt.md
+# OR EXPLICITLY
+tokensentry optimize prompt.md --profile conservative --output opt.md</code></pre>
+            </div>
+            <p class="stat-label" style="margin-top: var(--space-3);"><strong>TOKEN REDUCTION:</strong> 5-15% | <strong>RISK:</strong> MINIMAL</p>
+          </article>
+
+          <article class="feature-card card card-cyan" data-step="2">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+            </div>
+            <h3>BALANCED</h3>
+            <p>RECOMMENDED DEFAULT. CONSOLIDATES REPEATED PHRASES, REMOVES REDUNDANT TRANSITIONS, NORMALIZES BULLET STYLES.</p>
+            <ul class="feature-list">
+              <li>PHRASE CONSOLIDATION (4-GRAM DEFAULT)</li>
+              <li>REDUNDANT TRANSITION REMOVAL</li>
+              <li>BULLET STYLE NORMALIZATION</li>
+              <li>CONNECTIVE PHRASE SIMPLIFICATION</li>
+              <li>TECHNICAL LITERAL PRESERVATION</li>
+            </ul>
+            <div class="code-block" style="margin-top: var(--space-4);">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile balanced --output opt.md</code></pre>
+            </div>
+            <p class="stat-label" style="margin-top: var(--space-3);"><strong>TOKEN REDUCTION:</strong> 15-30% | <strong>RISK:</strong> LOW</p>
+          </article>
+
+          <article class="feature-card card card-magenta" data-step="3">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+              </svg>
+            </div>
+            <h3>AGGRESSIVE</h3>
+            <p>MAXIMUM REDUCTION. REMOVES FILLER SENTENCES, COMPRESSES EXPLANATIONS, REORGANIZES SECTIONS. ALWAYS REVIEW OUTPUT.</p>
+            <ul class="feature-list">
+              <li>FILLER SENTENCE REMOVAL</li>
+              <li>EXPLANATION COMPRESSION</li>
+              <li>SECTION REORGANIZATION</li>
+              <li>REDUNDANT EXAMPLE TRIMMING</li>
+              <li>VERBOSE PHRASE REPLACEMENT</li>
+            </ul>
+            <div class="code-block" style="margin-top: var(--space-4);">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile aggressive --output opt.md</code></pre>
+            </div>
+            <p class="stat-label" style="margin-top: var(--space-3);"><strong>TOKEN REDUCTION:</strong> 30-50% | <strong>RISK:</strong> MODERATE</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="transformation-tracking" aria-labelledby="tracking-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-magenta">TRANSFORMATION TRACKING</span>
+          <h2 id="tracking-title" class="section-title">FULL TRANSFORMATION VISIBILITY</h2>
+          <p class="section-description">EVERY OPTIMIZATION TRACKS WHAT CHANGED, WHY, AND WHAT WAS PRESERVED.</p>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-text">+-- TOKENSENTRY OPTIMIZATION ---+
+| PROFILE: BALANCED           |
+| ORIGINAL TOKENS: 1,247      |
+| OPTIMIZED TOKENS: 987       |
+| TOKEN DELTA: -260 (-20.8%)  |
+| TRANSFORMATIONS: 12         |
++-------------------------------+
+
+TRANSFORMATIONS:
+  1. WHITESPACE_NORMALIZE     | LINES 1-45      | -12 TOKENS
+  2. DUPLICATE_LINE_REMOVE    | LINE 23         | -8 TOKENS
+  3. PHRASE_CONSOLIDATE       | "IN ORDER TO"→"TO" (3x) | -24 TOKENS
+  4. TRANSITION_REMOVE        | "FURTHERMORE,"  | -6 TOKENS
+  5. BULLET_NORMALIZE         | LINES 67-89     | -18 TOKENS
+  6. LITERAL_PRESERVE         | "API_KEY" (2x)  | PRESERVED
+  7. LITERAL_PRESERVE         | "GPT-4" (1x)    | PRESERVED
+  ...</code></pre>
+        </div>
+
+        <h3>LITERAL PRESERVATION</h3>
+        <p>TECHNICAL LITERALS ARE AUTOMATICALLY DETECTED AND PRESERVED:</p>
+        <ul class="feature-list">
+          <li>CODE IDENTIFIERS: <code>function_name</code>, <code>ClassName</code>, <code>variable_name</code></li>
+          <li>API KEYS & TOKENS: <code>sk-...</code>, <code>ghp_...</code>, <code>Bearer ...</code></li>
+          <li>MODEL NAMES: <code>GPT-4</code>, <code>Llama-2-7b</code>, <code>text-embedding-ada-002</code></li>
+          <li>FILE PATHS: <code>/path/to/file.py</code>, <code>./src/main.rs</code></li>
+          <li>VERSION STRINGS: <code>v1.2.3</code>, <code>2024-01-15</code></li>
+          <li>CUSTOM: USE <code>--preserve "TERM1,TERM2"</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="configuration" aria-labelledby="config-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-gold">CONFIGURATION</span>
+          <h2 id="config-title" class="section-title">OPTIMIZER CONFIGURATION</h2>
+        </header>
+
+        <div class="code-block card">
+          <pre><code class="language-yaml"># .tokensentry.yaml
+optimizer:
+  default_profile: "balanced"
+  preserve_literals: true
+  max_iterations: 3
+  
+  conservative:
+    normalize_whitespace: true
+    remove_exact_duplicates: true
+    
+  balanced:
+    phrase_consolidation: true
+    min_phrase_length: 4
+    similarity_threshold: 0.85
+    transition_removal: true
+    bullet_normalization: true
+    
+  aggressive:
+    filler_removal: true
+    explanation_compression: true
+    section_reorganization: true
+    example_trimming: true
+    verbose_replacement: true</code></pre>
+        </div>
+
+        <h3>CLI OVERRIDES</h3>
+        <div class="table-wrapper card">
+          <table class="table">
+            <thead>
+              <tr><th>FLAG</th><th>DESCRIPTION</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--profile</code></td><td>CONSERVATIVE, BALANCED, AGGRESSIVE</td></tr>
+              <tr><td><code>--preserve</code></td><td>COMMA-SEPARATED TERMS TO FORCE PRESERVE</td></tr>
+              <tr><td><code>--max-iterations</code></td><td>MAX OPTIMIZATION PASSES (DEFAULT: 3)</td></tr>
+              <tr><td><code>--tokenizer</code></td><td>TOKENIZER FOR EXACT COUNTS</td></tr>
+              <tr><td><code>--format</code></td><td>TEXT, JSON, MARKDOWN</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="best-practices" aria-labelledby="bp-title">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag badge badge-green">BEST PRACTICES</span>
+          <h2 id="bp-title" class="section-title">OPTIMIZATION BEST PRACTICES</h2>
+        </header>
+
+        <div class="examples-grid">
+          <article class="example-card card">
+            <h4>START CONSERVATIVE</h4>
+            <p>BEGIN WITH CONSERVATIVE PROFILE. ESCALATE ONLY IF NEEDED.</p>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile conservative --output v1.md
+tokensentry validate prompt.md v1.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-cyan">
+            <h4>USE EXACT TOKENIZERS</h4>
+            <p>GET ACCURATE TOKEN COUNTS WITH TIKTOKEN OR HF TOKENIZERS.</p>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile balanced \
+  --tokenizer tiktoken:gpt-4 --output opt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-magenta">
+            <h4>ALWAYS VALIDATE</h4>
+            <p>RUN VALIDATOR AFTER EVERY OPTIMIZATION TO CATCH REGRESSIONS.</p>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry validate original.md optimized.md --strict</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-lime">
+            <h4>PRESERVE CRITICAL TERMS</h4>
+            <p>EXPLICITLY PRESERVE DOMAIN-SPECIFIC TERMINOLOGY.</p>
+            <div class="code-block">
+              <pre><code class="language-bash">tokensentry optimize prompt.md --profile aggressive \
+  --preserve "JWT,OAuth2,REST API,GraphQL" --output opt.md</code></pre>
+            </div>
+          </article>
+          <article class="example-card card">
+            <h4>COMPARE PROFILES</h4>
+            <p>RUN MULTIPLE PROFILES AND COMPARE RESULTS.</p>
+            <div class="code-block">
+              <pre><code class="language-bash">for p in conservative balanced aggressive; do
+  tokensentry optimize prompt.md --profile $p --output opt_$p.md
+done</code></pre>
+            </div>
+          </article>
+          <article class="example-card card card-gold">
+            <h4>CI/CD INTEGRATION</h4>
+            <p>AUTOMATE OPTIMIZATION IN YOUR PIPELINE.</p>
+            <div class="code-block">
+              <pre><code class="language-yaml"># GITHUB ACTIONS
+- name: Optimize Prompts
+  run: |
+    tokensentry optimize prompts/main.md --profile balanced \
+      --tokenizer tiktoken:gpt-4 --output prompts/optimized.md
+    tokensentry validate prompts/main.md prompts/optimized.md --strict</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-link">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+              </svg>
+            </div>
+            <span class="brand-text">TOKENSENTRY</span>
+          </a>
+          <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
+          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <div class="footer-col">
+            <h4>DOCUMENTATION</h4>
+            <ul>
+              <li><a href="getting-started.html">GETTING STARTED</a></li>
+              <li><a href="cli-reference.html">CLI REFERENCE</a></li>
+              <li><a href="analyzer.html">ANALYZER</a></li>
+              <li><a href="optimizer.html">OPTIMIZER</a></li>
+              <li><a href="validator.html">VALIDATOR</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SKILLS</h4>
+            <ul>
+              <li><a href="skills/overview.html">ALL SKILLS</a></li>
+              <li><a href="skills/analyzer.html">ANALYZER</a></li>
+              <li><a href="skills/optimizer.html">OPTIMIZER</a></li>
+              <li><a href="skills/validator.html">VALIDATOR</a></li>
+              <li><a href="skills/composer.html">COMPOSER</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>ADVANCED</h4>
+            <ul>
+              <li><a href="benchmarks.html">BENCHMARKS</a></li>
+              <li><a href="reports.html">REPORTS</a></li>
+              <li><a href="api-reference.html">API REFERENCE</a></li>
+              <li><a href="configuration.html">CONFIGURATION</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>COMMUNITY</h4>
+            <ul>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
+              <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
+              <li><a href="contributing.html">CONTRIBUTING</a></li>
+              <li><a href="changelog.html">CHANGELOG</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
+        <div class="footer-links">
+          <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="15" x2="12" y2="9"></line>
+      <line x1="6" y1="15" x2="12" y2="9"></line>
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
+  <script src="scripts/brutal.js"></script>
+</body>
+</html>
