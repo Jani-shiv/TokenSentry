@@ -1,0 +1,60 @@
+# Dependabot configuration for automated dependency updates
+version: 2
+updates:
+  # Python dependencies (pip)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "deps(pip)"
+      include: "scope"
+    groups:
+      dev-dependencies:
+        patterns:
+          - "pytest*"
+          - "ruff*"
+          - "mypy*"
+          - "pytest-cov*"
+        update-types:
+          - "minor"
+          - "patch"
+      tokenizer-dependencies:
+        patterns:
+          - "tiktoken*"
+          - "tokenizers*"
+          - "sentencepiece*"
+        update-types:
+          - "minor"
+          - "patch"
+      core-dependencies:
+        patterns:
+          - "typer*"
+          - "rich*"
+          - "pydantic*"
+          - "pydantic-settings*"
+          - "pyyaml*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "deps(actions)"
+      include: "scope"

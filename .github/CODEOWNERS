@@ -1,0 +1,32 @@
+# CODEOWNERS
+# These users will be automatically requested for review when code changes
+
+# Core Engine
+/src/tokensentry/core/ @Jani-shiv
+
+# Tokenizers
+/src/tokensentry/tokenizers/ @Jani-shiv
+
+# Skills
+/src/tokensentry/skills/ @Jani-shiv
+
+# CLI
+/src/tokensentry/cli.py @Jani-shiv
+
+# Documentation Site
+/docs-site/ @Jani-shiv
+
+# CI/CD
+/.github/workflows/ @Jani-shiv
+
+# Security
+SECURITY.md @Jani-shiv
+
+# Documentation
+/docs-site/ @Jani-shiv
+
+# Tests
+/tests/ @Jani-shiv
+
+# Configuration
+pyproject.toml @Jani-shiv

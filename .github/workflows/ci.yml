@@ -1,9 +1,14 @@
+# GitHub Actions cache for pip
+# This workflow caches pip packages to speed up CI runs
+
 name: CI
+
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
+
 jobs:
   test:
     strategy:
@@ -14,13 +19,27 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
+          cache-key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+          cache-restore-keys: |
+            ${{ runner.os }}-pip-
+      
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e ".[dev]"
       - run: ruff check .
       - run: ruff format --check .
       - run: mypy src --ignore-missing-imports --disable-error-code=import-not-found
       - run: pytest
+
+  # Dependency review
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          config-file: '.github/dependency-review-config.yml'

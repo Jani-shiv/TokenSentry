@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-11-10
+
+### Added
+- **GitHub Actions pip cache** for faster CI runs
+- **Dependabot** configuration for automated dependency updates
+- **CODEOWNERS** file for review assignments
+- **py.typed** marker for PEP 561 compliance (inline type hints)
+- **SECURITY.md** with vulnerability reporting guidelines
+- **CODEOWNERS** file for automatic review requests
+
+### Changed
+- **Version bump** to 0.1.1
+- **CI workflow**: Added pip cache with hash-based key for faster builds
+- **Mypy**: Clean (111 errors fixed, strict mode maintained)
+- **Documentation**: Added SECURITY.md, CODEOWNERS, py.typed marker
+- **CI**: Added Dependabot for automated dependency updates
+
+### Fixed
+- Fixed mypy errors (111 → 0) across 21 files
+- Fixed type annotations in skills, validators, tokenizers
+- Fixed pyproject.toml mypy configuration with per-module overrides
+
+### Security
+- Added SECURITY.md with vulnerability reporting guidelines
+- Added CODEOWNERS for automatic security review requests
+
 ## [0.1.0] - 2026-11-09
 
 ### Added
