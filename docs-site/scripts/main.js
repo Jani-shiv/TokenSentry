@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TokenSentry Documentation - Main JavaScript
+   TOKENSENTRY DOCS — MAIN JAVASCRIPT
    Core functionality and initialization
    ========================================================================== */
 
@@ -51,23 +51,22 @@
   function cacheElements() {
     elements = {
       themeToggle: document.getElementById('themeToggle'),
-      nav: document.getElementById('nav'),
+      nav: document.querySelector('.nav'),
       navToggle: document.getElementById('navToggle'),
       navMenu: document.getElementById('navMenu'),
       navOverlay: document.getElementById('navOverlay'),
       progressBar: document.getElementById('progressBar'),
       backToTop: document.getElementById('backToTop'),
-      navLinks: document.querySelectorAll('.nav-link'),
+      navLinks: document.querySelectorAll('.nav-link[href^="#"]'),
       tabBtns: document.querySelectorAll('.tab-btn'),
       tabPanels: document.querySelectorAll('.tab-panel'),
       codeBlocks: document.querySelectorAll('pre code'),
-      images: document.querySelectorAll('img:not([loading="eager"])'),
+      images: document.querySelectorAll('img[loading="lazy"]'),
       modals: document.querySelectorAll('.modal'),
       dropdowns: document.querySelectorAll('.dropdown'),
       accordions: document.querySelectorAll('.accordion'),
-      tooltips: document.querySelectorAll('.tooltip'),
-      copyButtons: document.querySelectorAll('.code-action-btn'),
-      backToTop: document.getElementById('backToTop')
+      tooltips: document.querySelectorAll('[data-tooltip]'),
+      copyButtons: document.querySelectorAll('[data-copy]')
     };
   }
 
@@ -102,7 +101,7 @@
     // Update meta theme-color
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', theme === 'dark' ? '#1a1a18' : '#fefef8');
+      metaThemeColor.setAttribute('content', theme === 'dark' ? '#0d0d1a' : '#fffdf7');
     }
     
     // Dispatch theme change event
@@ -156,7 +155,7 @@
     elements.navOverlay.addEventListener('click', closeMobileMenu);
 
     // Close menu on link click
-    elements.navMenu.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', closeMobileMenu);
     });
 
@@ -173,7 +172,7 @@
       const currentScroll = window.scrollY;
       const nav = elements.nav;
       
-      if (currentScroll > 100) {
+      if (currentScroll > 20) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
@@ -191,18 +190,18 @@
 
   function toggleMobileMenu() {
     state.isNavOpen = !state.isNavOpen;
-    elements.navToggle.setAttribute('aria-expanded', state.isNavOpen);
-    elements.navMenu.classList.toggle('open', state.isNavOpen);
-    elements.navOverlay.classList.toggle('visible', state.isNavOpen);
     document.body.style.overflow = state.isNavOpen ? 'hidden' : '';
+    document.getElementById('navToggle')?.setAttribute('aria-expanded', state.isNavOpen);
+    document.getElementById('navMenu')?.classList.toggle('open', state.isNavOpen);
+    document.getElementById('navOverlay')?.classList.toggle('visible', state.isNavOpen);
   }
 
   function closeMobileMenu() {
     if (!state.isNavOpen) return;
     state.isNavOpen = false;
-    elements.navToggle.setAttribute('aria-expanded', 'false');
-    elements.navMenu.classList.remove('open');
-    elements.navOverlay.classList.remove('visible');
+    document.getElementById('navToggle')?.setAttribute('aria-expanded', 'false');
+    document.getElementById('navMenu')?.classList.remove('open');
+    document.getElementById('navOverlay')?.classList.remove('visible');
     document.body.style.overflow = '';
   }
 
@@ -210,13 +209,14 @@
   // Progress Bar
   // ==========================================================================
   function initProgressBar() {
-    if (!elements.progressBar) return;
+    const progressBar = document.getElementById('progressBar');
+    if (!progressBar) return;
 
     window.addEventListener('scroll', throttle(() => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (scrollTop / docHeight) * 100;
-      elements.progressBar.style.transform = `scaleX(${progress / 100})`;
+      progressBar.style.transform = `scaleX(${progress / 100})`;
     }, 50));
   }
 
@@ -241,7 +241,7 @@
 
   // ==========================================================================
   // Scroll Spy
-  ==========================================================================
+  // ==========================================================================
   function initScrollSpy() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
@@ -267,26 +267,28 @@
 
   // ==========================================================================
   // Tabs
-  ==========================================================================
+  // ==========================================================================
   function initTabs() {
-    const tabContainers = document.querySelectorAll('.tabs');
-    
-    tabContainers.forEach(container => {
-      const buttons = container.querySelectorAll('.tab-btn');
+    document.querySelectorAll('.tabs').forEach(container => {
+      const buttons = container.queryAll('.tab-btn');
       const panels = container.querySelectorAll('.tab-panel');
       
+      if (!buttons.length || !panels.length) return;
+
       buttons.forEach(btn => {
         btn.addEventListener('click', () => {
           const tabId = btn.dataset.tab;
-          
+          if (!tabId) return;
+
           // Update buttons
           buttons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           
           // Update panels
           panels.forEach(panel => {
-            panel.hidden = panel.id !== `tab-${tabId}`;
-            panel.classList.toggle('active', panel.id === `tab-${tabId}`);
+            const isActive = panel.id === `tab-${tabId}`;
+            panel.hidden = !isActive;
+            panel.classList.toggle('active', isActive);
           });
         });
       });
@@ -295,7 +297,7 @@
 
   // ==========================================================================
   // Code Blocks
-  ==========================================================================
+  // ==========================================================================
   function initCodeBlocks() {
     // Add copy buttons
     document.querySelectorAll('pre').forEach(pre => {
@@ -327,7 +329,7 @@
   function getLanguage(pre) {
     const code = pre.querySelector('code');
     if (!code) return 'text';
-    
+
     const className = code.className || '';
     const match = className.match(/language-(\w+)/);
     return match ? match[1] : 'text';
@@ -376,8 +378,17 @@
     }, 2000);
   }
 
+  function getLanguage(pre) {
+    const code = pre.querySelector('code');
+    if (!code) return 'text';
+
+    const className = code.className || '';
+    const match = className.match(/language-(\w+)/);
+    return match ? match[1] : 'text';
+  }
+
   // ==========================================================================
-   // Animations & Scroll Reveal
+  // Animations & Scroll Reveal
   // ==========================================================================
   function initAnimations() {
     // Intersection Observer for scroll reveal
@@ -580,7 +591,7 @@
       
       try {
         await navigator.clipboard.writeText(text);
-        showToast('Copied to clipboard!');
+        showToast('Copied!');
       } catch (err) {
         fallbackCopyToClipboard(text);
         showToast('Copied!');
@@ -723,8 +734,8 @@
       tooltip.style.transition = 'all 0.2s ease';
       tooltip.style.whiteSpace = 'nowrap';
       tooltip.style.padding = '0.5rem 0.75rem';
-      tooltip.style.background = 'var(--color-text-primary)';
-      tooltip.style.color = 'var(--color-text-inverse)';
+      tooltip.style.background = 'var(--text-primary)';
+      tooltip.style.color = 'var(--text-inverse)';
       tooltip.style.borderRadius = 'var(--radius-md)';
       tooltip.style.fontSize = 'var(--text-xs)';
       tooltip.style.fontWeight = '500';
@@ -796,11 +807,11 @@
       // Close all other items in same accordion
       const accordion = item.closest('.accordion');
       if (accordion) {
-        accordion.querySelectorAll('.accordion-item').forEach(item => {
-          if (item !== item) {
-            item.classList.remove('open');
-            const c = item.querySelector('.accordion-content');
-            const i = item.querySelector('.accordion-icon');
+        accordion.querySelectorAll('.accordion-item').forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('open');
+            const c = otherItem.querySelector('.accordion-content');
+            const i = otherItem.querySelector('.accordion-icon');
             if (c) c.style.maxHeight = '0';
             if (i) i.style.transform = 'rotate(0deg)';
           });
@@ -843,7 +854,7 @@
   }
 
   // ==========================================================================
-   // Keyboard Shortcuts
+  // Keyboard Shortcuts
   // ==========================================================================
   document.addEventListener('keydown', (e) => {
     // Cmd/Ctrl + K for command palette
@@ -863,7 +874,40 @@
     }
   });
 
+  // ==========================================================================
+  // Command Palette Functions
+  // ==========================================================================
+  function openCommandPalette() {
+    const palette = document.querySelector('.cmd-palette');
+    const overlay = document.querySelector('.cmd-palette-overlay');
+    const input = document.querySelector('.cmd-palette-input');
+    
+    if (!palette || !overlay) return;
+    
+    palette.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+    
+    setTimeout(() => {
+      const input = document.querySelector('.cmd-palette-input');
+      if (input) input.focus();
+    }, 50);
+  }
+
+  function closeCommandPalette() {
+    const palette = document.querySelector('.cmd-palette');
+    const overlay = document.querySelector('.cmd-palette-overlay');
+    
+    if (!palette) return;
+    
+    palette.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  // ==========================================================================
   // Export for global access
+  // ==========================================================================
   window.TokensentryDocs = {
     openModal,
     closeModal,

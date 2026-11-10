@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TokenSentry - Local-first prompt analysis, optimization, and validation toolkit. Analyze. Optimize. Validate. Make every token count.">
+    <meta name="description" content="TokenSentry — Local-first prompt analysis, optimization, and validation toolkit. Analyze. Optimize. Validate. Make every token count.">
     <meta name="theme-color" content="#fef3c7">
-    <title>TokenSentry Docs - Analyze. Optimize. Validate.</title>
+    <title>TokenSentry Docs — Analyze. Optimize. Validate.</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
     
+    <!-- Styles -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
-    <!-- Theme Toggle (Persistent) -->
+    <!-- Theme Toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
     </button>
 
-    <!-- Skip Link for Accessibility -->
+    <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
@@ -35,7 +36,7 @@
         <div class="nav-container">
             <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
                 <div class="brand-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
                         <line x1="12" y1="22" x2="12" y2="15.5"></line>
                         <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
@@ -53,7 +54,7 @@
                 <div class="nav-section">
                     <span class="nav-section-title">Get Started</span>
                     <a href="index.html" class="nav-link" role="menuitem"><i data-lucide="home"></i> Introduction</a>
-                    <a href="getting-started.html" class="nav-link" role="menuitem"><i data-lucide="rocket"></i> Quick Start</a>
+                    <a href="getting-started.html" class="nav-link active" role="menuitem"><i data-lucide="rocket"></i> Quick Start</a>
                     <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
                     <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
                 </div>
@@ -250,7 +251,7 @@
                 <div class="features-grid">
                     <article class="feature-card" data-delay="0">
                         <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
@@ -267,7 +268,7 @@
                     
                     <article class="feature-card" data-delay="100">
                         <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="23 4 23 10 17 10"></polyline>
                                 <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                             </svg>
@@ -285,7 +286,7 @@
                     
                     <article class="feature-card" data-delay="200">
                         <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                             </svg>
@@ -303,7 +304,7 @@
                     
                     <article class="feature-card" data-delay="300">
                         <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="3" width="20" height="14" rx="2"></rect>
                                 <path d="M8 21h13a2 2 0 0 0 2-2V5"></path>
                             </svg>
@@ -321,7 +322,7 @@
                     
                     <article class="feature-card" data-delay="400">
                         <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                             </svg>
                         </div>
@@ -338,9 +339,9 @@
                     
                     <article class="feature-card" data-delay="500">
                         <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 20h9"></path>
-                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
                             </svg>
                         </div>
                         <h3>Rich Reporting</h3>
@@ -363,6 +364,9 @@
                 <header class="section-header">
                     <span class="section-tag">Quick Start</span>
                     <h2 id="quickstart-title" class="section-title">Get running in 30 seconds</h2>
+                    <p class="section-description">
+                        Run your first prompt analysis and see TokenSentry in action.
+                    </p>
                 </header>
                 
                 <div class="quickstart-grid">
@@ -388,7 +392,7 @@
                         <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Optimize & Validate</h3>
-                            <pre><code class="language-bash">tokensentry optimize prompt.md --profile aggressive --output optimized.md
+                            <pre><code class="language-bash">tokensentry optimize prompt.md --profile balanced --output optimized.md
 tokensentry validate prompt.md optimized.md</code></pre>
                             <p>Choose conservative, balanced, or aggressive profiles. Validate preserves requirements.</p>
                         </div>
@@ -397,7 +401,7 @@ tokensentry validate prompt.md optimized.md</code></pre>
                 
                 <div class="quickstart-tip">
                     <div class="tip-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <line x1="12" y1="16" x2="12" y2="12"></line>
                             <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -421,7 +425,7 @@ tokensentry validate prompt.md optimized.md</code></pre>
                 <div class="docs-grid">
                     <a href="getting-started.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                             </svg>
                         </div>
@@ -432,85 +436,91 @@ tokensentry validate prompt.md optimized.md</code></pre>
                     
                     <a href="cli-reference.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="4 17 10 11 4 5"></polyline>
                                 <line x1="9" y1="19" x2="20" y2="19"></line>
                             </svg>
                         </div>
                         <h3>CLI Reference</h3>
-                        <p>Complete command reference for analyze, optimize, validate, and more.</                        <span class="doc-link">View commands <i data-lucide="arrow-right"></i></span>
+                        <p>Complete command reference for analyze, optimize, validate, and more.
+                        <span class="doc-link">View commands <i data-lucide="arrow-right"></i></span>
                     </a>
                     
                     <a href="analyzer.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                         </div>
                         <h3>Analyzer Engine</h3>
-                        <p>Deep dive into the 7 analysis modules: structure, redundancy, ambiguity, contradictions, complexity, quality, security.</                        <span class="doc-link">Learn more <i data-lucide="arrow-right"></i></span>
+                        <p>Deep dive into the 7 analysis modules: structure, redundancy, ambiguity, contradictions, complexity, quality, security.
+                        <span class="doc-link">Learn more <i data-lucide="arrow-right"></i></span>
                     </a>
                     
                     <a href="optimizer.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="23 4 23 10 17 10"></polyline>
                                 <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                             </svg>
                         </div>
                         <h3>Optimizer Profiles</h3>
-                        <p>Conservative, Balanced, Aggressive — transformation tracking with literal preservation.</p>
+                        <p>Conservative, Balanced, Aggressive — transformation tracking with literal preservation.
                         <span class="doc-link">Explore profiles <i data-lucide="arrow-right"></i></span>
                     </a>
                     
                     <a href="validator.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
                             </svg>
                         </div>
                         <h3>Validator Engine</h3>
-                        <p>7-status classification, literal preservation, negative constraint checking, schema validation.</                        <span class="doc-link">Validate prompts <i data-lucide="arrow-right"></i></span>
+                        <p>7-status classification, literal preservation, negative constraint checking, schema validation.
+                        <span class="doc-link">Validate prompts <i data-lucide="arrow-right"></i></span>
                     </a>
                     
                     <a href="tokenizers.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="3" width="20" height="14" rx="2"></rect>
                                 <path d="M8 21h13a2 2 0 0 0 2-2V5"></path>
                             </svg>
                         </div>
                         <h3>Tokenizer Adapters</h3>
-                        <p>tiktoken (OpenAI), HuggingFace tokenizers, SentencePiece with exact/estimate metadata.</                        <span class="doc-link">Configure tokenizers <i data-lucide="arrow-right"></i></span>
+                        <p>tiktoken (OpenAI), HuggingFace tokenizers, SentencePiece with exact/estimate metadata.
+                        <span class="doc-link">Configure tokenizers <i data-lucide="arrow-right"></i></span>
                     </a>
                     
                     <a href="skills/overview.html" class="doc-card featured">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                             </svg>
                         </div>
                         <h3>15 AI Agent Skills</h3>
-                        <p>Composable skills for analysis, optimization, validation, security, cost analysis, and workflow orchestration.</                        <span class="doc-link">Browse skills <i data-lucide="arrow-right"></i></span>
+                        <p>Composable skills for analysis, optimization, validation, security, cost analysis, and workflow orchestration.
+                        <span class="doc-link">Browse skills <i data-lucide="arrow-right"></i></span>
                     </a>
                     
                     <a href="benchmarks.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="20" x2="18" y2="10"></line>
                                 <line x1="12" y1="20" x2="12" y2="4"></line>
                                 <line x1="6" y1="20" x2="6" y2="14"></line>
                             </svg>
                         </div>
                         <h3>Benchmarks</h3>
-                        <p>13 curated prompts across 7 categories with token reduction, preservation, and quality metrics.</                        <span class="doc-link">Run benchmarks <i data-lucide="arrow-right"></i></span>
+                        <p>13 curated prompts across 7 categories with token reduction, preservation, and quality metrics.
+                        <span class="doc-link">Run benchmarks <i data-lucide="arrow-right"></i></span>
                     </a>
                     
                     <a href="reports.html" class="doc-card">
                         <div class="doc-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                 <polyline points="14 2 14 8 20 8"></polyline>
                                 <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -579,8 +589,7 @@ tokensentry optimize prompt.md --profile balanced \
 tokensentry validate original.md optimized.md
 
 # With specific tokenizer
-tokensentry validate original.md optimized.md \
-  --tokenizer tiktoken:gpt-4
+tokensentry validate original.md optimized.md --tokenizer tiktoken:gpt-4
 
 # JSON output for CI/CD
 tokensentry validate original.md optimized.md --format json</code></pre>
@@ -631,8 +640,7 @@ tokensentry benchmark report results.json --format markdown</code></pre>
                 <header class="section-header">
                     <span class="section-tag">Architecture</span>
                     <h2 id="arch-title" class="section-title">System Architecture</h2>
-                    <p class="section-description">TokenSentry's modular design with clear separation of concerns.</p>
-                </header>
+                    <p class="section-description">TokenSentry's modular design with clear separation of concerns.</                </header>
                 
                 <div class="architecture-diagram">
                     <div class="arch-layer">
@@ -720,7 +728,7 @@ tokensentry benchmark report results.json --format markdown</code></pre>
                 <div class="contribute-grid">
                     <article class="contribute-card">
                         <div class="contribute-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                             </svg>
                         </div>
@@ -731,7 +739,7 @@ tokensentry benchmark report results.json --format markdown</code></pre>
                     
                     <article class="contribute-card">
                         <div class="contribute-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                 <polyline points="14 2 14 8 20 8"></polyline>
                             </svg>
@@ -743,7 +751,7 @@ tokensentry benchmark report results.json --format markdown</code></pre>
                     
                     <article class="contribute-card">
                         <div class="contribute-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="16" x2="12" y2="12"></line>
                                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -756,7 +764,7 @@ tokensentry benchmark report results.json --format markdown</code></pre>
                     
                     <article class="contribute-card">
                         <div class="contribute-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -778,14 +786,14 @@ tokensentry benchmark report results.json --format markdown</code></pre>
                     <div class="footer-brand">
                         <a href="index.html" class="footer-brand-link">
                             <div class="brand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
                                     <line x1="12" y1="22" x2="12" y2="15.5"></line>
                                     <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
                                 </svg>
                             </div>
                             <span class="brand-text">TokenSentry</span>
-                        </div>
+                        </a>
                         <p class="brand-tagline">Analyze. Optimize. Validate. Make every token count.</p>
                         <p class="footer-version">v0.1.1 · Apache-2.0 License</p>
                     </div>
@@ -849,7 +857,7 @@ tokensentry benchmark report results.json --format markdown</code></pre>
 
         <!-- Back to Top -->
         <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="15" x2="12" y2="9"></line>
                 <line x1="6" y1="15" x2="12" y2="9"></line>
             </svg>

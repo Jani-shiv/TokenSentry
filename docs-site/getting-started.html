@@ -6,9 +6,10 @@
     <meta name="description" content="Get started with TokenSentry in minutes. Installation, quick start guide, and first steps.">
     <title>Getting Started - TokenSentry Docs</title>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
     
     <link rel="stylesheet" href="styles/main.css">
@@ -17,18 +18,20 @@
     <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
+    <!-- Theme Toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
     </button>
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <!-- Navigation -->
     <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
                 <div class="brand-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
                         <line x1="12" y1="22" x2="12" y2="15.5"></line>
                         <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
@@ -50,15 +53,70 @@
                     <a href="installation.html" class="nav-link" role="menuitem"><i data-lucide="download"></i> Installation</a>
                     <a href="cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
                 </div>
-                <!-- ... (same nav as index.html, abbreviated for brevity) -->
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Core Engines</span>
+                    <a href="analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+                    <a href="optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+                    <a href="validator.html" class="nav-link" role="menuitem"><i data-lucide="check-circle"></i> Validator</a>
+                    <a href="tokenizers.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Tokenizers</a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">AI Agent Skills</span>
+                    <a href="skills/overview.html" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> All Skills</a>
+                    <a href="skills/analyzer.html" class="nav-link" role="menuitem"><i data-lucide="search"></i> Analyzer</a>
+                    <a href="skills/optimizer.html" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Optimizer</a>
+                    <a href="skills/validator.html" class="nav-link" role="menuitem"><i data-lucide="shield-check"></i> Validator</a>
+                    <a href="skills/token-auditor.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Token Auditor</a>
+                    <a href="skills/context-engineer.html" class="nav-link" role="menuitem"><i data-lucide="layers"></i> Context Engineer</a>
+                    <a href="skills/system-prompt-designer.html" class="nav-link" role="menuitem"><i data-lucide="bot"></i> System Prompt Designer</a>
+                    <a href="skills/security-auditor.html" class="nav-link" role="menuitem"><i data-lucide="shield-alert"></i> Security Auditor</a>
+                    <a href="skills/structured-output.html" class="nav-link" role="menuitem"><i data-lucide="braces"></i> Structured Output</a>
+                    <a href="skills/few-shot.html" class="nav-link" role="menuitem"><i data-lucide="copy"></i> Few-Shot Optimizer</a>
+                    <a href="skills/agent-workflow.html" class="nav-link" role="menuitem"><i data-lucide="git-branch"></i> Agent Workflow</a>
+                    <a href="skills/model-adapter.html" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> Model Adapter</a>
+                    <a href="skills/cost-analyst.html" class="nav-link" role="menuitem"><i data-lucide="dollar-sign"></i> Cost Analyst</a>
+                    <a href="skills/evaluator.html" class="nav-link" role="menuitem"><i data-lucide="award"></i> Prompt Evaluator</a>
+                    <a href="skills/documenter.html" class="nav-link" role="menuitem"><i data-lucide="file-text"></i> Prompt Documenter</a>
+                    <a href="skills/composer.html" class="nav-link" role="menuitem"><i data-lucide="git-merge"></i> Skill Composer</a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Advanced</span>
+                    <a href="benchmarks.html" class="nav-link" role="menuitem"><i data-lucide="bar-chart"></i> Benchmarks</a>
+                    <a href="reports.html" class="nav-link" role="menuitem"><i data-lucide="file-output"></i> Reports</a>
+                    <a href="api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
+                    <a href="configuration.html" class="nav-link" role="menuitem"><i data-lucide="settings"></i> Configuration</a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Community</span>
+                    <a href="contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
+                    <a href="changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry/issues" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="alert-circle"></i> Issues</a>
+                    <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
+                </div>
+                
+                <div class="nav-footer">
+                    <div class="version-badge">v0.1.1</div>
+                    <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="star"></i> Star us on GitHub
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
+    <!-- Main Content -->
     <main id="main-content" class="main-content" role="main">
+        <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-background">
                 <div class="paper-layer" style="--layer: 1;"></div>
@@ -106,7 +164,7 @@
                     <article class="install-card">
                         <header class="install-header">
                             <div class="install-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                     <polyline points="17 8 12 3 7 8"></polyline>
                                     <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -135,7 +193,7 @@ pip install tokensentry</code></pre>
                     <article class="install-card">
                         <header class="install-header">
                             <div class="install-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                 </svg>
@@ -160,7 +218,7 @@ docker run -v $(pwd):/workspace -it tokensentry optimize /workspace/prompt.md --
                     <article class="install-card">
                         <header class="install-header">
                             <div class="install-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <polygon points="23 7 16 12 9 7 2 12l11 5 11-5"></polygon>
                                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
                                 </svg>
@@ -205,7 +263,7 @@ tokensentry --help</code></pre>
 
                 <div class="quickstart-steps">
                     <article class="quickstart-step">
-                        <div class="step-marker">1</div>
+                        <div class="step-number">1</div>
                         <div class="step-content">
                             <h3>Create a Prompt File</h3>
                             <p>Create a file called <code>my-prompt.md</code> with your prompt:</p>
@@ -230,7 +288,7 @@ Provide specific code examples for improvements.</code></pre>
                     </article>
 
                     <article class="quickstart-step">
-                        <div class="step-marker">2</div>
+                        <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Run Analysis</h3>
                             <p>Run TokenSentry to analyze your prompt:</p>
@@ -255,7 +313,7 @@ Provide specific code examples for improvements.</code></pre>
                     </article>
 
                     <article class="quickstart-step">
-                        <div class="step-marker">3</div>
+                        <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Optimize & Validate</h3>
                             <p>Optimize your prompt and validate the result:</p>
@@ -302,7 +360,8 @@ tokensentry analyze optimized.md --tokenizer tiktoken:gpt-4</code></pre>
                 <header class="section-header">
                     <span class="section-tag">Configuration</span>
                     <h2 id="config-title" class="section-title">Configuration</h2>
-                    <p class="section-description">Customize TokenSentry behavior with configuration files and environment variables.</                </header>
+                    <p class="section-description">Customize TokenSentry behavior with configuration files and environment variables.
+                </header>
 
                 <div class="config-grid">
                     <article class="config-card">
@@ -572,7 +631,7 @@ tokensentry benchmark run --max-prompts 1 --profiles conservative
                 <div class="footer-brand">
                     <a href="index.html" class="footer-brand-link">
                         <div class="brand-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
                                 <line x1="12" y1="22" x2="12" y2="15.5"></line>
                                 <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
@@ -583,6 +642,7 @@ tokensentry benchmark run --max-prompts 1 --profiles conservative
                     <p class="brand-tagline">Analyze. Optimize. Validate. Make every token count.</p>
                     <p class="footer-version">v0.1.1 · Apache-2.0 License</p>
                 </div>
+                
                 <nav class="footer-nav" aria-label="Footer navigation">
                     <div class="footer-col">
                         <h4>Documentation</h4>
@@ -625,6 +685,7 @@ tokensentry benchmark run --max-prompts 1 --profiles conservative
                     </div>
                 </nav>
             </div>
+            
             <div class="footer-bottom">
                 <p>Built with care by the TokenSentry community. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">View contributors</a></p>
                 <div class="footer-links">
@@ -639,12 +700,14 @@ tokensentry benchmark run --max-prompts 1 --profiles conservative
         </footer>
 
         <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="15" x2="12" y2="9"></line>
                 <line x1="6" y1="15" x2="12" y2="9"></line>
             </svg>
         </button>
+    </main>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/theme.js"></script>
