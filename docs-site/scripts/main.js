@@ -15,13 +15,15 @@
       updateThemeIcon('dark');
     }
 
-    toggle?.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('tokensentry-theme', next);
-      updateThemeIcon(next);
-    });
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('tokensentry-theme', next);
+        updateThemeIcon(next);
+      });
+    }
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('tokensentry-theme')) {
@@ -35,40 +37,74 @@
   function updateThemeIcon(theme) {
     const toggle = document.getElementById('themeToggle');
     if (toggle) {
-      toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      // New style: emoji
+      if (toggle.textContent.trim() === '🌙' || toggle.textContent.trim() === '☀️') {
+        toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      } else {
+        // Old style: SVG icons
+        const sun = toggle.querySelector('.icon-sun');
+        const moon = toggle.querySelector('.icon-moon');
+        if (sun && moon) {
+          sun.style.display = theme === 'dark' ? 'none' : 'block';
+          moon.style.display = theme === 'dark' ? 'block' : 'none';
+        }
+      }
     }
   }
 
-  // Mobile Menu
+  // Mobile Menu - works with both old and new structures
   function initMobileMenu() {
-    const toggle = document.getElementById('mobileMenuToggle');
-    const links = document.getElementById('navLinks');
+    // New structure
+    let toggle = document.getElementById('mobileMenuToggle');
+    let links = document.getElementById('navLinks');
     
-    toggle?.addEventListener('click', () => {
-      links.classList.toggle('active');
-      toggle.setAttribute('aria-expanded', links.classList.contains('active'));
+    // Old structure fallback
+    if (!toggle) toggle = document.getElementById('navToggle');
+    if (!links) links = document.getElementById('navMenu');
+    
+    if (!toggle || !links) return;
+    
+    toggle.addEventListener('click', () => {
+      const isActive = links.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', isActive);
+      // Also handle old hamburger animation
+      const hamburger = toggle.querySelector('.hamburger');
+      if (hamburger) {
+        if (isActive) {
+          hamburger.style.background = 'transparent';
+          const before = getComputedStyle(hamburger, '::before');
+          hamburger.style.setProperty('--hamburger-before', 'rotate(45deg) translate(4px, 4px)');
+          hamburger.style.setProperty('--hamburger-after', 'rotate(-45deg) translate(4px, -4px)');
+        } else {
+          hamburger.style.background = '';
+        }
+      }
     });
 
     // Close on link click
-    links?.querySelectorAll('.nav-link').forEach(link => {
+    links.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         links.classList.remove('active');
-        toggle?.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-expanded', 'false');
+        const hamburger = toggle.querySelector('.hamburger');
+        if (hamburger) hamburger.style.background = '';
       });
     });
 
     // Close on escape
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && links?.classList.contains('active')) {
+      if (e.key === 'Escape' && links.classList.contains('active')) {
         links.classList.remove('active');
-        toggle?.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-expanded', 'false');
+        const hamburger = toggle.querySelector('.hamburger');
+        if (hamburger) hamburger.style.background = '';
       }
     });
   }
 
   // Search
   function initSearch() {
-    const input = document.getElementById('searchInput');
+    let input = document.getElementById('searchInput');
     if (!input) return;
 
     const pages = [
@@ -105,8 +141,11 @@
           overflow-y: auto;
           z-index: 1000;
         `;
-        input.parentNode.style.position = 'relative';
-        input.parentNode.appendChild(resultsContainer);
+        const parent = input.closest('.nav-search') || input.parentElement;
+        if (parent) {
+          parent.style.position = 'relative';
+          parent.appendChild(resultsContainer);
+        }
       }
 
       const results = pages.filter(page => 
@@ -155,7 +194,7 @@
     });
 
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-search')) {
+      if (!e.target.closest('.nav-search') && !e.target.closest('.search-results')) {
         hideResults();
       }
     });
@@ -180,7 +219,8 @@
         
         e.preventDefault();
         
-        const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+        const nav = document.querySelector('.navbar') || document.querySelector('.nav');
+        const navHeight = nav?.offsetHeight || 0;
         const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
         
         window.scrollTo({
@@ -204,7 +244,7 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('.about-card, .chapter-card, .feature-item, .hero-content > *').forEach(el => {
+    document.querySelectorAll('.about-card, .chapter-card, .feature-item, .hero-content > *, .feature-card, .doc-card, .quickstart-step, .arch-layer, .contribute-card, .install-card, .config-card, .trouble-card, .section, .card').forEach(el => {
       observer.observe(el);
     });
   }
@@ -213,7 +253,7 @@
   function initCodeCopy() {
     document.querySelectorAll('pre code').forEach(codeBlock => {
       const pre = codeBlock.parentElement;
-      if (pre.querySelector('.copy-btn')) return;
+      if (!pre || pre.querySelector('.copy-btn')) return;
 
       const btn = document.createElement('button');
       btn.className = 'copy-btn';
