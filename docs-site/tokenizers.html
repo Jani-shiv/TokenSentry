@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -12,6 +12,18 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
   <link rel="stylesheet" href="../styles/brutal.css">
+  
+  <!-- Vercel Web Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD5JW3RX34"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VD5JW3RX34');
+  </script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
@@ -122,12 +134,12 @@
         
         <h1 id="hero-title" class="hero-title">
           <span class="title-line" data-text="TOKENIZER ADAPTERS">TOKENIZER ADAPTERS</span>
-          <span class="title-line" data-text="EXACT • ESTIMATE • MODEL-AWARE">EXACT • ESTIMATE • MODEL-AWARE</span>
+          <span class="title-line" data-text="EXACT â€¢ ESTIMATE â€¢ MODEL-AWARE">EXACT â€¢ ESTIMATE â€¢ MODEL-AWARE</span>
         </h1>
         
         <p class="hero-subtitle">
           PRECISE TOKEN COUNTING WITH TIKTOKEN (OPENAI), HUGGINGFACE TOKENIZERS, SENTENCEPIECE. 
-          NO SILENT FALLBACKS — EXPLICIT EXACTNESS METADATA ON EVERY RESULT.
+          NO SILENT FALLBACKS â€” EXPLICIT EXACTNESS METADATA ON EVERY RESULT.
         </p>
         
         <div class="hero-actions">
@@ -216,7 +228,7 @@ tokensentry tokenizers --available</code></pre>
         <header class="section-header">
           <span class="section-tag badge badge-magenta">EXACTNESS</span>
           <h2 id="exactness-title" class="section-title">EXACT VS ESTIMATE CLASSIFICATION</h2>
-          <p class="section-description">EVERY TOKEN COUNT INCLUDES EXPLICIT EXACTNESS METADATA — NEVER GUESS.</p>
+          <p class="section-description">EVERY TOKEN COUNT INCLUDES EXPLICIT EXACTNESS METADATA â€” NEVER GUESS.</p>
         </header>
 
         <div class="features-grid">
@@ -299,7 +311,7 @@ tokensentry tokenizers --available</code></pre>
 
         <h3>WARNING OUTPUT</h3>
         <div class="code-block card">
-          <pre><code class="language-text">⚠️  CONTEXT WINDOW WARNING
+          <pre><code class="language-text">âš ï¸  CONTEXT WINDOW WARNING
    PROMPT TOKENS: 7,234
    MODEL MAX: 8,192 (GPT-4)
    USAGE: 88.3%
@@ -416,7 +428,7 @@ tokensentry validate a.md b.md --tokenizer spm:/path/model.spm</code></pre>
             <span class="brand-text">TOKENSENTRY</span>
           </a>
           <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
-          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+          <p class="footer-version">v0.1.1 Â· APACHE-2.0 LICENSE</p>
         </div>
         
         <nav class="footer-nav" aria-label="Footer navigation">
@@ -487,3 +499,5 @@ tokensentry validate a.md b.md --tokenizer spm:/path/model.spm</code></pre>
   <script src="../scripts/brutal.js"></script>
 </body>
 </html>
+
+

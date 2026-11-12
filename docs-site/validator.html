@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
-  <link rel="stylesheet" href="styles/brutal.css">
+  <link rel="stylesheet" href="styles/brutal.css">`n  <!-- Vercel Web Analytics -->`n  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD5JW3RX34"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VD5JW3RX34');
+  </script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
@@ -157,13 +165,13 @@
               <tr><th>STATUS</th><th>ICON</th><th>MEANING</th><th>ACTION REQUIRED</th></tr>
             </thead>
             <tbody>
-              <tr><td><strong>EXACT</strong></td><td>✅</td><td>BYTE-FOR-BYTE MATCH BETWEEN ORIGINAL AND OPTIMIZED</td><td>NONE</td></tr>
-              <tr><td><strong>STRUCTURAL</strong></td><td>✅</td><td>SEMANTICALLY EQUIVALENT, MINOR FORMATTING DIFFERENCES</td><td>NONE</td></tr>
-              <tr><td><strong>PROBABLE</strong></td><td>⚠️</td><td>LIKELY PRESERVED BUT CANNOT CONFIRM WITH CERTAINTY</td><td>REVIEW RECOMMENDED</td></tr>
-              <tr><td><strong>UNCERTAIN</strong></td><td>❓</td><td>AMBIGUOUS - INSUFFICIENT EVIDENCE FOR CLASSIFICATION</td><td>MANUAL REVIEW REQUIRED</td></tr>
-              <tr><td><strong>MODIFIED</strong></td><td>✏️</td><td>CHANGED BUT REQUIREMENT STILL MET (E.G. REPHRASED)</td><td>VERIFY INTENT</td></tr>
-              <tr><td><strong>WEAKENED</strong></td><td>⚠️</td><td>NEGATIVE CONSTRAINT WEAKENED (E.G. "DO NOT" REMOVED)</td><td>CRITICAL - REVIEW REQUIRED</td></tr>
-              <tr><td><strong>MISSING</strong></td><td>❌</td><td>REQUIREMENT COMPLETELY REMOVED FROM OPTIMIZED VERSION</td><td>CRITICAL - MUST FIX</td></tr>
+              <tr><td><strong>EXACT</strong></td><td>âœ…</td><td>BYTE-FOR-BYTE MATCH BETWEEN ORIGINAL AND OPTIMIZED</td><td>NONE</td></tr>
+              <tr><td><strong>STRUCTURAL</strong></td><td>âœ…</td><td>SEMANTICALLY EQUIVALENT, MINOR FORMATTING DIFFERENCES</td><td>NONE</td></tr>
+              <tr><td><strong>PROBABLE</strong></td><td>âš ï¸</td><td>LIKELY PRESERVED BUT CANNOT CONFIRM WITH CERTAINTY</td><td>REVIEW RECOMMENDED</td></tr>
+              <tr><td><strong>UNCERTAIN</strong></td><td>â“</td><td>AMBIGUOUS - INSUFFICIENT EVIDENCE FOR CLASSIFICATION</td><td>MANUAL REVIEW REQUIRED</td></tr>
+              <tr><td><strong>MODIFIED</strong></td><td>âœï¸</td><td>CHANGED BUT REQUIREMENT STILL MET (E.G. REPHRASED)</td><td>VERIFY INTENT</td></tr>
+              <tr><td><strong>WEAKENED</strong></td><td>âš ï¸</td><td>NEGATIVE CONSTRAINT WEAKENED (E.G. "DO NOT" REMOVED)</td><td>CRITICAL - REVIEW REQUIRED</td></tr>
+              <tr><td><strong>MISSING</strong></td><td>âŒ</td><td>REQUIREMENT COMPLETELY REMOVED FROM OPTIMIZED VERSION</td><td>CRITICAL - MUST FIX</td></tr>
             </tbody>
           </table>
         </div>
@@ -286,18 +294,18 @@
 +---------------------------------------+
 
 REQUIREMENTS:
-  ✅ EXACT        | "MUST USE PYTHON 3.11+"
-  ✅ EXACT        | "API KEY: sk-..."
-  ✅ STRUCTURAL   | "RETURN JSON WITH FIELDS: ID, NAME"
-  ⚠️  PROBABLE    | "KEEP RESPONSE UNDER 500 WORDS"
-  ✏️  MODIFIED    | "USE SNAKE_CASE" → "USE SNAKE_CASE FOR VARIABLES"
+  âœ… EXACT        | "MUST USE PYTHON 3.11+"
+  âœ… EXACT        | "API KEY: sk-..."
+  âœ… STRUCTURAL   | "RETURN JSON WITH FIELDS: ID, NAME"
+  âš ï¸  PROBABLE    | "KEEP RESPONSE UNDER 500 WORDS"
+  âœï¸  MODIFIED    | "USE SNAKE_CASE" â†’ "USE SNAKE_CASE FOR VARIABLES"
 
 NEGATIVE CONSTRAINTS:
-  ✅ PRESERVED    | "DO NOT EXPOSE SECRETS"
-  ✅ PRESERVED    | "NEVER USE EVAL()"
+  âœ… PRESERVED    | "DO NOT EXPOSE SECRETS"
+  âœ… PRESERVED    | "NEVER USE EVAL()"
 
 SCHEMA:
-  ✅ VALID        | JSON SCHEMA MATCH
+  âœ… VALID        | JSON SCHEMA MATCH
 
 OVERALL: REVIEW REQUIRED</code></pre>
               </div>
@@ -366,19 +374,19 @@ OVERALL: REVIEW REQUIRED</code></pre>
 ## REQUIREMENTS
 | STATUS | REQUIREMENT | CONFIDENCE |
 |--------|-------------|------------|
-| ✅ EXACT | MUST USE PYTHON 3.11+ | 1.00 |
-| ✅ STRUCTURAL | RETURN JSON WITH FIELDS: ID, NAME | 0.95 |
-| ⚠️ PROBABLE | KEEP RESPONSE UNDER 500 WORDS | 0.78 |
-| ✏️ MODIFIED | USE SNAKE_CASE → USE SNAKE_CASE FOR VARIABLES | 0.85 |
+| âœ… EXACT | MUST USE PYTHON 3.11+ | 1.00 |
+| âœ… STRUCTURAL | RETURN JSON WITH FIELDS: ID, NAME | 0.95 |
+| âš ï¸ PROBABLE | KEEP RESPONSE UNDER 500 WORDS | 0.78 |
+| âœï¸ MODIFIED | USE SNAKE_CASE â†’ USE SNAKE_CASE FOR VARIABLES | 0.85 |
 
 ## NEGATIVE CONSTRAINTS
 | STATUS | CONSTRAINT | CONFIDENCE |
 |--------|------------|------------|
-| ✅ PRESERVED | DO NOT EXPOSE SECRETS | 1.00 |
-| ✅ PRESERVED | NEVER USE EVAL() | 1.00 |
+| âœ… PRESERVED | DO NOT EXPOSE SECRETS | 1.00 |
+| âœ… PRESERVED | NEVER USE EVAL() | 1.00 |
 
 ## SCHEMA VALIDATION
-✅ VALID - JSON SCHEMA MATCH</code></pre>
+âœ… VALID - JSON SCHEMA MATCH</code></pre>
               </div>
             </div>
           </div>
@@ -415,13 +423,13 @@ tokensentry validate original.md optimized.md --strict --format json || exit 1
               <tr><th>STATUS</th><th>STRICT MODE</th><th>NORMAL MODE</th></tr>
             </thead>
             <tbody>
-              <tr><td>EXACT</td><td>✅ PASS</td><td>✅ PASS</td></tr>
-              <tr><td>STRUCTURAL</td><td>✅ PASS</td><td>✅ PASS</td></tr>
-              <tr><td>PROBABLE</td><td>❌ FAIL</td><td>⚠️ REVIEW</td></tr>
-              <tr><td>UNCERTAIN</td><td>❌ FAIL</td><td>⚠️ REVIEW</td></tr>
-              <tr><td>MODIFIED</td><td>❌ FAIL</td><td>⚠️ REVIEW</td></tr>
-              <tr><td>WEAKENED</td><td>❌ FAIL</td><td>❌ FAIL</td></tr>
-              <tr><td>MISSING</td><td>❌ FAIL</td><td>❌ FAIL</td></tr>
+              <tr><td>EXACT</td><td>âœ… PASS</td><td>âœ… PASS</td></tr>
+              <tr><td>STRUCTURAL</td><td>âœ… PASS</td><td>âœ… PASS</td></tr>
+              <tr><td>PROBABLE</td><td>âŒ FAIL</td><td>âš ï¸ REVIEW</td></tr>
+              <tr><td>UNCERTAIN</td><td>âŒ FAIL</td><td>âš ï¸ REVIEW</td></tr>
+              <tr><td>MODIFIED</td><td>âŒ FAIL</td><td>âš ï¸ REVIEW</td></tr>
+              <tr><td>WEAKENED</td><td>âŒ FAIL</td><td>âŒ FAIL</td></tr>
+              <tr><td>MISSING</td><td>âŒ FAIL</td><td>âŒ FAIL</td></tr>
             </tbody>
           </table>
         </div>
@@ -492,7 +500,7 @@ tokensentry validate original.md optimized.md --strict --format json || exit 1
             <span class="brand-text">TOKENSENTRY</span>
           </a>
           <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
-          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+          <p class="footer-version">v0.1.1 Â· APACHE-2.0 LICENSE</p>
         </div>
         
         <nav class="footer-nav" aria-label="Footer navigation">
@@ -563,3 +571,6 @@ tokensentry validate original.md optimized.md --strict --format json || exit 1
   <script src="scripts/brutal.js"></script>
 </body>
 </html>
+
+
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
-  <link rel="stylesheet" href="styles/brutal.css">
+  <link rel="stylesheet" href="styles/brutal.css">`n  <!-- Vercel Web Analytics -->`n  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD5JW3RX34"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VD5JW3RX34');
+  </script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
@@ -297,21 +305,21 @@ PROVIDE SPECIFIC CODE EXAMPLES FOR IMPROVEMENTS.</code></pre>
               </div>
               <p class="step-output">YOU'LL SEE OUTPUT LIKE:</p>
               <div class="code-block">
-                <pre><code class="language-bash">╭───────────── TOKENSENTRY ANALYSIS ─────────────╮
-│ PROMPT ID: MY-PROMPT                           │
-│ CHARACTERS: 456   WORDS: 78   LINES: 12        │
-│ TOKENIZER: CHARACTER-ESTIMATE                  │
-│ TOKEN COUNT: 115 (ESTIMATE)                    │
-├────────────────────────────────────────────────┤
-│ FINDINGS:                                      │
-│   ⚠️  LOW_ACTIONABILITY: FEW EXPLICIT VERBS   │
-│   ℹ️  MISSING_OUTPUT_FORMAT: NO FORMAT SPEC   │
-│                                                │
-│ QUALITY SCORES:                                │
-│   CLARITY: 0.85  COMPLETENESS: 0.60           │
-│   STRUCTURE: 0.70  CONCISENESS: 0.80          │
-│   ACTIONABILITY: 0.45  OVERALL: 0.69          │
-╰────────────────────────────────────────────────╯</code></pre>
+                <pre><code class="language-bash">â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ TOKENSENTRY ANALYSIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®
+â”‚ PROMPT ID: MY-PROMPT                           â”‚
+â”‚ CHARACTERS: 456   WORDS: 78   LINES: 12        â”‚
+â”‚ TOKENIZER: CHARACTER-ESTIMATE                  â”‚
+â”‚ TOKEN COUNT: 115 (ESTIMATE)                    â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ FINDINGS:                                      â”‚
+â”‚   âš ï¸  LOW_ACTIONABILITY: FEW EXPLICIT VERBS   â”‚
+â”‚   â„¹ï¸  MISSING_OUTPUT_FORMAT: NO FORMAT SPEC   â”‚
+â”‚                                                â”‚
+â”‚ QUALITY SCORES:                                â”‚
+â”‚   CLARITY: 0.85  COMPLETENESS: 0.60           â”‚
+â”‚   STRUCTURE: 0.70  CONCISENESS: 0.80          â”‚
+â”‚   ACTIONABILITY: 0.45  OVERALL: 0.69          â”‚
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯</code></pre>
               </div>
             </div>
           </article>
@@ -637,7 +645,7 @@ tokensentry benchmark run --max-prompts 1 --profiles conservative
           <details class="faq-item accordion-item">
             <summary class="accordion-trigger" aria-expanded="false">HOW ACCURATE ARE THE TOKEN COUNTS?</summary>
             <div class="accordion-content">
-              <p>TOKEN COUNTS ARE <strong>EXACT</strong> WHEN USING TIKTOKEN OR HUGGINGFACE TOKENIZERS. THE CHARACTER-ESTIMATE TOKENIZER PROVIDES <strong>ESTIMATES</strong> (~4 CHARS PER TOKEN) AND IS CLEARLY LABELED AS SUCH. NEVER COMPARE TOKEN COUNTS FROM DIFFERENT TOKENIZERS DIRECTLY—THEY USE DIFFERENT VOCABULARIES AND ENCODING SCHEMES.</p>
+              <p>TOKEN COUNTS ARE <strong>EXACT</strong> WHEN USING TIKTOKEN OR HUGGINGFACE TOKENIZERS. THE CHARACTER-ESTIMATE TOKENIZER PROVIDES <strong>ESTIMATES</strong> (~4 CHARS PER TOKEN) AND IS CLEARLY LABELED AS SUCH. NEVER COMPARE TOKEN COUNTS FROM DIFFERENT TOKENIZERS DIRECTLYâ€”THEY USE DIFFERENT VOCABULARIES AND ENCODING SCHEMES.</p>
             </div>
           </details>
           <details class="faq-item accordion-item">
@@ -690,7 +698,7 @@ tokensentry benchmark run --max-prompts 1 --profiles conservative
             <span class="brand-text">TOKENSENTRY</span>
           </a>
           <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
-          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+          <p class="footer-version">v0.1.1 Â· APACHE-2.0 LICENSE</p>
         </div>
         
         <nav class="footer-nav" aria-label="Footer navigation">
@@ -761,3 +769,6 @@ tokensentry benchmark run --max-prompts 1 --profiles conservative
   <script src="scripts/brutal.js"></script>
 </body>
 </html>
+
+
+

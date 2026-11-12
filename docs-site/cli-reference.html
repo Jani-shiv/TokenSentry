@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -11,7 +11,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
-  <link rel="stylesheet" href="styles/brutal.css">
+  <link rel="stylesheet" href="styles/brutal.css">`n  <!-- Vercel Web Analytics -->`n  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD5JW3RX34"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VD5JW3RX34');
+  </script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
@@ -366,13 +374,13 @@ OPTIONS:
               <tr><th>STATUS</th><th>ICON</th><th>DESCRIPTION</th></tr>
             </thead>
             <tbody>
-              <tr><td>EXACT</td><td>✅</td><td>BYTE-FOR-BYTE MATCH</td></tr>
-              <tr><td>STRUCTURAL</td><td>✅</td><td>SEMANTICALLY EQUIVALENT, MINOR FORMATTING DIFFERENCES</td></tr>
-              <tr><td>PROBABLE</td><td>⚠️</td><td>LIKELY PRESERVED BUT CANNOT CONFIRM</td></tr>
-              <tr><td>UNCERTAIN</td><td>❓</td><td>AMBIGUOUS - MANUAL REVIEW RECOMMENDED</td></tr>
-              <tr><td>MODIFIED</td><td>✏️</td><td>CHANGED BUT REQUIREMENT STILL MET</td></tr>
-              <tr><td>WEAKENED</td><td>⚠️</td><td>NEGATIVE CONSTRAINT WEAKENED (E.G. "DO NOT" REMOVED)</td></tr>
-              <tr><td>MISSING</td><td>❌</td><td>REQUIREMENT COMPLETELY REMOVED</td></tr>
+              <tr><td>EXACT</td><td>âœ…</td><td>BYTE-FOR-BYTE MATCH</td></tr>
+              <tr><td>STRUCTURAL</td><td>âœ…</td><td>SEMANTICALLY EQUIVALENT, MINOR FORMATTING DIFFERENCES</td></tr>
+              <tr><td>PROBABLE</td><td>âš ï¸</td><td>LIKELY PRESERVED BUT CANNOT CONFIRM</td></tr>
+              <tr><td>UNCERTAIN</td><td>â“</td><td>AMBIGUOUS - MANUAL REVIEW RECOMMENDED</td></tr>
+              <tr><td>MODIFIED</td><td>âœï¸</td><td>CHANGED BUT REQUIREMENT STILL MET</td></tr>
+              <tr><td>WEAKENED</td><td>âš ï¸</td><td>NEGATIVE CONSTRAINT WEAKENED (E.G. "DO NOT" REMOVED)</td></tr>
+              <tr><td>MISSING</td><td>âŒ</td><td>REQUIREMENT COMPLETELY REMOVED</td></tr>
             </tbody>
           </table>
         </div>
@@ -491,11 +499,11 @@ OPTIONS:
           <pre><code class="language-bash">tokensentry workflow run PLAN_NAME [OPTIONS]
 
 BUILT-IN PLANS:
-  standard          ANALYZE → OPTIMIZE (BALANCED) → VALIDATE
-  conservative      ANALYZE → OPTIMIZE (CONSERVATIVE) → VALIDATE
-  aggressive        ANALYZE → OPTIMIZE (AGGRESSIVE) → VALIDATE
-  security          ANALYZE → SECURITY AUDIT → VALIDATE
-  full              ALL ANALYZERS → ALL OPTIMIZERS → VALIDATE → REPORT
+  standard          ANALYZE â†’ OPTIMIZE (BALANCED) â†’ VALIDATE
+  conservative      ANALYZE â†’ OPTIMIZE (CONSERVATIVE) â†’ VALIDATE
+  aggressive        ANALYZE â†’ OPTIMIZE (AGGRESSIVE) â†’ VALIDATE
+  security          ANALYZE â†’ SECURITY AUDIT â†’ VALIDATE
+  full              ALL ANALYZERS â†’ ALL OPTIMIZERS â†’ VALIDATE â†’ REPORT
 
 OPTIONS:
   --prompt TEXT       PROMPT TEXT
@@ -689,7 +697,7 @@ tokensentry_validate:
             <span class="brand-text">TOKENSENTRY</span>
           </a>
           <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
-          <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+          <p class="footer-version">v0.1.1 Â· APACHE-2.0 LICENSE</p>
         </div>
         
         <nav class="footer-nav" aria-label="Footer navigation">
@@ -760,3 +768,6 @@ tokensentry_validate:
   <script src="scripts/brutal.js"></script>
 </body>
 </html>
+
+
+

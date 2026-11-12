@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="TokenSentry — Local-first prompt analysis, optimization, and validation toolkit. Analyze. Optimize. Validate. Make every token count.">
+  <meta name="description" content="TokenSentry â€” Local-first prompt analysis, optimization, and validation toolkit. Analyze. Optimize. Validate. Make every token count.">
   <meta name="theme-color" content="#000000">
-  <title>TokenSentry Docs — Analyze. Optimize. Validate.</title>
+  <title>TokenSentry Docs â€” Analyze. Optimize. Validate.</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,19 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="styles/brutal.css">
+  <link rel="stylesheet" href="styles/brutal-enhanced.css">
+  <link rel="stylesheet" href="styles/paper-animations.css">
+  
+  <!-- Vercel Web Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD5JW3RX34"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VD5JW3RX34');
+  </script>
 </head>
 <body>
   <!-- Theme Toggle -->
@@ -206,26 +218,26 @@
               <span class="code-title">tokensentry analyze prompt.md</span>
             </div>
             <pre><code class="language-bash"><span class="token-comment">$ tokensentry analyze examples/sample-prompt.md</span>
-<span class="token-output">╭───────────── TOKENSENTRY ANALYSIS ─────────────╮
-│ PROMPT ID: SAMPLE-PROMPT                       │
-│ CHARACTERS: 368   WORDS: 55   LINES: 5         │
-│ TOKENIZER: CHARACTER-ESTIMATE                  │
-│ TOKEN COUNT: 92 (ESTIMATE)                     │
-├────────────────────────────────────────────────┤
-│ FINDINGS:                                      │
-│   ℹ️  AMBIGUOUS_RELATIVE_WITHOUT_SCALE         │
-│       EVIDENCE: "SHORT"                        │
-│       SUGGESTION: ADD SPECIFIC MEASUREMENTS    │
-│   ⚠️  LOW_STRUCTURE                            │
-│       LACKS HEADINGS OR SECTIONS               │
-│   ⚠️  LOW_ACTIONABILITY                        │
-│       FEW EXPLICIT ACTION VERBS                │
-│                                                │
-│ QUALITY SCORES:                                │
-│   CLARITY: 1.00  COMPLETENESS: 0.50           │
-│   STRUCTURE: 0.20  CONCISENESS: 0.55          │
-│   ACTIONABILITY: 0.17  OVERALL: 0.48          │
-╰────────────────────────────────────────────────╯</span></code></pre>
+<span class="token-output">â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ TOKENSENTRY ANALYSIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®
+â”‚ PROMPT ID: SAMPLE-PROMPT                       â”‚
+â”‚ CHARACTERS: 368   WORDS: 55   LINES: 5         â”‚
+â”‚ TOKENIZER: CHARACTER-ESTIMATE                  â”‚
+â”‚ TOKEN COUNT: 92 (ESTIMATE)                     â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ FINDINGS:                                      â”‚
+â”‚   â„¹ï¸  AMBIGUOUS_RELATIVE_WITHOUT_SCALE         â”‚
+â”‚       EVIDENCE: "SHORT"                        â”‚
+â”‚       SUGGESTION: ADD SPECIFIC MEASUREMENTS    â”‚
+â”‚   âš ï¸  LOW_STRUCTURE                            â”‚
+â”‚       LACKS HEADINGS OR SECTIONS               â”‚
+â”‚   âš ï¸  LOW_ACTIONABILITY                        â”‚
+â”‚       FEW EXPLICIT ACTION VERBS                â”‚
+â”‚                                                â”‚
+â”‚ QUALITY SCORES:                                â”‚
+â”‚   CLARITY: 1.00  COMPLETENESS: 0.50           â”‚
+â”‚   STRUCTURE: 0.20  CONCISENESS: 0.55          â”‚
+â”‚   ACTIONABILITY: 0.17  OVERALL: 0.48          â”‚
+â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯</span></code></pre>
           </div>
         </div>
         
@@ -246,7 +258,7 @@
           <h2 id="features-title" class="section-title">EVERYTHING YOU NEED FOR PROMPT INTELLIGENCE</h2>
           <p class="section-description">
             TOKENSENTRY PROVIDES A COMPLETE TOOLKIT FOR UNDERSTANDING, MEASURING, OPTIMIZING, 
-            AND VALIDATING AI PROMPTS — ALL LOCALLY, WITH NO API KEYS REQUIRED.
+            AND VALIDATING AI PROMPTS â€” ALL LOCALLY, WITH NO API KEYS REQUIRED.
           </p>
         </header>
         
@@ -544,7 +556,7 @@ tokensentry benchmark report results.json --format markdown</code></pre>
               <span class="brand-text">TOKENSENTRY</span>
             </a>
             <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
-            <p class="footer-version">v0.1.1 · APACHE-2.0 LICENSE</p>
+            <p class="footer-version">v0.1.1 Â· APACHE-2.0 LICENSE</p>
           </div>
           
           <nav class="footer-nav" aria-label="Footer navigation">
@@ -614,6 +626,12 @@ tokensentry benchmark report results.json --format markdown</code></pre>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
-  <script src="scripts/brutal.js"></script>
+  <script src="scripts/brutal-enhanced.js"></script>
 </body>
 </html>
+
+
+
+
+
+
