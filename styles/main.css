@@ -1240,6 +1240,18 @@ img {
 .hero-scroll-indicator { display: flex; flex-direction: column; align-items: center; gap: .5rem; font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; animation: scroll-bounce 2s ease-in-out infinite; }
 @keyframes scroll-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
+/* Title morphing animation for old pages */
+@keyframes title-reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title .title-line span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: title-reveal 0.8s cubic-bezier(.19,1,.22,1) forwards;
+}
+
 /* Old sections */
 .section { padding: 5rem 2rem; }
 .section-sm { padding: 3rem 2rem; }

@@ -302,6 +302,73 @@
     });
   }
 
+  // Hero title morphing for old pages
+  function initTitleMorph() {
+    const titles = document.querySelectorAll('.hero-title .title-line[data-text]');
+    titles.forEach((title, i) => {
+      const text = title.dataset.text;
+      title.innerHTML = text.split('').map((char, j) => 
+        `<span style="animation-delay: ${j * 30 + i * 200}ms">${char === ' ' ? '&nbsp;' : char}</span>`
+      ).join('');
+    });
+  }
+
+  // Old page background effects (grid, scanline, floating)
+  function initOldPageBackgrounds() {
+    const gridPattern = document.getElementById('gridPattern');
+    const scanline = document.getElementById('scanline');
+    const floatingElements = document.getElementById('floatingElements');
+    
+    if (gridPattern) {
+      const size = 40;
+      const cols = Math.ceil(window.innerWidth / size) + 1;
+      const rows = Math.ceil(window.innerHeight / size) + 1;
+      let pattern = '';
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          pattern += `<div class="grid-dot" style="left: ${x * size}px; top: ${y * size}px;"></div>`;
+        }
+      }
+      gridPattern.innerHTML = pattern;
+      
+      // Morphing grid animation
+      const dots = gridPattern.querySelectorAll('.grid-dot');
+      let time = 0;
+      function animateGrid() {
+        time += 0.005;
+        dots.forEach((dot, i) => {
+          const delay = (i * 0.01) % 1;
+          const scale = 0.5 + 0.5 * Math.sin(time * 2 + delay * Math.PI * 2);
+          const opacity = 0.1 + 0.3 * Math.sin(time + delay * Math.PI * 2);
+          dot.style.transform = `scale(${scale})`;
+          dot.style.opacity = opacity;
+        });
+        requestAnimationFrame(animateGrid);
+      }
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        animateGrid();
+      }
+    }
+    
+    if (scanline) {
+      scanline.innerHTML = '<div class="scanline-bar"></div>';
+    }
+    
+    if (floatingElements) {
+      const shapes = ['▲', '■', '◆', '●', '▼', '◆', '▲', '■'];
+      floatingElements.innerHTML = shapes.map((shape, i) => `
+        <div class="float-shape" style="
+          --delay: ${i * 0.5}s;
+          --duration: ${8 + Math.random() * 4}s;
+          --x: ${Math.random() * 100}%;
+          --y: ${Math.random() * 100}%;
+          --size: ${12 + Math.random() * 24}px;
+          --color: ${['var(--color-brand)', 'var(--color-accent)', 'var(--color-success)', 'var(--color-warning)'][Math.floor(Math.random() * 4)]};
+        ">${shape}</div>
+      `).join('');
+    }
+  }
+
   // Initialize everything
   function init() {
     initTheme();
@@ -310,6 +377,25 @@
     initSmoothScroll();
     initScrollAnimations();
     initCodeCopy();
+    
+    // Initialize old page background effects
+    initOldPageBackgrounds();
+    
+    // Initialize Lucide icons if available
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+    
+    // Initialize hero title morphing for old pages
+    initTitleMorph();
+    
+    // Re-initialize icons when DOM changes (for dynamic content)
+    const iconObserver = new MutationObserver(() => {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
+    iconObserver.observe(document.body, { childList: true, subtree: true });
     
     // Add loaded class
     document.body.classList.add('loaded');
