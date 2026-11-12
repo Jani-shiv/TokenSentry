@@ -2,26 +2,14 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
   <meta name="description" content="TokenSentry — Local-first prompt analysis, optimization, and validation toolkit. Analyze. Optimize. Validate. Make every token count.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#c71616">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>TokenSentry — Analyze. Optimize. Validate.</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles/brutal-enhanced.css">
-  <link rel="stylesheet" href="styles/paper-animations.css">
-  
-  <!-- Vercel Web Analytics -->
-  <script defer src="/_vercel/insights/script.js"></script>
-  <!-- Google Analytics -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles/main.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD5JW3RX34"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -31,769 +19,407 @@
   </script>
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme (Ctrl+Shift+T)">
-    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-  </button>
-
-  <!-- Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- Navigation -->
-  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-container container">
-      <a href="index.html" class="nav-brand" aria-label="TokenSentry Home">
-        <div class="brand-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-            <line x1="12" y1="22" x2="12" y2="15.5"></line>
-            <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
-          </svg>
-        </div>
-        <span class="brand-text">TokenSentry</span>
-        <span class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE.</span>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" aria-label="TokenSentry Home">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">TokenSentry</span>
       </a>
-      
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span class="hamburger"></span>
-      </button>
-      
-      <div class="nav-menu" id="navMenu" role="menubar">
-        <div class="nav-section">
-          <span class="nav-section-title">PRODUCT</span>
-          <a href="#features" class="nav-link" role="menuitem"><i data-lucide="zap"></i> Features</a>
-          <a href="#how-it-works" class="nav-link" role="menuitem"><i data-lucide="cpu"></i> How It Works</a>
-          <a href="#benchmarks" class="nav-link" role="menuitem"><i data-lucide="bar-chart-2"></i> Benchmarks</a>
-          <a href="#skills" class="nav-link" role="menuitem"><i data-lucide="puzzle"></i> AI Skills</a>
-        </div>
-        
-        <div class="nav-section">
-          <span class="nav-section-title">DEVELOPERS</span>
-          <a href="docs-site/getting-started.html" class="nav-link" role="menuitem"><i data-lucide="book-open"></i> Documentation</a>
-          <a href="docs-site/cli-reference.html" class="nav-link" role="menuitem"><i data-lucide="terminal"></i> CLI Reference</a>
-          <a href="docs-site/api-reference.html" class="nav-link" role="menuitem"><i data-lucide="code"></i> API Reference</a>
-          <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="github"></i> GitHub</a>
-        </div>
-        
-        <div class="nav-section">
-          <span class="nav-section-title">COMMUNITY</span>
-          <a href="docs-site/contributing.html" class="nav-link" role="menuitem"><i data-lucide="heart-handshake"></i> Contributing</a>
-          <a href="docs-site/changelog.html" class="nav-link" role="menuitem"><i data-lucide="scroll-text"></i> Changelog</a>
-          <a href="https://github.com/Jani-shiv/TokenSentry/discussions" class="nav-link external" target="_blank" rel="noopener noreferrer" role="menuitem"><i data-lucide="message-square"></i> Discussions</a>
-        </div>
-        
-        <div class="nav-footer">
-          <div class="version-badge">v0.1.1</div>
-          <a href="https://github.com/Jani-shiv/TokenSentry" class="github-link" target="_blank" rel="noopener noreferrer">
-            <i data-lucide="star"></i> STAR ON GITHUB
-          </a>
-        </div>
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="Search docs, CLI, skills...">
+        <span class="search-icon">🔍</span>
       </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#benchmarks" class="nav-link">Benchmarks</a>
+        <a href="#skills" class="nav-link">AI Skills</a>
+        <a href="docs-site/getting-started.html" class="nav-link">Documentation</a>
+        <a href="https://github.com/Jani-shiv/TokenSentry" class="nav-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- Mobile Nav Overlay -->
-  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
-
-  <!-- Progress Bar -->
-  <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-
-  <!-- Main Content -->
-  <main id="main-content" class="main-content" role="main">
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-background">
-        <div class="grid-pattern" id="gridPattern"></div>
-        <div class="scanline" id="scanline"></div>
-        <div class="floating-elements" id="floatingElements"></div>
-        <!-- Paper floating shapes -->
-        <div class="float-shape-container" id="paperFloatShapes"></div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-content">
+      <h1 id="hero-title" class="hero-title">Master Prompt Intelligence</h1>
+      <p class="hero-subtitle">Local-First Toolkit for RHEL-Level Prompt Engineering</p>
+      <p class="hero-description">Analyze, optimize, and validate AI prompts with 15 AI agent skills, 3 optimization profiles, and exact token counting. Zero API keys. Zero external dependencies. Complete privacy.</p>
+      <div class="hero-buttons">
+        <a href="docs-site/getting-started.html" class="btn btn-primary">Get Started</a>
+        <a href="https://github.com/Jani-shiv/TokenSentry" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
-      
-      <div class="hero-content container">
-        <div class="hero-badge badge badge-cyan paper-brutal-cyan paper-stack-reveal stagger-1">
-          <span class="badge-dot" aria-hidden="true"></span>
-          <span>v0.1.1 RELEASED</span>
+    </div>
+    <div class="hero-image">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
         </div>
-        
-        <h1 id="hero-title" class="hero-title text-display paper-stack-reveal stagger-2">
-          <span class="title-line" data-text="TOKENSENTRY">TOKENSENTRY</span>
-          <span class="title-line" data-text="PROMPT INTELLIGENCE">PROMPT INTELLIGENCE</span>
-        </h1>
-        
-        <p class="hero-subtitle paper-stack-reveal stagger-3">
-          LOCAL-FIRST TOOLKIT FOR ANALYZING, OPTIMIZING, AND VALIDATING AI PROMPTS. 
-          15 AI AGENT SKILLS. 3 OPTIMIZATION PROFILES. ZERO API KEYS REQUIRED.
-        </p>
-        
-        <div class="hero-actions paper-stack-reveal stagger-4">
-          <a href="docs-site/getting-started.html" class="btn btn-primary btn-lg paper-brutal paper-stack-reveal stagger-1">
-            <i data-lucide="zap"></i>
-            GET STARTED
-          </a>
-          <a href="docs-site/cli-reference.html" class="btn btn-secondary btn-lg paper-brutal-cyan paper-stack-reveal stagger-2">
-            <i data-lucide="terminal"></i>
-            CLI REFERENCE
-          </a>
-          <a href="https://github.com/Jani-shiv/TokenSentry" class="btn btn-ghost btn-lg paper-brutal paper-stack-reveal stagger-3" target="_blank" rel="noopener noreferrer">
-            <i data-lucide="github"></i>
-            VIEW ON GITHUB
-          </a>
-        </div>
-        
-        <div class="hero-stats paper-stack-reveal stagger-5">
-          <div class="stat card paper-brutal paper-stack-reveal stagger-1">
-            <span class="stat-value" data-count="15">0</span>
-            <span class="stat-label">AI AGENT SKILLS</span>
-          </div>
-          <div class="stat card paper-brutal-cyan paper-stack-reveal stagger-2">
-            <span class="stat-value" data-count="3">0</span>
-            <span class="stat-label">OPTIMIZATION PROFILES</span>
-          </div>
-          <div class="stat card paper-brutal-magenta paper-stack-reveal stagger-3">
-            <span class="stat-value" data-count="7">0</span>
-            <span class="stat-label">ANALYSIS MODULES</span>
-          </div>
-          <div class="stat card paper-brutal-lime paper-stack-reveal stagger-4">
-            <span class="stat-value" data-count="3">0</span>
-            <span class="stat-label">TOKENIZER ADAPTERS</span>
-          </div>
-          <div class="stat card paper-brutal-gold paper-stack-reveal stagger-5">
-            <span class="stat-value" data-count="31">0</span>
-            <span class="stat-label">TESTS PASSING</span>
-          </div>
-          <div class="stat card paper-brutal paper-stack-reveal stagger-6">
-            <span class="stat-value">v0.1.1</span>
-            <span class="stat-label">LATEST RELEASE</span>
-          </div>
-        </div>
-        
-        <!-- Interactive Paper Code Preview -->
-        <div class="hero-code-preview card paper-brutal paper-interactive-flip paper-stack-reveal stagger-6" style="max-width: 700px; margin: var(--space-8) auto 0; text-align: left;">
-          <div class="paper-front" style="padding: var(--space-6);">
-            <div class="code-window">
-              <div class="code-header">
-                <div class="code-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <span class="code-title">tokensentry analyze prompt.md</span>
-              </div>
-              <pre><code class="language-bash"><span class="token-comment">$ tokensentry analyze examples/sample-prompt.md</span>
-<span class="token-output">â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ TOKENSENTRY ANALYSIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®
-â”‚ PROMPT ID: SAMPLE-PROMPT                       â”‚
-â”‚ CHARACTERS: 368   WORDS: 55   LINES: 5         â”‚
-â”‚ TOKENIZER: CHARACTER-ESTIMATE                  â”‚
-â”‚ TOKEN COUNT: 92 (ESTIMATE)                     â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ FINDINGS:                                      â”‚
-â”‚   â„¹ï¸  AMBIGUOUS_RELATIVE_WITHOUT_SCALE         â”‚
-â”‚       EVIDENCE: "SHORT"                        â”‚
-â”‚       SUGGESTION: ADD SPECIFIC MEASUREMENTS    â”‚
-â”‚   âš ï¸  LOW_STRUCTURE                            â”‚
-â”‚       LACKS HEADINGS OR SECTIONS               â”‚
-â”‚   âš ï¸  LOW_ACTIONABILITY                        â”‚
-â”‚       FEW EXPLICIT ACTION VERBS                â”‚
-â”‚                                                â”‚
-â”‚ QUALITY SCORES:                                â”‚
-â”‚   CLARITY: 1.00  COMPLETENESS: 0.50           â”‚
-â”‚   STRUCTURE: 0.20  CONCISENESS: 0.55          â”‚
-â”‚   ACTIONABILITY: 0.17  OVERALL: 0.48          â”‚
-â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯</span></code></pre>
-            </div>
-            <p style="margin-top: var(--space-3); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle); text-align: center;">HOVER TO FLIP â–¶</p>
-          </div>
-          <div class="paper-back" style="padding: var(--space-6); background: var(--bg-paper);">
-            <div class="code-window">
-              <div class="code-header">
-                <div class="code-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <span class="code-title">tokensentry optimize --profile balanced</span>
-              </div>
-              <pre><code class="language-bash"><span class="token-comment">$ tokensentry optimize prompt.md --profile balanced --output opt.md</span>
-<span class="token-output">+-- TOKENSENTRY OPTIMIZATION ---+
-| PROFILE: BALANCED           |
-| ORIGINAL TOKENS: 92         |
-| OPTIMIZED TOKENS: 78        |
-| TOKEN DELTA: -14 (-15.2%)   |
-| TRANSFORMATIONS: 3          |
-+-------------------------------+
-
-TRANSFORMATIONS APPLIED:
-1. WHITESPACE_NORMALIZATION (-2 tokens)
-2. PHRASE_CONSOLIDATION (-8 tokens)  
-3. TRANSITION_REMOVAL (-4 tokens)
-
-LITERALS PRESERVED: 5/5
-TECHNICAL TERMS: INTACT</span></code></pre>
-            </div>
-            <p style="margin-top: var(--space-3); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle); text-align: center;">VALIDATE WITH: tokensentry validate prompt.md opt.md</p>
-          </div>
-        </div>
-        
-        <div class="hero-scroll-indicator paper-stack-reveal stagger-7">
-          <span>SCROLL TO EXPLORE</span>
-          <svg class="scroll-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
+        <div class="terminal-body">
+          <p><span class="prompt">$</span> <span class="token-output">tokensentry analyze prompt.md --tokenizer tiktoken:gpt-4</span></p>
+          <p class="terminal-output">┏━━━━━━━━━━━━━━━━ TOKENSENTRY ANALYSIS ━━━━━━━━━━━━━━━┓</p>
+          <p class="terminal-output">┃ PROMPT ID: MY-PROMPT                         ┃</p>
+          <p class="terminal-output">┃ CHARACTERS: 2,847   WORDS: 412   LINES: 45     ┃</p>
+          <p class="terminal-output">┃ TOKENIZER: TIKTOKEN:GPT-4                    ┃</p>
+          <p class="terminal-output">┃ TOKEN COUNT: 673 (EXACT)                     ┃</p>
+          <p class="terminal-output">┣━━━━━━━━━━━━━━━━ FINDINGS (7) ━━━━━━━━━━━━━━━━┫</p>
+          <p class="terminal-output">┃ ⚠  AMBIGUOUS_RELATIVE_WITHOUT_SCALE (3)      ┃</p>
+          <p class="terminal-output">┃ ⚠  REDUNDANT_PHRASE (2)                      ┃</p>
+          <p class="terminal-output">┃ ⚠  LOW_ACTIONABILITY                         ┃</p>
+          <p class="terminal-output">┣━━━━━━━━━━━━━━━━ QUALITY SCORES ━━━━━━━━━━━━━━━┫</p>
+          <p class="terminal-output">┃ CLARITY: 0.72  COMPLETENESS: 0.65           ┃</p>
+          <p class="terminal-output">┃ STRUCTURE: 0.80  CONCISENESS: 0.58          ┃</p>
+          <p class="terminal-output">┃ ACTIONABILITY: 0.45  OVERALL: 0.64          ┃</p>
+          <p class="terminal-output">┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Trust Indicators -->
-    <section class="section section-sm" style="border-top: var(--border-thick) solid var(--border); border-bottom: var(--border-thick) solid var(--border);">
-      <div class="container">
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-8); align-items: center; opacity: 0.6;">
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: 0.1em;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            <span>APACHE 2.0 LICENSE</span>
+  <section id="features" class="about-section" aria-labelledby="features-title">
+    <div class="container">
+      <h2 id="features-title" class="section-title">Core Features</h2>
+      <p class="section-description">Everything you need to analyze, optimize, and validate AI prompts — all locally.</p>
+      <div class="about-grid">
+        <article class="about-card">
+          <div class="about-icon">🔍</div>
+          <h3>Deep Analysis Engine</h3>
+          <p>7 modular analyzers detect structure, redundancy, ambiguity, contradictions, complexity, quality issues, and security risks in your prompts.</p>
+        </article>
+        <article class="about-card">
+          <div class="about-icon">⚡</div>
+          <h3>Smart Optimization</h3>
+          <p>Three profiles — Conservative, Balanced, Aggressive — with full transformation tracking and technical literal preservation.</p>
+        </article>
+        <article class="about-card">
+          <div class="about-icon">✅</div>
+          <h3>Semantic Validation</h3>
+          <p>7-status classification (Exact/Structural/Probable/Uncertain/Modified/Missing/Weakened) with byte-for-byte literal verification.</p>
+        </article>
+        <article class="about-card">
+          <div class="about-icon">🧮</div>
+          <h3>Exact Token Counting</h3>
+          <p>Tiktoken (OpenAI), HuggingFace tokenizers, SentencePiece — no silent fallbacks, explicit exactness metadata.</p>
+        </article>
+        <article class="about-card">
+          <div class="about-icon">🤖</div>
+          <h3>15 AI Agent Skills</h3>
+          <p>Composable skills for Analyzer, Optimizer, Validator, Security Auditor, Cost Analyst, Context Engineer, and more.</p>
+        </article>
+        <article class="about-card">
+          <div class="about-icon">📊</div>
+          <h3>Rich Reporting</h3>
+          <p>Export as JSON, Markdown, or beautiful terminal output with syntax highlighting and schema versioning.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="chapters-section" aria-labelledby="how-title">
+    <div class="container">
+      <h2 id="how-title" class="section-title">How It Works</h2>
+      <p class="section-description">Three commands. Complete prompt intelligence.</p>
+      <div class="chapters-grid">
+        <article class="chapter-card">
+          <div class="chapter-number">01</div>
+          <h3 class="chapter-title">Analyze</h3>
+          <p class="chapter-description">Deep prompt inspection with structure parsing, redundancy detection, ambiguity finding, contradiction identification, complexity metrics, quality scoring, and security audit.</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Structure</span>
+            <span class="topic-tag">Redundancy</span>
+            <span class="topic-tag">Ambiguity</span>
+            <span class="topic-tag">Security</span>
           </div>
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: 0.1em;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            <span>LOCAL-FIRST</span>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">02</div>
+          <h3 class="chapter-title">Optimize</h3>
+          <p class="chapter-description">Smart token reduction with Conservative (whitespace only), Balanced (phrase consolidation), Aggressive (filler removal) profiles. Technical literals preserved.</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Conservative</span>
+            <span class="topic-tag">Balanced</span>
+            <span class="topic-tag">Aggressive</span>
+            <span class="topic-tag">Literal Safe</span>
           </div>
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: 0.1em;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-            <span>NO API KEYS</span>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">03</div>
+          <h3 class="chapter-title">Validate</h3>
+          <p class="chapter-description">Semantic preservation verification with 7-status classification, negative constraint checking, output schema validation, and CI/CD-ready JSON output.</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">7-Status</span>
+            <span class="topic-tag">Negative Constraints</span>
+            <span class="topic-tag">Schema</span>
+            <span class="topic-tag">CI/CD Ready</span>
           </div>
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--font-weight-bold); text-transform: uppercase; letter-spacing: 0.1em;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            <span>PYTHON 3.11+</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="benchmarks" class="about-section" style="background-color: var(--bg-secondary);" aria-labelledby="benchmarks-title">
+    <div class="container">
+      <h2 id="benchmarks-title" class="section-title">Benchmarks</h2>
+      <p class="section-description">Proven results across 13 curated prompts in 7 categories.</p>
+      <div class="chapters-grid">
+        <article class="chapter-card">
+          <div class="chapter-number">📊</div>
+          <h3 class="chapter-title">Software Engineering</h3>
+          <p class="chapter-description">3 prompts. Balanced: -18.7% tokens. Preservation: 98.5%</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Code Review</span>
+            <span class="topic-tag">Debugging</span>
+            <span class="topic-tag">Architecture</span>
           </div>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">📊</div>
+          <h3 class="chapter-title">DevOps & Infrastructure</h3>
+          <p class="chapter-description">2 prompts. Balanced: -15.3% tokens. Preservation: 97.2%</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Kubernetes</span>
+            <span class="topic-tag">Terraform</span>
+            <span class="topic-tag">CI/CD</span>
+          </div>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">📊</div>
+          <h3 class="chapter-title">Security Analysis</h3>
+          <p class="chapter-description">2 prompts. Balanced: -12.1% tokens. Preservation: 99.1%</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Threat Model</span>
+            <span class="topic-tag">Audit</span>
+            <span class="topic-tag">Compliance</span>
+          </div>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">📊</div>
+          <h3 class="chapter-title">Overall Average</h3>
+          <p class="chapter-description">13 prompts. Conservative: -2.9% | Balanced: -17.1% | Aggressive: -29.9% | Preservation: 97.5%</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">All Categories</span>
+            <span class="topic-tag">All Profiles</span>
+          </div>
+        </article>
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="docs-site/benchmarks.html" class="btn btn-primary">View Full Benchmarks</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="chapters-section" aria-labelledby="skills-title">
+    <div class="container">
+      <h2 id="skills-title" class="section-title">15 AI Agent Skills</h2>
+      <p class="section-description">Composable, reusable skills for every prompt engineering use case.</p>
+      <div class="chapters-grid">
+        <article class="chapter-card">
+          <div class="chapter-number">🔍</div>
+          <h3 class="chapter-title">Analyzer</h3>
+          <p class="chapter-description">Deep prompt analysis with 7 modules: structure, redundancy, ambiguity, contradictions, complexity, quality, security.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">⚡</div>
+          <h3 class="chapter-title">Optimizer</h3>
+          <p class="chapter-description">Smart token reduction with 3 profiles, literal preservation, and transformation delta tracking.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">✅</div>
+          <h3 class="chapter-title">Validator</h3>
+          <p class="chapter-description">Semantic preservation verification with 7-status classification and byte-for-byte literal checking.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🧮</div>
+          <h3 class="chapter-title">Token Auditor</h3>
+          <p class="chapter-description">Detailed token usage breakdown by section, tokenizer comparison, cost estimation.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">📦</div>
+          <h3 class="chapter-title">Context Engineer</h3>
+          <p class="chapter-description">Optimize context window usage, detect overflow, suggest summarization strategies.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🛡️</div>
+          <h3 class="chapter-title">Security Auditor</h3>
+          <p class="chapter-description">Detect prompt injection, role override attempts, secret leakage, encoding bypass.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">💰</div>
+          <h3 class="chapter-title">Cost Analyst</h3>
+          <p class="chapter-description">Estimate API costs per prompt across models, optimize for budget constraints.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🧠</div>
+          <h3 class="chapter-title">Model Adapter</h3>
+          <p class="chapter-description">Adapt prompts for different models (GPT-4, Llama, Mistral, Claude) automatically.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🔗</div>
+          <h3 class="chapter-title">Skill Composer</h3>
+          <p class="chapter-description">Orchestrate multi-skill workflows, build custom pipelines, chain skills together.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">📋</div>
+          <h3 class="chapter-title">Structured Output</h3>
+          <p class="chapter-description">Enforce JSON/Schema outputs, validate response format, repair malformed responses.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🎯</div>
+          <h3 class="chapter-title">Few-Shot Optimizer</h3>
+          <p class="chapter-description">Optimize few-shot examples for token efficiency while preserving effectiveness.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🔄</div>
+          <h3 class="chapter-title">Agent Workflow</h3>
+          <p class="chapter-description">Build multi-agent pipelines with branching, loops, conditional execution.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🏆</div>
+          <h3 class="chapter-title">Prompt Evaluator</h3>
+          <p class="chapter-description">Score prompt quality metrics, compare variants, A/B test prompt versions.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">📝</div>
+          <h3 class="chapter-title">Prompt Documenter</h3>
+          <p class="chapter-description">Auto-generate prompt documentation, version history, change logs.</p>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">⚙️</div>
+          <h3 class="chapter-title">System Prompt Designer</h3>
+          <p class="chapter-description">Craft optimal system prompts for specific use cases and model behaviors.</p>
+        </article>
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="docs-site/skills/overview.html" class="btn btn-primary">Explore All Skills</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tokenizers" class="about-section" style="background-color: var(--bg-secondary);" aria-labelledby="tokenizers-title">
+    <div class="container">
+      <h2 id="tokenizers-title" class="section-title">Tokenizer Support</h2>
+      <p class="section-description">Exact token counting for every major model. No estimates. No silent fallbacks.</p>
+      <div class="chapters-grid">
+        <article class="chapter-card">
+          <div class="chapter-number">🤖</div>
+          <h3 class="chapter-title">Tiktoken (OpenAI)</h3>
+          <p class="chapter-description">GPT-4, GPT-4o, GPT-4o-mini, GPT-3.5-turbo, text-embedding-ada-002, text-embedding-3-small/large. CL100K_BASE, P50K_BASE, R50K_BASE.</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Exact</span>
+            <span class="topic-tag">All Models</span>
+            <span class="topic-tag">Embeddings</span>
+          </div>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">🤗</div>
+          <h3 class="chapter-title">HuggingFace Tokenizers</h3>
+          <p class="chapter-description">Llama 2/3 (7B-70B), Mistral 7B, Mixtral 8x7B, Gemma 2B/7B, Qwen 2, Phi-3/3.5. Any HF tokenizer model.</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Exact</span>
+            <span class="topic-tag">Open Weights</span>
+            <span class="topic-tag">Any Model</span>
+          </div>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">📦</div>
+          <h3 class="chapter-title">SentencePiece</h3>
+          <p class="chapter-description">Custom trained models, Gemma tokenizers, Llama SentencePiece, T5/mT5. Any .model file.</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Exact</span>
+            <span class="topic-tag">Custom</span>
+            <span class="topic-tag">Multilingual</span>
+          </div>
+        </article>
+        <article class="chapter-card">
+          <div class="chapter-number">⚡</div>
+          <h3 class="chapter-title">Character Estimate</h3>
+          <p class="chapter-description">Zero dependencies, ~4 chars/token heuristic, always available fallback, clearly labeled as estimate.</p>
+          <div class="chapter-topics">
+            <span class="topic-tag">Estimate</span>
+            <span class="topic-tag">Fastest</span>
+            <span class="topic-tag">No Deps</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapters-section" style="text-align: center; background-color: var(--text-primary); color: #fff;" aria-labelledby="cta-title">
+    <div class="container">
+      <h2 id="cta-title" class="section-title" style="color: #fff;">Ready to Make Every Token Count?</h2>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 60ch; margin: 0 auto 2.5rem; font-weight: 600;">
+        Join thousands of developers optimizing their prompts with TokenSentry. Local-first. Open source. No API keys required.
+      </p>
+      <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+        <a href="docs-site/getting-started.html" class="btn btn-primary" style="background-color: var(--color-brand);">Get Started Now</a>
+        <a href="https://github.com/Jani-shiv/TokenSentry" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="border-color: #fff; color: #fff;">Star on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>TokenSentry</h3>
+          <p>Local-first prompt intelligence toolkit. Analyze. Optimize. Validate. Make every token count.</p>
+          <div class="social-links">
+            <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" class="social-link" aria-label="GitHub">📦 GitHub</a>
+            <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" class="social-link" aria-label="Discussions">💬 Discussions</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#benchmarks">Benchmarks</a></li>
+            <li><a href="#skills">AI Skills</a></li>
+            <li><a href="#tokenizers">Tokenizers</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Developers</h4>
+          <ul class="footer-links">
+            <li><a href="docs-site/getting-started.html">Documentation</a></li>
+            <li><a href="docs-site/cli-reference.html">CLI Reference</a></li>
+            <li><a href="docs-site/api-reference.html">API Reference</a></li>
+            <li><a href="docs-site/configuration.html">Configuration</a></li>
+            <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank">GitHub Repo</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Community</h4>
+          <ul class="footer-links">
+            <li><a href="docs-site/contributing.html">Contributing</a></li>
+            <li><a href="docs-site/changelog.html">Changelog</a></li>
+            <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank">Discussions</a></li>
+            <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank">Issues</a></li>
+            <li><a href="docs-site/ROADMAP.md" target="_blank">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="docs-site/LICENSE" target="_blank">License</a></li>
+            <li><a href="docs-site/SECURITY.md" target="_blank">Security</a></li>
+            <li><a href="docs-site/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a></li>
+            <li><a href="docs-site/SUPPORT.md" target="_blank">Support</a></li>
+          </ul>
         </div>
       </div>
-    </section>
-
-    <!-- Features Overview -->
-    <section class="section" id="features" aria-labelledby="features-title">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag badge badge-cyan paper-brutal-cyan">CORE FEATURES</span>
-          <h2 id="features-title" class="section-title text-display">EVERYTHING YOU NEED FOR PROMPT INTELLIGENCE</h2>
-          <p class="section-description">
-            TOKENSENTRY PROVIDES A COMPLETE TOOLKIT FOR UNDERSTANDING, MEASURING, OPTIMIZING, 
-            AND VALIDATING AI PROMPTS — ALL LOCALLY, WITH NO API KEYS REQUIRED.
-          </p>
-        </header>
-        
-        <div class="features-grid" id="featuresGrid">
-          <!-- Populated by JS -->
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TokenSentry Community. Apache 2.0 Licensed. Built with ❤️ for prompt engineers.</p>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <!-- How It Works -->
-    <section class="section" id="how-it-works" aria-labelledby="how-title" style="background: var(--bg-alt);">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag badge badge-magenta paper-brutal-magenta">HOW IT WORKS</span>
-          <h2 id="how-title" class="section-title text-display">THREE COMMANDS. COMPLETE PROMPT INTELLIGENCE.</h2>
-          <p class="section-description">ANALYZE. OPTIMIZE. VALIDATE. THE WORKFLOW THAT MAKES EVERY TOKEN COUNT.</p>
-        </header>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
-          <!-- Step 1: Analyze -->
-          <article class="card paper-brutal-cyan paper-stack-reveal stagger-1 paper-interactive-flip" style="padding: var(--space-6); min-height: 400px;">
-            <div class="paper-front" style="height: 100%; display: flex; flex-direction: column;">
-              <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-                <div style="width: 56px; height: 56px; background: var(--accent-cyan-dim); border: var(--border-thick) solid var(--accent-cyan); display: flex; align-items: center; justify-content: center;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                </div>
-                <div>
-                  <h3 style="font-size: var(--text-xl);">01. ANALYZE</h3>
-                  <p style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle);">DEEP PROMPT INSPECTION</p>
-                </div>
-              </div>
-              <ul class="feature-list" style="flex: 1;">
-                <li>STRUCTURE PARSING (HEADINGS, CODE, LISTS, TABLES)</li>
-                <li>REDUNDANCY DETECTION (LINES, PHRASES, REQUIREMENTS)</li>
-                <li>AMBIGUITY & CONTRADICTION DETECTION</li>
-                <li>COMPLEXITY METRICS & READABILITY SCORES</li>
-                <li>QUALITY SCORING (6 DIMENSIONS)</li>
-                <li>SECURITY AUDIT (INJECTION, SECRETS, UNSAFE)</li>
-                <li>EXACT TOKEN COUNTING (TIKTOKEN, HF, SENTENCEPIECE)</li>
-              </ul>
-              <p style="margin-top: var(--space-4); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle); text-align: center;">HOVER TO SEE OUTPUT â–¶</p>
-            </div>
-            <div class="paper-back" style="height: 100%; display: flex; flex-direction: column; justify-content: center; padding: var(--space-4); background: var(--bg-paper);">
-              <div class="code-block-paper" style="flex: 1; margin: 0;">
-                <pre><code class="language-bash"><span class="token-comment">$ tokensentry analyze prompt.md --tokenizer tiktoken:gpt-4</span>
-<span class="token-output">â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ TOKENSENTRY ANALYSIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®
-â”‚ PROMPT ID: MY-PROMPT                            â”‚
-â”‚ CHARACTERS: 2,847   WORDS: 412   LINES: 45      â”‚
-â”‚ TOKENIZER: TIKTOKEN:GPT-4                       â”‚
-â”‚ TOKEN COUNT: 673 (EXACT)                        â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ FINDINGS (7):                                   â”‚
-â”‚   â„¹ï¸  AMBIGUOUS_RELATIVE_WITHOUT_SCALE (3)      â”‚
-â”‚   âš ï¸  REDUNDANT_PHRASE (2)                      â”‚
-â”‚   âš ï¸  LOW_ACTIONABILITY                         â”‚
-â”‚   âš ï¸  MISSING_OUTPUT_FORMAT                     â”‚
-â”‚                                                 â”‚
-â”‚ QUALITY SCORES:                                 â”‚
-â”‚   CLARITY: 0.72  COMPLETENESS: 0.65            â”‚
-â”‚   STRUCTURE: 0.80  CONCISENESS: 0.58           â”‚
-â”‚   ACTIONABILITY: 0.45  OVERALL: 0.64           â”‚
-â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯</span></code></pre>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Step 2: Optimize -->
-          <article class="card paper-brutal-magenta paper-stack-reveal stagger-2 paper-interactive-flip" style="padding: var(--space-6); min-height: 400px;">
-            <div class="paper-front" style="height: 100%; display: flex; flex-direction: column;">
-              <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-                <div style="width: 56px; height: 56px; background: var(--accent-magenta-dim); border: var(--border-thick) solid var(--accent-magenta); display: flex; align-items: center; justify-content: center;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-magenta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
-                </div>
-                <div>
-                  <h3 style="font-size: var(--text-xl);">02. OPTIMIZE</h3>
-                  <p style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle);">SMART TOKEN REDUCTION</p>
-                </div>
-              </div>
-              <ul class="feature-list" style="flex: 1;">
-                <li>CONSERVATIVE: WHITESPACE & DUPLICATES ONLY</li>
-                <li>BALANCED: PHRASE CONSOLIDATION, TRANSITIONS</li>
-                <li>AGGRESSIVE: FILLER REMOVAL, COMPRESSION</li>
-                <li>TECHNICAL LITERAL PRESERVATION</li>
-                <li>TRANSFORMATION DELTA TRACKING</li>
-                <li>MULTI-PASS ITERATIVE OPTIMIZATION</li>
-                <li>TOKENIZER-AWARE REDUCTION</li>
-              </ul>
-              <p style="margin-top: var(--space-4); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle); text-align: center;">HOVER TO SEE OUTPUT â–¶</p>
-            </div>
-            <div class="paper-back" style="height: 100%; display: flex; flex-direction: column; justify-content: center; padding: var(--space-4); background: var(--bg-paper);">
-              <div class="code-block-paper" style="flex: 1; margin: 0;">
-                <pre><code class="language-bash"><span class="token-comment">$ tokensentry optimize prompt.md --profile balanced --output opt.md</span>
-<span class="token-output">+-- TOKENSENTRY OPTIMIZATION ---+
-| PROFILE: BALANCED           |
-| ORIGINAL TOKENS: 673        |
-| OPTIMIZED TOKENS: 542       |
-| TOKEN DELTA: -131 (-19.5%)  |
-| TRANSFORMATIONS: 5          |
-+-------------------------------+
-
-TRANSFORMATIONS APPLIED:
-1. WHITESPACE_NORMALIZATION (-12)
-2. DUPLICATE_LINE_REMOVAL (-8)
-3. PHRASE_CONSOLIDATION (-45)
-4. TRANSITION_REMOVAL (-28)
-5. REDUNDANT_REQUIREMENT (-38)
-
-LITERALS PRESERVED: 12/12
-TECHNICAL TERMS: INTACT
-CODE BLOCKS: UNCHANGED</span></code></pre>
-              </div>
-            </div>
-          </article>
-          
-          <!-- Step 3: Validate -->
-          <article class="card paper-brutal-lime paper-stack-reveal stagger-3 paper-interactive-flip" style="padding: var(--space-6); min-height: 400px;">
-            <div class="paper-front" style="height: 100%; display: flex; flex-direction: column;">
-              <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-                <div style="width: 56px; height: 56px; background: var(--accent-lime-dim); border: var(--border-thick) solid var(--accent-lime); display: flex; align-items: center; justify-content: center;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                </div>
-                <div>
-                  <h3 style="font-size: var(--text-xl);">03. VALIDATE</h3>
-                  <p style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle);">SEMANTIC PRESERVATION CHECK</p>
-                </div>
-              </div>
-              <ul class="feature-list" style="flex: 1;">
-                <li>7-STATUS CLASSIFICATION (EXACT/STRUCTURAL/PROBABLE/UNCERTAIN/MODIFIED/MISSING/WEAKENED)</li>
-                <li>BYTE-FOR-BYTE LITERAL VERIFICATION</li>
-                <li>NEGATIVE CONSTRAINT WEAKENING DETECTION</li>
-                <li>OUTPUT SCHEMA PRESERVATION</li>
-                <li>DETAILED DIFF WITH CONFIDENCE SCORES</li>
-                <li>CI/CD READY JSON OUTPUT</li>
-                <li>EXIT CODES FOR AUTOMATION</li>
-              </ul>
-              <p style="margin-top: var(--space-4); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-subtle); text-align: center;">HOVER TO SEE OUTPUT â–¶</p>
-            </div>
-            <div class="paper-back" style="height: 100%; display: flex; flex-direction: column; justify-content: center; padding: var(--space-4); background: var(--bg-paper);">
-              <div class="code-block-paper" style="flex: 1; margin: 0;">
-                <pre><code class="language-bash"><span class="token-comment">$ tokensentry validate prompt.md opt.md --format json</span>
-<span class="token-output">+-------- TOKENSENTRY VALIDATION --------+
-| STATUS: REVIEW REQUIRED              |
-| PRESERVED: 12 | MODIFIED: 1          |
-| MISSING: 0 | WEAKENED: 0             |
-+---------------------------------------+
-
-REQUIREMENT CHECKS:
-âœ… EXACT: "ACT AS SENIOR ENGINEER"
-âœ… STRUCTURAL: CODE BLOCKS INTACT
-âœ… PROBABLE: PERFORMANCE FOCUS KEPT
-âš ï¸  MODIFIED: "DETAILED" â†’ "SPECIFIC"
-âœ… LITERAL: "GPT-4" PRESERVED
-âœ… NEGATIVE: "NO EXTERNAL APIS" KEPT
-
-CONFIDENCE: 0.94
-EXIT CODE: 0 (SUCCESS)</span></code></pre>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quick Start -->
-    <section class="section" id="quickstart" aria-labelledby="quickstart-title">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag badge badge-gold paper-brutal-gold">QUICK START</span>
-          <h2 id="quickstart-title" class="section-title text-display">RUNNING IN 30 SECONDS</h2>
-          <p class="section-description">INSTALL, ANALYZE, OPTIMIZE, VALIDATE. SEE RESULTS INSTANTLY.</p>
-        </header>
-        
-        <div class="quickstart-grid">
-          <div class="quickstart-step card paper-brutal paper-stack-reveal stagger-1" data-step="1" style="padding: var(--space-6); display: flex; gap: var(--space-4); flex-direction: column;">
-            <div class="step-number" style="font-size: var(--text-5xl);">01</div>
-            <div class="step-content">
-              <h3>INSTALL TOKENSENTRY</h3>
-              <div class="code-block-paper" style="margin-bottom: var(--space-3);">
-                <pre><code class="language-bash"><span class="token-comment"># FULL INSTALL WITH ALL EXTRAS</span>
-pip install -e ".[dev]"
-
-<span class="token-comment"># OR SPECIFIC TOKENIZERS</span>
-pip install "tokensentry[openai-tokenizer]"
-pip install "tokensentry[huggingface-tokenizer]"
-
-<span class="token-comment"># MINIMAL</span>
-pip install tokensentry</code></pre>
-              </div>
-              <p class="step-note"><strong>REQUIRES:</strong> PYTHON 3.11+</p>
-            </div>
-          </div>
-          
-          <div class="quickstart-step card paper-brutal-cyan paper-stack-reveal stagger-2" data-step="2" style="padding: var(--space-6); display: flex; gap: var(--space-4); flex-direction: column;">
-            <div class="step-number" style="font-size: var(--text-5xl);">02</div>
-            <div class="step-content">
-              <h3>ANALYZE A PROMPT</h3>
-              <div class="code-block-paper" style="margin-bottom: var(--space-3);">
-                <pre><code class="language-bash">tokensentry analyze examples/sample-prompt.md</code></pre>
-              </div>
-              <p>GET STRUCTURE ANALYSIS, QUALITY SCORES, TOKEN COUNTS, AND FINDINGS INSTANTLY.</p>
-            </div>
-          </div>
-          
-          <div class="quickstart-step card paper-brutal-magenta paper-stack-reveal stagger-3" data-step="3" style="padding: var(--space-6); display: flex; gap: var(--space-4); flex-direction: column;">
-            <div class="step-number" style="font-size: var(--text-5xl);">03</div>
-            <div class="step-content">
-              <h3>OPTIMIZE & VALIDATE</h3>
-              <div class="code-block-paper" style="margin-bottom: var(--space-3);">
-                <pre><code class="language-bash"><span class="token-comment"># OPTIMIZE</span>
-tokensentry optimize prompt.md --profile balanced --output opt.md
-
-<span class="token-comment"># VALIDATE</span>
-tokensentry validate prompt.md opt.md</code></pre>
-              </div>
-              <p>CHOOSE CONSERVATIVE, BALANCED, OR AGGRESSIVE. VALIDATE ENSURES REQUIREMENTS PRESERVED.</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="quickstart-tip card paper-brutal-lime paper-stack-reveal stagger-4" style="display: flex; gap: var(--space-4); padding: var(--space-6); margin-top: var(--space-8);">
-          <div class="tip-icon" style="flex-shrink: 0;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-          </div>
-          <div class="tip-content" style="font-size: var(--text-sm); color: var(--fg-muted);">
-            <strong>PRO TIP:</strong> USE <code style="color: var(--accent-lime); background: var(--accent-lime-dim); padding: var(--space-1) var(--space-2);">--tokenizer tiktoken:gpt-4</code> FOR EXACT GPT-4 TOKEN COUNTS, OR <code style="color: var(--accent-lime); background: var(--accent-lime-dim); padding: var(--space-1) var(--space-2);">--tokenizer hf:meta-llama/Llama-2-7b-hf</code> FOR LLAMA MODELS. RUN <code style="color: var(--accent-lime); background: var(--accent-lime-dim); padding: var(--space-1) var(--space-2);">tokensentry tokenizers</code> TO SEE ALL AVAILABLE OPTIONS.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Benchmarks -->
-    <section class="section" id="benchmarks" aria-labelledby="benchmarks-title" style="background: var(--bg-alt);">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag badge badge-red paper-brutal-red">BENCHMARKS</span>
-          <h2 id="benchmarks-title" class="section-title text-display">PROVEN RESULTS ACROSS 13 PROMPTS</h2>
-          <p class="section-description">13 CURATED PROMPTS ACROSS 7 CATEGORIES. REAL TOKEN REDUCTION. REAL PRESERVATION.</p>
-        </header>
-        
-        <div class="table-wrapper card paper-brutal" style="overflow: hidden;">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>CATEGORY</th>
-                <th>PROMPTS</th>
-                <th>CONSERVATIVE</th>
-                <th>BALANCED</th>
-                <th>AGGRESSIVE</th>
-                <th>PRESERVATION</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>SOFTWARE ENGINEERING</strong></td><td>3</td><td>-3.2%</td><td>-18.7%</td><td>-31.4%</td><td>98.5%</td></tr>
-              <tr><td><strong>DEVOPS & INFRASTRUCTURE</strong></td><td>2</td><td>-2.8%</td><td>-15.3%</td><td>-28.9%</td><td>97.2%</td></tr>
-              <tr><td><strong>SECURITY ANALYSIS</strong></td><td>2</td><td>-1.9%</td><td>-12.1%</td><td>-24.6%</td><td>99.1%</td></tr>
-              <tr><td><strong>DATA SCIENCE</strong></td><td>2</td><td>-4.1%</td><td>-22.8%</td><td>-35.2%</td><td>96.8%</td></tr>
-              <tr><td><strong>CREATIVE WRITING</strong></td><td>1</td><td>-2.3%</td><td>-14.7%</td><td>-26.4%</td><td>95.3%</td></tr>
-              <tr><td><strong>TECHNICAL DOCUMENTATION</strong></td><td>2</td><td>-3.7%</td><td>-19.2%</td><td>-33.1%</td><td>97.9%</td></tr>
-              <tr><td><strong>GENERAL PURPOSE</strong></td><td>1</td><td>-2.5%</td><td>-16.8%</td><td>-29.7%</td><td>98.0%</td></tr>
-              <tr style="background: var(--accent); color: var(--fg-inverse); font-weight: var(--font-weight-bold);"><td>OVERALL AVERAGE</td><td>13</td><td>-2.9%</td><td>-17.1%</td><td>-29.9%</td><td>97.5%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <div style="display: flex; justify-content: center; gap: var(--space-4); margin-top: var(--space-8); flex-wrap: wrap;">
-          <a href="docs-site/benchmarks.html" class="btn btn-primary btn-lg paper-brutal">
-            <i data-lucide="bar-chart-2"></i>
-            VIEW FULL BENCHMARKS
-          </a>
-          <a href="https://github.com/Jani-shiv/TokenSentry/blob/main/benchmarks" class="btn btn-ghost btn-lg paper-brutal" target="_blank" rel="noopener noreferrer">
-            <i data-lucide="github"></i>
-            BENCHMARK SOURCE
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- AI Agent Skills -->
-    <section class="section" id="skills" aria-labelledby="skills-title">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag badge badge-green paper-brutal-green">AI AGENT SKILLS</span>
-          <h2 id="skills-title" class="section-title text-display">15 COMPOSABLE SKILLS FOR EVERY USE CASE</h2>
-          <p class="section-description">BUILD CUSTOM WORKFLOWS. COMPOSE SKILLS. AUTOMATE PROMPT ENGINEERING.</p>
-        </header>
-        
-        <div class="features-grid" id="skillsGrid">
-          <!-- Populated by JS -->
-        </div>
-        
-        <div style="text-align: center; margin-top: var(--space-12);">
-          <a href="docs-site/skills/overview.html" class="btn btn-primary btn-lg paper-brutal">
-            <i data-lucide="puzzle"></i>
-            EXPLORE ALL SKILLS
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tokenizer Support -->
-    <section class="section" id="tokenizers" aria-labelledby="tokenizers-title" style="background: var(--bg-alt);">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-tag badge badge-cyan paper-brutal-cyan">TOKENIZERS</span>
-          <h2 id="tokenizers-title" class="section-title text-display">EXACT TOKEN COUNTING FOR EVERY MODEL</h2>
-          <p class="section-description">NO ESTIMATES. NO SILENT FALLBACKS. EXPLICIT EXACTNESS METADATA.</p>
-        </header>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
-          <!-- TikToken -->
-          <article class="card paper-brutal-cyan paper-stack card-stack" style="padding: var(--space-6);">
-            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-              <div style="width: 48px; height: 48px; background: var(--accent-cyan-dim); border: var(--border-thick) solid var(--accent-cyan); display: flex; align-items: center; justify-content: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="0"></rect><path d="M8 21h13a2 2 0 0 0 2-2V5"></path></svg>
-              </div>
-              <h3 style="font-size: var(--text-lg);">TIKTOKEN (OPENAI)</h3>
-            </div>
-            <ul class="feature-list">
-              <li>GPT-4, GPT-4O, GPT-4O-MINI</li>
-              <li>GPT-3.5-TURBO (ALL VARIANTS)</li>
-              <li>TEXT-EMBEDDING-ADA-002</li>
-              <li>TEXT-EMBEDDING-3-SMALL/LARGE</li>
-              <li>CL100K_BASE, P50K_BASE, R50K_BASE</li>
-            </ul>
-            <div class="code-block-paper" style="margin-top: var(--space-4);">
-              <pre><code class="language-bash">tokensentry analyze prompt.md --tokenizer tiktoken:gpt-4
-# TOKEN COUNT: 1,247 (EXACT)</code></pre>
-            </div>
-          </article>
-          
-          <!-- HuggingFace -->
-          <article class="card paper-brutal-magenta paper-stack card-stack" style="padding: var(--space-6);">
-            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-              <div style="width: 48px; height: 48px; background: var(--accent-magenta-dim); border: var(--border-thick) solid var(--accent-magenta); display: flex; align-items: center; justify-content: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-magenta)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              </div>
-              <h3 style="font-size: var(--text-lg);">HUGGINGFACE TOKENIZERS</h3>
-            </div>
-            <ul class="feature-list">
-              <li>LLAMA 2/3 (7B, 13B, 70B)</li>
-              <li>MISTRAL 7B, MIXTRAL 8X7B</li>
-              <li>GEMMA 2B, 7B</li>
-              <li>QWEN 2 (ALL SIZES)</li>
-              <li>PHI-3, PHI-3.5</li>
-              <li>ANY HF TOKENIZER MODEL</li>
-            </ul>
-            <div class="code-block-paper" style="margin-top: var(--space-4);">
-              <pre><code class="language-bash">tokensentry analyze prompt.md --tokenizer hf:meta-llama/Llama-3-8B
-# TOKEN COUNT: 1,189 (EXACT)</code></pre>
-            </div>
-          </article>
-          
-          <!-- SentencePiece -->
-          <article class="card paper-brutal-lime paper-stack card-stack" style="padding: var(--space-6);">
-            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-              <div style="width: 48px; height: 48px; background: var(--accent-lime-dim); border: var(--border-thick) solid var(--accent-lime); display: flex; align-items: center; justify-content: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-              </div>
-              <h3 style="font-size: var(--text-lg);">SENTENCEPIECE</h3>
-            </div>
-            <ul class="feature-list">
-              <li>CUSTOM TRAINED MODELS</li>
-              <li>GEMMA TOKENIZERS</li>
-              <li>LLAMA SENTENCEPIECE</li>
-              <li>T5, MT5, mT5 MODELS</li>
-              <li>ANY .MODEL FILE</li>
-            </ul>
-            <div class="code-block-paper" style="margin-top: var(--space-4);">
-              <pre><code class="language-bash">tokensentry analyze prompt.md --tokenizer sentencepiece:/path/to/model
-# TOKEN COUNT: 1,156 (EXACT)</code></pre>
-            </div>
-          </article>
-          
-          <!-- Character Estimate -->
-          <article class="card paper-brutal-gold paper-stack card-stack" style="padding: var(--space-6);">
-            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-              <div style="width: 48px; height: 48px; background: var(--accent-gold-dim); border: var(--border-thick) solid var(--accent-gold); display: flex; align-items: center; justify-content: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon></svg>
-              </div>
-              <h3 style="font-size: var(--text-lg);">CHARACTER ESTIMATE</h3>
-            </div>
-            <ul class="feature-list">
-              <li>ZERO DEPENDENCIES</li>
-              <li>~4 CHARS PER TOKEN HEURISTIC</li>
-              <li>ALWAYS AVAILABLE FALLBACK</li>
-              <li>CLEARLY LABELED AS ESTIMATE</li>
-              <li>FASTEST OPTION</li>
-            </ul>
-            <div class="code-block-paper" style="margin-top: var(--space-4);">
-              <pre><code class="language-bash">tokensentry analyze prompt.md --tokenizer character-estimate
-# TOKEN COUNT: 1,312 (ESTIMATE)</code></pre>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section" style="text-align: center; background: var(--accent); color: var(--fg-inverse);">
-      <div class="container">
-        <h2 class="section-title text-display" style="color: var(--fg-inverse); margin-bottom: var(--space-6);">READY TO MAKE EVERY TOKEN COUNT?</h2>
-        <p style="font-size: var(--text-lg); color: var(--fg-inverse); opacity: 0.8; max-width: 60ch; margin: 0 auto var(--space-8);">
-          JOIN THOUSANDS OF DEVELOPERS OPTIMIZING THEIR PROMPTS WITH TOKENSENTRY. 
-          LOCAL-FIRST. OPEN SOURCE. NO API KEYS REQUIRED.
-        </p>
-        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center;">
-          <a href="docs-site/getting-started.html" class="btn btn-secondary btn-xl paper-brutal" style="background: var(--fg-inverse); color: var(--accent); border-color: var(--fg-inverse);">
-            <i data-lucide="zap"></i>
-            GET STARTED NOW
-          </a>
-          <a href="https://github.com/Jani-shiv/TokenSentry" class="btn btn-ghost btn-xl paper-brutal" target="_blank" rel="noopener noreferrer" style="border-color: var(--fg-inverse); color: var(--fg-inverse);">
-            <i data-lucide="github"></i>
-            STAR ON GITHUB
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <a href="index.html" class="footer-brand-link">
-              <div class="brand-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-                  <line x1="12" y1="22" x2="12" y2="15.5"></line>
-                  <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
-                </svg>
-              </div>
-              <span class="brand-text">TOKENSENTRY</span>
-            </a>
-            <p class="brand-tagline">ANALYZE. OPTIMIZE. VALIDATE. MAKE EVERY TOKEN COUNT.</p>
-            <p class="footer-version">v0.1.1 Â· APACHE-2.0 LICENSE</p>
-          </div>
-          
-          <nav class="footer-nav" aria-label="Footer navigation">
-            <div class="footer-col">
-              <h4>PRODUCT</h4>
-              <ul>
-                <li><a href="#features">FEATURES</a></li>
-                <li><a href="#how-it-works">HOW IT WORKS</a></li>
-                <li><a href="#benchmarks">BENCHMARKS</a></li>
-                <li><a href="#skills">AI SKILLS</a></li>
-                <li><a href="#tokenizers">TOKENIZERS</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>DEVELOPERS</h4>
-              <ul>
-                <li><a href="docs-site/getting-started.html">DOCUMENTATION</a></li>
-                <li><a href="docs-site/cli-reference.html">CLI REFERENCE</a></li>
-                <li><a href="docs-site/api-reference.html">API REFERENCE</a></li>
-                <li><a href="docs-site/configuration.html">CONFIGURATION</a></li>
-                <li><a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer">GITHUB REPO</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>COMMUNITY</h4>
-              <ul>
-                <li><a href="docs-site/contributing.html">CONTRIBUTING</a></li>
-                <li><a href="docs-site/changelog.html">CHANGELOG</a></li>
-                <li><a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer">DISCUSSIONS</a></li>
-                <li><a href="https://github.com/Jani-shiv/TokenSentry/issues" target="_blank" rel="noopener noreferrer">ISSUES</a></li>
-                <li><a href="docs-site/ROADMAP.md" target="_blank" rel="noopener noreferrer">ROADMAP</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>LEGAL</h4>
-              <ul>
-                <li><a href="docs-site/LICENSE" target="_blank" rel="noopener noreferrer">LICENSE</a></li>
-                <li><a href="docs-site/SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY</a></li>
-                <li><a href="docs-site/CODE_OF_CONDUCT.md" target="_blank" rel="noopener noreferrer">CODE OF CONDUCT</a></li>
-                <li><a href="docs-site/SUPPORT.md" target="_blank" rel="noopener noreferrer">SUPPORT</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        
-        <div class="footer-bottom">
-          <p>BUILT WITH CARE BY THE TOKENSENTRY COMMUNITY. <a href="https://github.com/Jani-shiv/TokenSentry/graphs/contributors" target="_blank" rel="noopener noreferrer">VIEW CONTRIBUTORS</a></p>
-          <div class="footer-links">
-            <a href="https://github.com/Jani-shiv/TokenSentry" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C23.997 21.801 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-            <a href="https://github.com/Jani-shiv/TokenSentry/discussions" target="_blank" rel="noopener noreferrer" aria-label="Discussions">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="15" x2="12" y2="9"></line>
-        <line x1="6" y1="15" x2="12" y2="9"></line>
-      </svg>
-    </button>
-  </main>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/lucide.js"></script>
-  <script src="scripts/brutal-enhanced.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
